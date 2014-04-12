@@ -1,6 +1,6 @@
-(source melpa)
-(source marmalade)
 (source "MELPA" "http://melpa.milkbox.net/packages/")
+(source marmalade)
+(source melpa)
 
 (depends-on "ac-cider-compliment")
 (depends-on "ac-etags")
@@ -21,6 +21,7 @@
 (depends-on "php-boris-minor-mode")
 (depends-on "php-extras")
 (depends-on "php-mode")
+(depends-on "sauron")
 (depends-on "slime")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")

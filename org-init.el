@@ -4,6 +4,6 @@
 (setq org-log-done t)
 (setq org-agenda-files (list "~/org/anx.org"
                              "~/org/easyfreeunix.org"
-							 "~/org/history.org"
-							 "~/org/programming.org"
+                             "~/org/history.org"
+                             "~/org/programming.org"
                              "~/org/home.org"))
