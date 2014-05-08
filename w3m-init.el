@@ -4,6 +4,6 @@
 (global-set-key "\C-xm" 'browse-url-at-point)
 (setq w3m-use-cookies t)
 (setq browse-url-browser-function 'browse-url-generic
-	        browse-url-generic-program "conkeror")
+	        browse-url-generic-program "firefox")
 
 (global-set-key (kbd "C-c C-v")  'browse-url-of-buffer)
