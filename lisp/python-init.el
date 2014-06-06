@@ -10,7 +10,6 @@
 (add-hook 'python-mode-hook
       (lambda ()
         (abbrev-mode 1)                   ;; Use abreviations
-        (auto-fill-mode 1)                ;; Break long lines
         (linum-mode 1)                    ;; Show line numbers
 		(lambda ()
 		  (setq indent-tabs-mode t)       ;; Indent tabs

@@ -1,4 +1,10 @@
 ;; PHP init file
+;;
+;; Some keys that are bound for this mode:
+;; M-<ENTER> Runs the sync_webdx command for WebDx Development
+;; [f5]      Debugs the PHP in the current buffer with Xdebug and Geben
+;; <ENTER>   New line at the next indentation level.
+;;
 (require 'php-mode)
 (require 'flymake)
 
@@ -38,6 +44,19 @@
      (local (file-relative-name temp (file-name-directory buffer-file-name))))
     (list "php_lint" (list local))))
 
+;; Debug a simple PHP script. Use geben with xdebug for PHP
+;; Change the session key my-php-53 to any session key text you like
+(defun my-php-debug ()
+  "Run current PHP script for debugging with geben"
+  (interactive)
+  (call-interactively 'geben)
+  (shell-command
+    (concat "XDEBUG_CONFIG='idekey=my-php-53' /usr/bin/php "
+    (buffer-file-name) " &"))
+  )
+(add-hook 'php-mode-hook '(lambda ()
+	(local-set-key [f5] 'my-php-debug)))
+
 ;;This is the error format for : php -f somefile.php -l 
 (add-to-list 'flymake-err-line-patterns
   '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
@@ -50,14 +69,14 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
-(add-hook 'php-mode-hook
-		  (lambda ()
-			(require 'ggtags)
-			(ggtags-mode t)))
-
 ;; Indent when I press <RETURN>
 (add-hook 'php-mode-hook '(lambda ()
     (local-set-key (kbd "RET") 'newline-and-indent)))
 
 ;; PHP REPL
 (add-hook 'php-mode-hook 'php-boris-minor-mode)
+
+;; WebDx Project
+(defvar webdx-project-path "~/public_html/webdx" "Base path for WebDx")
+(setq tags-file-name (expand-file-name "TAGS" webdx-project-path))
+

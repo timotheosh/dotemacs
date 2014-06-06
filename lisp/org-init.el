@@ -4,12 +4,11 @@
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files (list "~/org/anx.org"
-                             "~/org/easyfreeunix.org"
-							 "~/org/history.org"
-							 "~/org/programming.org"
-                             "~/org/home.org"
-							 "~/org/outlook.org"))
+(setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
+(add-hook 'org-mode-hook
+		  (lambda ()
+			(set-fill-column 80)))
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;; Blogging with Pelican ;;;;;;;;;;;;;;;

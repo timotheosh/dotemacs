@@ -1,0 +1,2 @@
+;; Initialize etags
+(require 'etags)

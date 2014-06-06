@@ -36,7 +36,7 @@
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/"))
 (load-library "keys")
 (load-library "ido-init")
@@ -63,7 +63,11 @@
 (load-library "python-init")
 (load-library "perl-init")
 (load-library "flyspell-init")
+(load-library "geben-init")
+(load-library "etags-init")
+(load-library "ecb-init")
 (load-library "org-init")
+(load-library "etags-table-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"
@@ -76,20 +80,4 @@
 )
 (desktop-save-mode 1)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(custom-enabled-themes (quote (wheatgrass)))
- '(display-time-mode t)
- '(ecb-options-version "2.40")
- '(ido-enable-tramp-completion nil)
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Luxi Mono" :foundry "b&h" :slant normal :weight normal :height 113 :width normal)))))
+(load custom-file)
