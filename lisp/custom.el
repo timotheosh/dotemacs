@@ -7,7 +7,6 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(display-time-mode t)
  '(ecb-options-version "2.40")
- '(ede-project-directories (quote ("/home/hawest/src/sources/DxGenerator" "/home/hawest/public_html/webdx")))
  '(ido-enable-tramp-completion nil)
  '(tool-bar-mode nil))
 (custom-set-faces

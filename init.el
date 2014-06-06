@@ -1,3 +1,5 @@
+; Custom file
+(setq custom-file "~/.emacs.d/lisp/custom.el")
 ; Email and user's name.
 (setq user-mail-address "tim@easyfreeunix.com")
 (setq user-full-name "Tim Hawes")
