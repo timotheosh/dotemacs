@@ -3,6 +3,7 @@
 ;; Set up HTML viewers (Note this has global context)
 
 (require 'mu4e)
+(require 'org-mu4e)
 (setq
   mu4e-maildir                  "~/Maildir"	;; top-level Maildir
   mu4e-sent-folder              "/INBOX.Sent"	;; folder for sent messages
@@ -69,3 +70,9 @@
 
 ; (add-hook 'mu4e-view-mode-hook 'longlines-mode)
 ; (add-hook 'mu4e-view-mode-hook 'mu4e~view-hide-cited)
+
+(setq mu4e-org-contacts-file "~/org/Contacts.org") 
+(add-to-list 'mu4e-headers-actions
+  '("org-contact-add" . mu4e-action-add-org-contact) t)
+(add-to-list 'mu4e-view-actions
+  '("org-contact-add" . mu4e-action-add-org-contact) t)

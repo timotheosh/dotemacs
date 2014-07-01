@@ -1,4 +1,4 @@
 ;; load slime
-(setq inferior-lisp-program "/usr/bin/clisp")
+(setq inferior-lisp-program "~/programs/bin/sbcl")
 (require 'slime)
 (slime-setup '(slime-fancy))
