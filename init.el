@@ -50,7 +50,6 @@
 (load-library "indent-buffer")
 (load-library "unbound")
 (load-library "w3m-init")
-(load-library "gtags-init")
 (load-library "multi-term-init")
 (load-library "matchparenthesis")
 (load-library "auto-complete-init")
