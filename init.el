@@ -40,6 +40,7 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/"))
+(add-to-list 'load-path "/run/current-system/sw/share/emacs/site-lisp/mu4e/")
 (load-library "keys")
 (load-library "ido-init")
 (load-library "packages-init")
@@ -69,6 +70,7 @@
 (load-library "ecb-init")
 (load-library "org-init")
 (load-library "etags-table-init")
+(load-library "haskell-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"

@@ -11,7 +11,7 @@
   mu4e-trash-folder             "/INBOX.Trash"	;; trashed messages
   mu4e-refile-folder    "/INBOX.Archives"	;; saved messages
   mu4e-view-prefer-html t                               ;; show html as text by default.
-  mu4e-html2text-command "html2text -utf8 -width 72"
+  mu4e-html2text-command "html2text -b 72"
   )
 ;;; View images inline
 (setq mu4e-view-show-images t)
