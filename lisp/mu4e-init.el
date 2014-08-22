@@ -64,6 +64,10 @@
                           "tim@hawesresume.com")
                         ((mu4e-message-contact-field-matches msg :cc "tim@hawesresume.com")
                           "tim@hawesresume.com")
+                        ((mu4e-message-contact-field-matches msg :to "tim-0EBVIZ@mailbox.insight.ly")
+                          "tim-0EBVIZ@mailbox.insight.ly")
+                        ((mu4e-message-contact-field-matches msg :cc "tim-0EBVIZ@mailbox.insight.ly")
+                          "tim-0EBVIZ@mailbox.insight.ly")
                         (t "tim@easyfreeunix.com")))
                 ))))
 
