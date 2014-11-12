@@ -40,7 +40,7 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/"))
-(add-to-list 'load-path "/run/current-system/sw/share/emacs/site-lisp/mu4e/")
+(add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e/"))
 (load-library "keys")
 (load-library "ido-init")
 (load-library "packages-init")
