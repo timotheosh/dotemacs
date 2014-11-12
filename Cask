@@ -2,6 +2,7 @@
 (source marmalade)
 (source melpa)
 (source org)
+(source gnu)
 
 (depends-on "ac-cider-compliment")
 (depends-on "ac-etags")

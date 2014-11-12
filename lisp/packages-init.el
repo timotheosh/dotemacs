@@ -9,4 +9,7 @@
 (add-to-list 'package-archives 
     '("MELPA" .
         "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives
+     '("gnu" .
+        "http://elpa.gnu.org/packages/"))
 (package-initialize)
