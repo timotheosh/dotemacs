@@ -56,7 +56,6 @@
 (load-library "auto-complete-init")
 (load-library "cedet-native-init")
 (load-library "yasnippet-init")
-(load-library "ecb-init")
 (load-library "php-init")
 (load-library "multi-web-mode-init")
 (load-library "sql-init")
@@ -70,6 +69,8 @@
 (load-library "ecb-init")
 (load-library "org-init")
 (load-library "etags-table-init")
+(load-library "malabar-init")
+(load-library "cider-init")
 (load-library "haskell-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
