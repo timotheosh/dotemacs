@@ -31,7 +31,7 @@
                 "content=\"text/html;charset=UTF-8\">"
            html))
         (setq browse-url-browser-function 'browse-url-generic
-                  browse-url-generic-program "x-www-browser")
+	          browse-url-generic-program "x-www-browser")
         (browse-url (concat "file://" tmpfile))))
 (add-to-list 'mu4e-view-actions
   '("View in browser" . mu4e-msgv-action-view-in-browser) t)
@@ -73,7 +73,7 @@
 
 
 ; (add-hook 'mu4e-view-mode-hook 'longlines-mode)
-; (add-hook 'mu4e-view-mode-hook 'mu4e~view-hide-cited)
+; (add-hook 'mu4e-view-mode-hook 'mu4e-view-hide-cited)
 
 (setq mu4e-org-contacts-file "~/org/Contacts.org") 
 (add-to-list 'mu4e-headers-actions

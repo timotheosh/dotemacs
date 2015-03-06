@@ -21,6 +21,6 @@
 	)
 (global-set-key (kbd "C-x <f8>") 'flyspell-check-next-highlighted-word)
 
-(add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
+;(add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
 ;(add-hook 'text-mode-hook 'flyspell-mode)
 ;(add-hook 'Org-mode-hook 'flyspell-mode)

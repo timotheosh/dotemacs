@@ -21,5 +21,14 @@
 (setq jedi:complete-on-dot t)             ;; Jedi complete on dot (.)
 
 ;; Indent when I press <RETURN>
-(add-hook 'python-mode-hook '(lambda ()
-  (local-set-key (kbd "RET") 'newline-and-indent)))
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "RET") 'newline-and-indent)))
+
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c !") 'python-shell-send-buffer)))
+
+(add-hook 'python-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c |") 'python-shell-send-region)))
