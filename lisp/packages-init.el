@@ -1,3 +1,5 @@
+;; Had to require explicitly for cask to load
+(require 'eieio)
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 (require 'pallet)
