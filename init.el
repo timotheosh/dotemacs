@@ -60,6 +60,7 @@
 (load-library "multi-web-mode-init")
 (load-library "sql-init")
 (load-library "yaml-init")
+(load-library "scheme-init")
 (load-library "slime-init")
 (load-library "python-init")
 (load-library "perl-init")
