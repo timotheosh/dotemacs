@@ -46,6 +46,7 @@
 (load-library "packages-init")
 (load-library "column-enforce-init")
 (load-library "column-marker-init")
+(load-library "transparent-window")
 (load-library "edi-init")
 (load-library "mu4e-init")
 (load-library "indent-buffer")
