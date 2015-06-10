@@ -40,7 +40,8 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/"))
-(add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e/"))
+(add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/"))
+(add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e"))
 (load-library "keys")
 (load-library "ido-init")
 (load-library "packages-init")
@@ -76,6 +77,9 @@
 (load-library "puppet-init")
 (load-library "cider-init")
 (load-library "haskell-init")
+(load-library "json-init")
+(load-library "nix-init")
+(load-library "org-page-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"

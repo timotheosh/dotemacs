@@ -37,6 +37,7 @@
 (depends-on "malabar-mode")
 (depends-on "multi-term")
 (depends-on "multi-web-mode")
+(depends-on "newlisp-mode")
 (depends-on "org")
 (depends-on "org-jira")
 (depends-on "org-plus-contrib")
