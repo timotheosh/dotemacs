@@ -80,6 +80,7 @@
 (load-library "json-init")
 (load-library "nix-init")
 (load-library "org-page-init")
+(load-library "emacsclient-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"

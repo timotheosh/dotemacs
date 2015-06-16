@@ -1,6 +1,10 @@
 (require 'org)
 (require 'ox-wk)
 (require 'ox-odt)
+(require 'ox-publish)
+(require 'ox-gfm)
+(require 'ox-nikola)
+(require 'ox-asciidoc)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
@@ -36,7 +40,7 @@
 (global-set-key "\C-cc" 'org-capture)
 (setq org-capture-templates
       `(("p" "New blog post" plain
-               (file (capture-pelican-draft-file "~/src/sources/new_pelican_site/org"))
+               (file (capture-pelican-draft-file (expand-file-name "~/src/sources/selfdidactic/org")))
                 ,pelican-md-header)))
 
 ;; Code Blocks
@@ -71,23 +75,23 @@
   (org-publish-org-to 'pelican-md filename ".md" plist pub-dir))
 
 (setq org-publish-project-alist
-      `(("org-jdreaver"
+      `(("org-selfdidactic"
          ;; Path to your org files.
-         :base-directory "~/src/sources/new_pelican_site/org"
+         :base-directory "/home/thawes/src/sources/selfdidactic/org"
          :base-extension "org"
 
          ;; Path to your Pelican project.
-         :publishing-directory "~/src/sources/new_pelican_site/content"
+         :publishing-directory "/home/thawes/src/sources/selfdidactic/content"
          :recursive t
          :publishing-function org-pelican-md-publish-to-md
          )
-        ("org-static-jdreaver"
-         :base-directory "~/blog/org"
+        ("org-static-selfdidactic"
+         :base-directory "/home/thawes/blog/org"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-         :publishing-directory "~/blog/pelican/content"
+         :publishing-directory "/home/thawes/blog/pelican/content"
          :recursive t
          :publishing-function org-publish-attachment)
 
-        ("jdreaver" :components ("org-jdreaver" "org-static-jdreaver"))))
+        ("selfdidactic" :components ("org-selfdidactic" "org-static-selfdidactic"))))
 
 

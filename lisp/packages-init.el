@@ -15,3 +15,4 @@
      '("gnu" .
         "http://elpa.gnu.org/packages/"))
 (package-initialize)
+(pallet-mode t)
