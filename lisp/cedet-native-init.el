@@ -31,5 +31,7 @@
 ;; Enable SRecode (Template management) minor-mode.
 ;(global-srecode-minor-mode 1)
 
+;; Needed for loading previously created projects.
+(require 'ede/proj-prog)
 
-'(ede-project-directories (quote ("/home/hawest/public_html/webdx")))
+'(ede-project-directories (quote ("/home/thawes/src/sources/cbible")))

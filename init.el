@@ -81,6 +81,8 @@
 (load-library "nix-init")
 (load-library "org-page-init")
 (load-library "emacsclient-init")
+(load-library "cling-init")
+(load-library "c-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"
