@@ -1,14 +1,9 @@
-(defun malabar-mode-bootstrap ()
-	(require 'cedet)
-	(require 'semantic)
-	(load "semantic/loaddefs.el")
-	(semantic-mode 1);;
-	(require 'malabar-mode)
-	(load "malabar-flycheck")
+(add-hook 'after-init-hook (lambda ()
+  (message "activate-malabar-mode")
+  (activate-malabar-mode)))
 
-	(malabar-mode)
-	(flycheck-mode))
-(add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode-bootstrap))
+(add-hook 'malabar-java-mode-hook 'flycheck-mode)
+(add-hook 'malabar-groovy-mode-hook 'flycheck-mode)
 
 ;; Auto-populate an empty java file
 ;; http://software-ninja-ninja.blogspot.com/2014/03/using-malabar-mode-to-auto-populate-new.html
