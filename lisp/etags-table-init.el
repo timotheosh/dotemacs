@@ -1,8 +1,12 @@
+;; etags-select is useful too
+(require 'etags-select)
 (require 'etags-table)
-(setq tag-table-alist
-      '((".*\\.\\([ch]\\|cpp\\)" "/usr/include/TAGS")))
-(setq etags-table-alist tag-table-alist)
 (setq etags-table-search-up-depth 10)
+(setq etags-table-alist
+    (list
+      '(".*\\.\\([ch]\\|cpp\\|hpp\\)" "/usr/include/TAGS")
+      '("/home/thawes/src/cbible/src/" "/home/thawes/src/TAGS")
+))
 
 
 ;; allow you build TAGS file on root of project and move accross definition

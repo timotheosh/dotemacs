@@ -14,3 +14,6 @@ srecode-map.el*
 url/
 .python-environments
 ido.last
+elpa/
+recentf
+helm-history

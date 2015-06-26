@@ -30,13 +30,29 @@
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
+;; setup GDB
+(setq
+ ;; use gdb-many-windows by default
+ gdb-many-windows t
+
+ ;; Non-nil means display source file containing the main routine at startup
+ gdb-show-main t
+ )
+
+;; CC-mode
+(add-hook 'c-mode-common-hook '(lambda ()
+  (setq ac-sources (append '(ac-source-semantic) ac-sources))
+  (linum-mode 1)
+  (local-set-key [f5] #'compile)
+  (local-set-key [f6] #'gdb)
+))
 
 ;; Sword
 (setq sword-includes "/usr/include/sword")
 ;; Projects
 (ede-cpp-root-project "cbible"
                 :name "CBible Project"
-                :file "~/src/sources/cbible/README.md"
-                :include-path '("/include")
+                :file "~/src/sources/cbible/src/CMakeLists.txt"
+                :include-path '("/")
                 :system-include-path '(sword-includes))
 (semantic-add-system-include sword-includes 'c++-mode)

@@ -42,10 +42,11 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/"))
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/"))
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e"))
-(load-library "keys")
-(load-library "cedet-init")
-(load-library "ido-init")
 (load-library "packages-init")
+(load-library "cedet-init")
+;(load-library "ido-init")
+(load-library "helm-init")
+(load-library "keys")
 (load-library "column-enforce-init")
 (load-library "column-marker-init")
 (load-library "transparent-window")
@@ -68,10 +69,10 @@
 (load-library "perl-init")
 (load-library "flyspell-init")
 (load-library "geben-init")
-(load-library "etags-init")
+;(load-library "etags-init")
+;(load-library "etags-table-init")
 (load-library "ecb-init")
 (load-library "org-init")
-(load-library "etags-table-init")
 (load-library "malabar-init")
 (load-library "ruby-init")
 (load-library "puppet-init")
@@ -81,10 +82,13 @@
 (load-library "nix-init")
 (load-library "org-page-init")
 (load-library "emacsclient-init")
-(load-library "cling-init")
-(load-library "c-init")
 (load-library "cmake-init")
 (load-library "diatheke-init")
+
+;; C/C++
+(load-library "c-init")
+(load-library "cling-init")
+(load-library "gtags-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"
