@@ -15,6 +15,7 @@
 (depends-on "clojure-mode")
 (depends-on "cmake-ide")
 (depends-on "cmake-mode")
+(depends-on "cmake-project")
 (depends-on "column-enforce-mode")
 (depends-on "column-marker")
 (depends-on "company")
