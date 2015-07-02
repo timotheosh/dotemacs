@@ -84,6 +84,7 @@
 (load-library "emacsclient-init")
 (load-library "cmake-init")
 (load-library "diatheke-init")
+(load-library "smartparens-init")
 
 ;; C/C++
 (load-library "c-init")
