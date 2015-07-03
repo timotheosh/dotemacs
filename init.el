@@ -85,6 +85,7 @@
 (load-library "cmake-init")
 (load-library "diatheke-init")
 (load-library "smartparens-init")
+(load-library "function-args-init")
 
 ;; C/C++
 (load-library "c-init")
