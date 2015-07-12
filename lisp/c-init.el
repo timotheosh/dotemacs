@@ -52,7 +52,7 @@
 ;; Projects
 (ede-cpp-root-project "cbible"
                 :name "CBible Project"
-                :file "~/src/sources/cbible/src/CMakeLists.txt"
+                :file "~/src/sources/cbible/CMakeLists.txt"
                 :include-path '("/")
                 :system-include-path '(sword-includes))
 (semantic-add-system-include sword-includes 'c++-mode)
