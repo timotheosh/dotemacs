@@ -24,6 +24,7 @@
    '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
   (require 'flymake-google-cpplint)
   (flymake-google-cpplint-load))
+(add-hook 'c-mode-hook 'my:flymake-google-init)
 (add-hook 'c++-mode 'my:flymake-google-init)
 
 (require 'google-c-style)
@@ -56,3 +57,16 @@
                 :include-path '("/")
                 :system-include-path '(sword-includes))
 (semantic-add-system-include sword-includes 'c++-mode)
+
+;; Enforce 80 columns
+(require 'column-marker)
+(add-hook 'c-mode-hook
+          (lambda()
+            (interactive)
+            (column-enforce 80)
+            (column-marker-1 80)))
+(add-hook 'c++-mode
+          (lambda()
+            (interactive)
+            (column-enforce 80)
+            (column-marker-1 80)))
