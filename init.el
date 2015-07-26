@@ -91,6 +91,7 @@
 (load-library "c-init")
 (load-library "cling-init")
 (load-library "gtags-init")
+(load-library "irony-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"
