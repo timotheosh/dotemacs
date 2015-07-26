@@ -31,7 +31,7 @@
 (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
 
 (require 'helm-config)
-(helm-mode t)
+;(helm-mode t)
 (helm-adaptative-mode t)
 
 (global-set-key (kbd "C-x c!")   #'helm-calcul-expression)

@@ -44,7 +44,7 @@
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e"))
 (load-library "packages-init")
 (load-library "cedet-init")
-;(load-library "ido-init")
+(load-library "ido-init")
 (load-library "helm-init")
 (load-library "keys")
 (load-library "column-enforce-init")
