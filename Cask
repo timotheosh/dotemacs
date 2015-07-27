@@ -19,8 +19,6 @@
 (depends-on "cmake-project")
 (depends-on "column-enforce-mode")
 (depends-on "column-marker")
-(depends-on "company")
-(depends-on "company-irony")
 (depends-on "concurrent")
 (depends-on "confluence")
 (depends-on "ctable")
