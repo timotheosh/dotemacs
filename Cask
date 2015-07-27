@@ -32,6 +32,7 @@
 (depends-on "elpy")
 (depends-on "epc")
 (depends-on "epl")
+(depends-on "eproject")
 (depends-on "etags-select")
 (depends-on "etags-table")
 (depends-on "f")
