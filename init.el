@@ -39,7 +39,8 @@
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/libraries"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/programs"))
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/"))
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e"))
 (load-library "packages-init")

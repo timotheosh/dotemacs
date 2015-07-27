@@ -18,4 +18,6 @@ elpa/
 recentf
 helm-history
 helm-adaptive-history
-programs/irony/
+programs/
+yasnippets/yasnippet-licenses/
+yasnippets/yasnippet-snippets/
