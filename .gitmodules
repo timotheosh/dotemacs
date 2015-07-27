@@ -1,6 +1,3 @@
-[submodule "programs/inferior-cling"]
-	path = programs/inferior-cling
-	url = https://github.com/brianqq/inferior-cling.git
 [submodule "yasnippets/AndreaCrotti_snippets"]
 	path = yasnippets/AndreaCrotti_snippets
 	url = https://github.com/AndreaCrotti/yasnippet-snippets.git
