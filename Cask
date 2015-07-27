@@ -64,6 +64,7 @@
 (depends-on "ht")
 (depends-on "htmlize")
 (depends-on "iedit")
+(depends-on "inf-groovy")
 (depends-on "inf-ruby")
 (depends-on "irony")
 (depends-on "irony-eldoc")
