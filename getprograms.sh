@@ -17,6 +17,7 @@ https://github.com/jonatkinson/yasnippet-licenses.git \
 function gitclone {
   DIRECTORY=$1
   REPO=$2
+  mkdir -p $DIRECTORY
   pushd $DIRECTORY
   git clone $REPO
   popd
@@ -24,6 +25,7 @@ function gitclone {
 
 function makerepo {
   DIRECTORY=$1
+  mkdir -p $DIRECTORY
   pushd $DIRECTORY
   make all
   popd
@@ -32,6 +34,7 @@ function makerepo {
 function curlprog {
   DIRECTORY=$1
   URL=$2
+  mkdir -p $DIRECTORY
   pushd $DIRECTORY
   curl -O $URL
   popd
