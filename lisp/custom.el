@@ -5,7 +5,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes (quote (wheatgrass)))
+ '(custom-enabled-themes (quote (odersky)))
+ '(custom-safe-themes
+   (quote
+    ("46fd293ff6e2f6b74a5edf1063c32f2a758ec24a5f63d13b07a20255c074d399" default)))
  '(display-time-mode t)
  '(ecb-options-version "2.40")
  '(ede-project-directories
@@ -17,6 +20,9 @@
  '(haskell-process-type (quote cabal-repl))
  '(haskell-tags-on-save t)
  '(ido-enable-tramp-completion nil)
+ '(minimap-dedicated-window nil)
+ '(minimap-hide-scroll-bar t)
+ '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
     ("~/org/AWSCommandLine.org" "~/org/AgileTraining.org" "~/org/CodeForCary.org" "~/org/CodeForRaleigh.org" "~/org/CommonLisp-FastCGI-Hostmonster.org" "~/org/Contacts.org" "~/org/CoverLetter.org" "~/org/DEVOPS.org" "~/org/HawesResume.org" "~/org/IBM_Streams_presentation.org" "~/org/ININ_Scrum.org" "~/org/ININ_TODO.org" "~/org/ININ_Thing_to_learn.org" "~/org/LogscapeSearchHowTo.org" "~/org/Monitoring.org" "~/org/ReinventMyself.org" "~/org/SciMed.org" "~/org/UpgradeLogscape.org" "~/org/anx.org" "~/org/dev-cloud-email.org" "~/org/easyfreeunix.org" "~/org/history.org" "~/org/home.org" "~/org/pelican-template.org" "~/org/programming.org")))
@@ -26,6 +32,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
- '(cursor ((t (:background "goldenrod1"))))
  '(set-mouse-color "goldenrod1"))

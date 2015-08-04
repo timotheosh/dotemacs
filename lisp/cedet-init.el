@@ -17,5 +17,5 @@
 
 ;; Remove semantic from C/C++ and objective-c to make room for the much faster
 ;; irony-mode
-(add-to-list 'semantic-inhibit-functions
-  (lambda () (member major-mode '(c-mode c++-mode objc-mode))))
+;(add-to-list 'semantic-inhibit-functions
+;  (lambda () (member major-mode '(c-mode c++-mode objc-mode))))

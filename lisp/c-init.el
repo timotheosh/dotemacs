@@ -42,7 +42,7 @@
 
 ;; CC-mode
 (add-hook 'c-mode-common-hook '(lambda ()
-  (setq ac-sources (append '(ac-source-semantic) ac-sources))
+  ;(setq ac-sources (append '(ac-source-semantic) ac-sources))
   (linum-mode 1)
   (local-set-key [f5] #'compile)
   (local-set-key [f6] #'gdb)
