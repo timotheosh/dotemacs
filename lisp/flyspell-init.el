@@ -1,4 +1,5 @@
-(load-library "flyspell-1.7q")
+(require 'flyspell)
+(flyspell-mode +1)
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 ;; the default flyspell behaviour
 (put 'LeTex-mode 'flyspell-mode-predicate 'tex-mode-flyspell-verify)
@@ -21,6 +22,10 @@
 	)
 (global-set-key (kbd "C-x <f8>") 'flyspell-check-next-highlighted-word)
 
-;(add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
-;(add-hook 'text-mode-hook 'flyspell-mode)
-;(add-hook 'Org-mode-hook 'flyspell-mode)
+(add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'Org-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook
+  (lambda ()
+    (flyspell-prog-mode)
+    ))
