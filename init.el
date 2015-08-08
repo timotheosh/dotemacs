@@ -89,6 +89,7 @@
 (load-library "smartparens-init")
 (load-library "function-args-init")
 (load-library "environment-init")
+(load-library "cbible-init")
 
 ;; C/C++
 (load-library "c-init")
