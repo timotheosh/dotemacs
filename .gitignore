@@ -1,6 +1,7 @@
 *~
 .#*
 \#*
+*.swp
 *.elc
 .cask/
 ac-comphist.dat
