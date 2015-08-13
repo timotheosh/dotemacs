@@ -75,6 +75,7 @@
 ;(load-library "etags-table-init")
 (load-library "ecb-init")
 (load-library "org-init")
+(load-library "org-templates")
 (load-library "malabar-init")
 (load-library "ruby-init")
 (load-library "puppet-init")
@@ -109,5 +110,4 @@
   desktop-load-locked-desktop nil
 )
 (desktop-save-mode 1)
-
 (load custom-file)

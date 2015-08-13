@@ -1,14 +1,12 @@
 (require 'org)
 (require 'ox-wk)
-(require 'ox-odt)
-(require 'ox-publish)
 (require 'ox-gfm)
-(require 'ox-nikola)
-(require 'ox-asciidoc)
+(require 'ox-odt)
+
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
-(setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
+(setq org-agenda-files (file-expand-wildcards "~/org/GTD/*.org"))
 (add-hook 'org-mode-hook
 		  (lambda ()
 			(set-fill-column 80)))
@@ -37,11 +35,6 @@
                               (format-time-string "%Y-%m-%d")
                               name) dir-path)))
 
-(global-set-key "\C-cc" 'org-capture)
-(setq org-capture-templates
-      `(("p" "New blog post" plain
-               (file (capture-pelican-draft-file (expand-file-name "~/src/sources/selfdidactic/org")))
-                ,pelican-md-header)))
 
 ;; Code Blocks
 (setq pygments-synonym-alist
