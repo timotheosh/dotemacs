@@ -111,3 +111,4 @@
 )
 (desktop-save-mode 1)
 (load custom-file)
+(load "terminal-mode-init")
