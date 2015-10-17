@@ -6,7 +6,7 @@ https://github.com/alexott/cedet.git \
 "
 # Repos that just need to be retrieved.
 repos=" \
-https://github.com/brianqq/inferior-cling.git \
+https://github.com/timotheosh/inferior-cling.git \
 "
 
 snippetrepos=" \
