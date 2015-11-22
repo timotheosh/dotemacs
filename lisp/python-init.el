@@ -1,3 +1,7 @@
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/Pymacs"))
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+
 (require 'python)
 
 ; Our main python module
