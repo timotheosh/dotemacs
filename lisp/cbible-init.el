@@ -1,3 +1,4 @@
-(add-to-list 'load-path (expand-file-name "~/src/sources/cbible/elisp/"))
-(require 'cbible)
-(add-hook 'org-mode-hook 'cbible-mode)
+(use-package cbible
+    :load-path "~/src/sources/cbible/elisp/"
+    :init
+    (add-hook 'org-mode-hook 'cbible-mode))

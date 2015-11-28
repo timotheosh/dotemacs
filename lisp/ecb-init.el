@@ -2,7 +2,8 @@
 ;;
 ;(add-hook 'ecb-activate-before-layout-draw-hook
 ;  (lambda () (ecb-hide-ecb-windows)))
-(require 'ecb-autoloads)
+(use-package ecb-autoloads
+    :init
 (add-hook 'ecb-activate-hook
     (lambda ()
       (setq ecb-layout-name "tim-layout1")
@@ -46,4 +47,4 @@
   (if (fboundp (quote ecb-set-sources-buffer)) (ecb-set-sources-buffer) (ecb-set-default-ecb-buffer))
   (dotimes (i 2) (other-window 1) (if (equal (selected-window) ecb-compile-window) (other-window 1)))
   (dotimes (i 2) (other-window 1) (if (equal (selected-window) ecb-compile-window) (other-window 1)))
-  )
+  ))

@@ -1,13 +1,10 @@
 ;; Initialize etags
-(require 'etags)
-
-(setq path-to-ctags "/usr/bin/ctags-exuberant")
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
   (shell-command
-   (format "%s -f %s/TAGS -e -R %s" path-to-ctags (directory-file-name dir-name) (directory-file-name dir-name)))
-  )
+   (format "%s -f %s/TAGS -e -R %s" path-to-ctags
+       (directory-file-name dir-name) (directory-file-name dir-name))))
 
 (defadvice find-tag (around refresh-etags activate)
   "Rerun etags and reload tags if tag not found and redo find-tag.
@@ -28,3 +25,7 @@
   (shell-command (format "etags *.%s" (or extension "el")))
   (let ((tags-revert-without-query t))  ; don't query, revert silently
     (visit-tags-table default-directory nil)))
+
+(use-package etags
+    :init
+    (setq path-to-ctags "/usr/bin/ctags-exuberant"))

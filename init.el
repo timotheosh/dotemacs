@@ -44,6 +44,7 @@
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/"))
 (add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e"))
 (load-library "packages-init")
+(load-library "use-package-init")
 (load-library "cedet-init")
 (load-library "ido-init")
 (load-library "helm-init")
@@ -92,13 +93,11 @@
 (load-library "environment-init")
 (load-library "cbible-init")
 (load-library "my-funcs")
+(load-library "powerline-init")
+(load-library "projectile-init")
 
 ;; C/C++
 (load-library "c-init")
-(load-library "cling-init")
-(load-library "gtags-init")
-(load-library "irony-init")
-(load-library "eprojects-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 (setq desktop-dirname             "~/.emacs.d/desktop/"

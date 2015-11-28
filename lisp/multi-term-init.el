@@ -24,5 +24,6 @@
 ;;
 ;;      You can type `C-u' before command `multi-term' or `multi-term-dedicated-open'
 ;;      then will prompt you shell name for creating terminal buffer.
-(require 'multi-term)
-(setq multi-term-program "/bin/bash")
+(use-package multi-term
+    :init
+    (setq multi-term-program "/bin/bash"))

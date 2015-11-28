@@ -1,1 +1,1 @@
-(require 'diatheke)
+(use-package diatheke)
