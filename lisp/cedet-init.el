@@ -13,7 +13,9 @@
 
 (when (cedet-gnu-global-version-check t)
   (semanticdb-enable-gnu-global-databases 'c-mode)
-  (semanticdb-enable-gnu-global-databases 'c++-mode))
+  (semanticdb-enable-gnu-global-databases 'c++-mode)
+  (semanticdb-enable-gnu-global-databases 'objc-mode)
+  (semanticdb-enable-gnu-global-databases 'lisp-mode))
 
 ;; Remove semantic from C/C++ and objective-c to make room for the much faster
 ;; irony-mode
