@@ -95,6 +95,7 @@
 (load-library "my-funcs")
 (load-library "powerline-init")
 (load-library "projectile-init")
+(load-library "graphiz-init")
 
 ;; C/C++
 (load-library "c-init")

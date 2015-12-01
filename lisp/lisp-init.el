@@ -3,8 +3,11 @@
     :init
     (add-to-list 'ac-modes 'lisp-mode)
     (setq slime-contribs '(slime-fancy slime-banner))
-    (setq inferior-lisp-program (expand-file-name "/home/thawes/programs/bin/sbcl"))
+    (setq inferior-lisp-program "~/programs/bin/sbcl")
     (setq slime-startup-animation t)
+    (setq slime-lisp-implementations
+          '((sbcl ("~/programs/bin/sbcl") :coding-system utf-8-unix)
+            (clisp ("/usr/bin/clisp"))))
     (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
     (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 
@@ -21,4 +24,3 @@
     (eval-after-load "auto-complete"
       '(add-to-list 'ac-modes 'slime-repl-mode))
     (slime-setup))
-

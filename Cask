@@ -53,6 +53,7 @@
 (depends-on "ghc")
 (depends-on "ghci-completion")
 (depends-on "google-c-style")
+(depends-on "graphviz-dot-mode")
 (depends-on "groovy-mode")
 (depends-on "haskell-mode")
 (depends-on "helm")
