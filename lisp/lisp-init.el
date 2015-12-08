@@ -7,7 +7,7 @@
     (setq slime-startup-animation t)
     (setq slime-lisp-implementations
           '((sbcl ("~/programs/bin/sbcl") :coding-system utf-8-unix)
-            (clisp ("/usr/bin/clisp"))
+            (clisp ("~/.nix-profile/bin/clisp"))
             (cmucl ("~/.nix-profile/bin/lisp" "-quiet"))
             (ecl ("~/.nix-profile/bin/ecl" "-q"))
             (abcl ("~/programs/bin/abcl"))))
