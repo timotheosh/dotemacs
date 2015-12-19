@@ -22,6 +22,15 @@
     ;(add-hook 'lisp-mode-hook (lambda ()
     ;    (local-set-key (kbd "C-c C-c") #'my:slime-eval-last-expression)))
 
+    ; Some hooks
+    (add-hook 'lisp-mode-hook
+        (lambda ()
+            (linum-mode 1)                    ;; Show line numbers
+            (lambda ()
+                (setq indent-tabs-mode t)       ;; Indent tabs
+                (setq tab-width (default-value 'tab-width))) ;; Set tab width
+             ))
+    
     (require 'ac-slime)
     (add-hook 'slime-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
