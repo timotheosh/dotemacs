@@ -6,7 +6,7 @@
     (setq inferior-lisp-program "~/programs/bin/sbcl")
     (setq slime-startup-animation t)
     (setq slime-lisp-implementations
-          '((sbcl ("~/programs/bin/ros" "-L" "sbcl" "run" "--") :coding-system utf-8-unix)
+          '((sbcl ("~/programs/bin/sbcl") :coding-system utf-8-unix)
             (clisp ("~/programs/bin/ros" "-L" "clisp" "run" "--"))
             (clozure-cl ("~/programs/bin/ros" "-L" "ccl-bin" "run" "--"))
             (cmucl ("~/.nix-profile/bin/lisp" "-quiet"))
