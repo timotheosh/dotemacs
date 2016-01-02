@@ -35,7 +35,6 @@ function gitclone {
 
 function makerepo {
   DIRECTORY=$1
-  mkdir -p $DIRECTORY
   pushd $DIRECTORY
   make all
   popd
@@ -60,10 +59,11 @@ function curlprog {
 
 for x in $repobuilds $repos;do
   gitclone programs $x 
+  echo ""
 done
 
 for x in $repobuilds; do
-  DIR=programs/$(basename https://github.com/alexott/cedet.git|sed -e 's/\.git$//')
+  DIR=programs/$(basename $x|sed -e 's/\.git$//')
   makerepo $DIR
 done
 
@@ -72,7 +72,8 @@ for x in $snippetrepos;do
 done
 
 for x in $pythonsetup;do
-  run-py-setup $x
+  DIR=programs/$(basename $x|sed -e 's/\.git$//')
+  run-py-setup $DIR
 done
 
 echo "Repos retrieved and ready."
