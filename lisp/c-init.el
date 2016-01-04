@@ -53,13 +53,6 @@
 
 ;; Sword
 (setq sword-includes "/usr/include/sword")
-;; Projects
-(ede-cpp-root-project "cbible"
-                :name "CBible Project"
-                :file "~/src/sources/cbible/CMakeLists.txt"
-                :include-path '("/")
-                :system-include-path '(sword-includes))
-(semantic-add-system-include sword-includes 'c++-mode)
 
 ;; Enforce 80 columns
 (require 'column-marker)
