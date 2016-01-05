@@ -1,3 +1,13 @@
+;; Set up load paths
+(let ((default-directory  "~/.emacs.d/layers/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(push (expand-file-name "~/.emacs.d/libraries") load-path)
+(push (expand-file-name "~/.emacs.d/programs") load-path)
+(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/") load-path)
+(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e") load-path)
+(require 'packages-init)
+(benchmark-init/activate)
+
 ;; Some importtant emacs configuration(s)
 (setq max-lisp-eval-depth 500)  ;; default is 500
 (setq max-specpdl-size 1000)    ;; default is 1000
@@ -41,26 +51,17 @@
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
-(let ((default-directory  "~/.emacs.d/layers/"))
-  (normal-top-level-add-subdirs-to-load-path))
-(push (expand-file-name "~/.emacs.d/libraries") load-path)
-(push (expand-file-name "~/.emacs.d/programs") load-path)
-(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/") load-path)
-(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e") load-path)
-(require 'packages-init)
-;(require 'benchmark-init)
 (require 'use-package-init)
 (require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
 (require 'custom-keys)
 (require 'environment-init)
 (require 'ido-init)
 (require 'helm-init)
+(require 'benchmark-init)
+(require 'mu4e-init)
 (require 'ggtags-init)
-;(require 'column-enforce-init)
-;(require 'column-marker-init)
 (require 'c-init)
 
-;(load-library "transparent-window")
 ;(load-library "edi-init")
 ;(load-library "mu4e-init")
 ;(load-library "indent-buffer")
@@ -116,5 +117,8 @@
 ;  desktop-load-locked-desktop nil
 ;)
 ;(desktop-save-mode 1)
+(require 'transparent-window)
 (load custom-file)
 (require 'terminal-mode-init)
+
+(benchmark-init/deactivate)

@@ -14,7 +14,6 @@
                                         ; reeeelatively quickly.
           helm-yas-display-key-on-candidate t
           helm-quick-update t
-          helm-M-x-requires-pattern nil
           helm-ff-skip-boring-files t
 	  helm-ff-transformer-show-only-basename nil
 	  helm-adaptive-history-file             "~/.emacs.d/helm-history"
@@ -38,7 +37,6 @@
          ("C-x C-b" . helm-buffers-list)
          ("C-x b" . helm-buffers-list)
          ("M-y" . helm-show-kill-ring)
-         ("M-x" . helm-M-x)
 	 ("C-x C-r" . helm-recentf)
 	 ("C-x c!" . helm-calcul-expression)
 	 ("C-x c:" . helm-eval-expression-with-eldoc)

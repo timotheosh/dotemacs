@@ -2,7 +2,7 @@
 (global-set-key [mouse-2] 'yank)
 
 (global-set-key [f1] 'dired)
-(global-set-key [f2] 'mu4e)
+;(global-set-key [f2] 'mu4e)
 (global-set-key [f3] 'shell)
 (global-set-key [f4] 'find-file)
 ; for helm
