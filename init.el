@@ -48,18 +48,18 @@
 (push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/") load-path)
 (push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e") load-path)
 (require 'packages-init)
+;(require 'benchmark-init)
 (require 'use-package-init)
-(require 'cedet-init)
+(require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
 (require 'custom-keys)
 (require 'environment-init)
+(require 'ido-init)
+(require 'helm-init)
+(require 'ggtags-init)
+;(require 'column-enforce-init)
+;(require 'column-marker-init)
 (require 'c-init)
-;(require 'benchmark-init)
-;(load-library "cedet-init")
-;(load-library "ido-init")
-;(load-library "helm-init")
-;(load-library "keys")
-;(load-library "column-enforce-init")
-;(load-library "column-marker-init")
+
 ;(load-library "transparent-window")
 ;(load-library "edi-init")
 ;(load-library "mu4e-init")
@@ -105,9 +105,6 @@
 ;(load-library "powerline-init")
 ;(load-library "projectile-init")
 ;(load-library "graphiz-init")
-
-;; C/C++
-;(load-library "c-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
 ;(setq desktop-dirname             "~/.emacs.d/desktop/"
