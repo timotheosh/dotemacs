@@ -76,7 +76,8 @@
 
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
-  (dolist (func '(cedet-init-loader
+  (dolist (func '(my-programming-hooks
+                  cedet-init-loader
 		  my/ac-c-header-init
 		  my/flymake-google-init
 		  helm-gtags-mode
