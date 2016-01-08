@@ -61,6 +61,7 @@
 (require 'helm-init)
 (require 'org-init)
 (require 'mu4e-init)
+(require 'minimap-init)
 (require 'ggtags-init)
 (require 'projectile-init)
 (require 'elisp-init)
@@ -68,10 +69,10 @@
 (require 'php-init)
 (require 'lisp-init)
 (require 'python-init)
+(require 'edi-init)
+(require 'my-funcs)
+(require 'unbound)
 
-;(load-library "edi-init")
-;(load-library "indent-buffer")
-;(load-library "unbound")
 ;(load-library "w3m-init")
 ;(load-library "multi-term-init")
 ;(load-library "auto-complete-init")
@@ -98,7 +99,6 @@
 ;(load-library "diatheke-init")
 ;(load-library "function-args-init")
 ;(load-library "cbible-init")
-;(load-library "my-funcs")
 ;(load-library "graphiz-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
