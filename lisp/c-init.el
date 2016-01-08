@@ -25,6 +25,10 @@
   (require 'flymake-google-cpplint)
   (flymake-google-cpplint-load))
 
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
 (add-hook 'c-mode-hook 'my/flymake-google-init)
 (add-hook 'c++-mode-hook 'my/flymake-google-init)
 (add-hook 'objc-mode-hook 'my/ac-c-header-init)
@@ -114,7 +118,6 @@
   ;; if yas is not set before (auto-complete-mode 1), overlays may persist after
   ;; an expansion.
   (when (member major-mode '(c++-mode c-mode objc-mode))
-    (irony-mode 1)
     ; replace the `completion-at-point' and `complete-symbol' bindings in
     ; irony-mode's buffers by irony-mode's function
     (define-key irony-mode-map [remap completion-at-point]
