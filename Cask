@@ -12,6 +12,7 @@
 (depends-on "ac-slime")
 (depends-on "async")
 (depends-on "auto-complete")
+(depends-on "auto-complete-c-headers")
 (depends-on "auto-complete-etags")
 (depends-on "auto-yasnippet")
 (depends-on "cask")
