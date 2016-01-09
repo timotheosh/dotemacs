@@ -53,25 +53,36 @@
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
+;; Initial packages
 (require 'use-package-init)
 (require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
+
+;; Customizations
 (require 'custom-keys)
 (require 'environment-init)
+
+;; Org-mode
+(require 'org-init)
+
+;; Mail
+(require 'mu4e-init)
+
+;; Utilities
 (require 'ido-init)
 (require 'helm-init)
-(require 'org-init)
-(require 'mu4e-init)
 (require 'minimap-init)
 (require 'ggtags-init)
 (require 'projectile-init)
+(require 'my-funcs)
+(require 'unbound)
+
+;; Language modes
 (require 'elisp-init)
 (require 'c-init)
 (require 'php-init)
 (require 'lisp-init)
 (require 'python-init)
 (require 'edi-init)
-(require 'my-funcs)
-(require 'unbound)
 
 ;(load-library "w3m-init")
 ;(load-library "multi-term-init")
@@ -87,7 +98,6 @@
 ;;(load-library "etags-init")
 ;;(load-library "etags-table-init")
 ;(load-library "ecb-init")
-;(load-library "malabar-init")
 ;(load-library "ruby-init")
 ;(load-library "puppet-init")
 ;(load-library "cider-init")
