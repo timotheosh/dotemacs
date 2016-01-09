@@ -56,6 +56,7 @@
 ;; Initial packages
 (require 'use-package-init)
 (require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
+(require 'ecb-init)
 
 ;; Customizations
 (require 'custom-keys)
@@ -83,6 +84,7 @@
 (require 'lisp-init)
 (require 'python-init)
 (require 'edi-init)
+(require 'java-init)
 
 ;(load-library "w3m-init")
 ;(load-library "multi-term-init")
