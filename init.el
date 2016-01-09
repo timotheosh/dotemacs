@@ -57,6 +57,7 @@
 (require 'use-package-init)
 (require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
 (require 'ecb-init)
+(require 'yasnippet-init)
 
 ;; Customizations
 (require 'custom-keys)
@@ -82,6 +83,7 @@
 (require 'c-init)
 (require 'php-init)
 (require 'lisp-init)
+(require 'racket-init)
 (require 'python-init)
 (require 'edi-init)
 (require 'java-init)
@@ -89,7 +91,6 @@
 ;(load-library "w3m-init")
 ;(load-library "multi-term-init")
 ;(load-library "auto-complete-init")
-;(load-library "yasnippet-init")
 ;(load-library "multi-web-mode-init")
 ;(load-library "sql-init")
 ;(load-library "yaml-init")
@@ -99,7 +100,6 @@
 ;(load-library "geben-init")
 ;;(load-library "etags-init")
 ;;(load-library "etags-table-init")
-;(load-library "ecb-init")
 ;(load-library "ruby-init")
 ;(load-library "puppet-init")
 ;(load-library "cider-init")
