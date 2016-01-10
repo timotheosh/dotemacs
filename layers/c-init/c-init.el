@@ -9,8 +9,7 @@
 	 ("\\.objc\\'" . objc-mode)
 	 ("\\.m\\'" . objc-mode))
   :init
-  (use-package google-c-style)
-  (require 'programming-init)
+  (use-package programming-init)
 
 
   (defun my/company-c-header-init()
@@ -30,25 +29,15 @@
 
   ; start flymake-google-cpplint-load
   (defun my/flymake-google-init()
-    "Sets up cpplint for flymake"
     (custom-set-variables
      '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
     (require 'flymake-google-cpplint)
     (flymake-google-cpplint-load))
 
-  (defun my-irony-mode-hook ()
-    "Check if a supported major mode is active before setting up irony."
-    (when (member major-mode '(c++-mode c-mode objc-mode))
-      (irony-mode)
-      (setq-local company-backends (cons 'company-irony company-backends))
-      (setq irony-server-install-prefix "~/.emacs.d/programs/irony/")
-      (setq irony-user-dir "~/.emacs.d/programs/irony/")
-					; replace the `completion-at-point' and `complete-symbol' bindings in
-					; irony-mode's buffers by irony-mode's function
-      (define-key irony-mode-map [remap completion-at-point]
-	'irony-completion-at-point-async)
-      (define-key irony-mode-map [remap complete-symbol]
-	'irony-completion-at-point-async)))
+  (use-package google-c-style
+    :init
+    (add-hook 'c-mode-common-hook 'google-set-c-style)
+    (add-hook 'c-mode-common-hook 'google-make-newline-indent))
 
   ;; setup GDB
   (setq
@@ -56,16 +45,21 @@
    gdb-many-windows t
 
    ;; Non-nil means display source file containing the main routine at startup
-   gdb-show-main t)
+   gdb-show-main t
+   )
 
-  ;; Cling the C++ REPL
-  (use-package cling
-    :init
-    (add-to-list
-     'load-path
-     (expand-file-name "~/.emacs.d/programs/inferior-cling")))
+  ;; CC-mode
+  (add-hook 'c-mode-common-hook '(lambda ()
+					;(setq ac-sources (append '(ac-source-semantic) ac-sources))
+				   (linum-mode 1)
+				   (local-set-key [f5] #'compile)
+				   (local-set-key [f6] #'gdb)
+				   ))
 
-  ;; Set helm-gtag key bindings
+  ;; Sword
+  (setq sword-includes "/usr/include/sword")
+
+  ;; Set key bindings
   (eval-after-load "helm-gtags"
     '(progn
        (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
@@ -76,26 +70,65 @@
        (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
        (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
 
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (setq-local ggtags-process-environment "GTAGSLIBPATH=/home/thawes/.gtags")
 
-  (dolist (func '(my-programming-hooks
-                  company-mode
-                  cedet-init-loader
-                  my/company-c-header-init
-		  my/flymake-google-init
-		  helm-gtags-mode
-		  my-irony-mode-hook
-		  (lambda()
-		    (interactive)
-		    (column-marker-1 80))))
-    (add-hook 'c++-mode-hook func)
-    (add-hook 'c-mode-hook func)
-    (add-hook 'objc-mode-hook func))
 
-  (dolist (func '(google-set-c-style
-		  google-make-newline-indent
-		  (lambda ()
-		    (local-set-key [f5] #'compile)
-		    (local-set-key [f6] #'gdb))))
-    (add-hook 'c-mode-common-hook func)))
+  ;; Cling the C++ REPL
+  (use-package cling
+    :init
+    (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/inferior-cling")))
+
+  (use-package irony
+    :init
+    ;; Irony mode
+    (setq irony-server-install-prefix "~/.emacs.d/programs/irony/")
+    (setq irony-user-dir "~/.emacs.d/programs/irony/")
+
+    (defun my-irony-mode-hook ()
+      "Enable the hooks in the preferred order: 'yas -> auto-complete -> irony'."
+      ;; if yas is not set before (auto-complete-mode 1), overlays may persist after
+      ;; an expansion.
+      (when (member major-mode '(c++-mode c-mode objc-mode))
+	(irony-mode 1)
+        ; replace the `completion-at-point' and `complete-symbol' bindings in
+        ; irony-mode's buffers by irony-mode's function
+	(define-key irony-mode-map [remap completion-at-point]
+	  'irony-completion-at-point-async)
+	(define-key irony-mode-map [remap complete-symbol]
+	  'irony-completion-at-point-async)))
+
+    (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+    (use-package company
+      :config
+      (eval-after-load 'company
+	'(add-to-list 'company-backends 'company-irony))
+      ;; (optional) adds CC special commands to `company-begin-commands' in order to
+      ;; trigger completion at interesting places, such as after scope operator
+      ;;     std::|
+      ;;  (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands))
+      )
+    (add-hook 'irony-mode-hook 'company-mode))
+
+  (add-hook 'c-mode-hook 'my-programming-hooks)
+  (add-hook 'c++-mode-hook 'my-programming-hooks)
+  (add-hook 'objc-mode-hook 'my-programming-hooks)
+
+  (add-hook 'c++-mode-hook 'my/company-c-header-init)
+  (add-hook 'c-mode-hook 'my/company-c-header-init)
+  (add-hook 'objc-mode-hook 'my/company-c-header-init)
+
+  (add-hook 'c-mode-hook 'my/flymake-google-init)
+  (add-hook 'c++-mode-hook 'my/flymake-google-init)
+  (add-hook 'objc-mode-hook 'my/flymake-google-init)
+
+  (add-hook 'c-mode-hook 'helm-gtags-mode)
+  (add-hook 'c++-mode-hook 'helm-gtags-mode)
+  (add-hook 'objc-mode-hook 'helm-gtags-mode)
+
+  (add-hook 'c++-mode-hook 'my-irony-mode-hook)
+  (add-hook 'c-mode-hook 'my-irony-mode-hook)
+  (add-hook 'objc-mode-hook 'my-irony-mode-hook)
+  )
 (provide 'c-init)
