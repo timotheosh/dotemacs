@@ -11,24 +11,24 @@
   :init
   (use-package google-c-style)
   (require 'programming-init)
-  (add-hook 'after-init-hook #'global-company-mode)
 
-  (defun my/ac-c-header-init()
+
+  (defun my/company-c-header-init()
     "Set paths for auto-header."
-    (require 'auto-complete-c-headers)
-    (add-to-list 'ac-sources 'ac-source-c-headers)
-    (add-to-list 'achead:include-directories '"/usr/include/c++/4.8")
-    (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu/c++/4.8")
-    (add-to-list 'achead:include-directories '"/usr/include/c++/4.8/backward")
-    (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
-    (add-to-list 'achead:include-directories '"/usr/local/include")
-    (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
-    (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
-    (add-to-list 'achead:include-directories '"/usr/include")
-    ;; Sword Development
-    (add-to-list 'achead:include-directories '"/usr/include/sword"))
+    (require 'company-c-headers)
+    (setq my-header-paths
+          '("/usr/include/c++/4.8"
+            "/usr/include/x86_64-linux-gnu/c++/4.8"
+            "/usr/include/c++/4.8/backward"
+            "/usr/lib/gcc/x86_64-linux-gnu/4.8/include"
+            "/usr/local/include"
+            "/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"
+            "/usr/include/x86_64-linux-gnu"
+            "/usr/include"
+            "/usr/include/sword"))
+    (setq company-c-headers-path-system my-header-paths))
 
-					; start flymake-google-cpplint-load
+  ; start flymake-google-cpplint-load
   (defun my/flymake-google-init()
     "Sets up cpplint for flymake"
     (custom-set-variables
@@ -61,7 +61,9 @@
   ;; Cling the C++ REPL
   (use-package cling
     :init
-    (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/inferior-cling")))
+    (add-to-list
+     'load-path
+     (expand-file-name "~/.emacs.d/programs/inferior-cling")))
 
   ;; Set helm-gtag key bindings
   (eval-after-load "helm-gtags"
@@ -77,8 +79,9 @@
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
   (dolist (func '(my-programming-hooks
+                  company-mode
                   cedet-init-loader
-		  my/ac-c-header-init
+                  my/company-c-header-init
 		  my/flymake-google-init
 		  helm-gtags-mode
 		  my-irony-mode-hook

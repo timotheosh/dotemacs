@@ -2,14 +2,19 @@
   :mode (("\\.rkt\\'" . racket-mode)
          ("\\.scm\\'" . racket-mode))
   :config
-  (add-hook 'racket-mode-hook
-            (lambda ()
-              (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
-  (add-hook 'racket-mode-hook      #'racket-unicode-input-method-enable)
-  (add-hook 'racket-repl-mode-hook #'racket-unicode-input-method-enable)
-  (add-hook 'racket-mode
-            (lambda ()
-              (define-key racket-mode-map (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
+  (defalias 'scheme-mode 'racket-mode)
+  (add-to-list 'ac-modes 'scheme-mode)
+  (add-to-list 'ac-modes 'racket-mode)
   (require 'flymake-racket)
-  (add-hook 'racket-mode-hook 'flymake-racket-load))
+  (dolist (func '(racket-unicode-input-method-enable
+                  auto-complete-mode
+                  flymake-racket-load
+                   (lambda ()
+                     (define-key racket-mode-map
+                       (kbd "C-c r") 'racket-run)
+                     (define-key racket-mode-map
+                       (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
+                (add-hook 'racket-mode-hook func)))
+
+  (add-hook 'racket-repl-mode-hook #'racket-unicode-input-method-enable))
 (provide 'racket-init)

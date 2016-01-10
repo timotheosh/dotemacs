@@ -9,6 +9,8 @@
   :mode (("\\.php\\'" . php-mode)
          ("\\.php5\\'" . php-mode)
 	 ("\\.inc\\'" . php-mode))
+  :config
+  (add-to-list 'ac-modes 'php-mode)
   :init
   (require 'programming-init)
   (use-package flymake)

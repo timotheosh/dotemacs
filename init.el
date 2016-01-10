@@ -69,42 +69,44 @@
 ;; Mail
 (require 'mu4e-init)
 
-;; Utilities
+;; General Utilities
+(require 'flyspell-init)
 (require 'ido-init)
 (require 'helm-init)
+(require 'my-funcs)
+(require 'unbound)
+(require 'multi-term-init)
+
+;; Programming Utilities
 (require 'minimap-init)
 (require 'ggtags-init)
 (require 'projectile-init)
-(require 'my-funcs)
-(require 'unbound)
+(require 'auto-complete-init)
 
 ;; Language modes
-(require 'elisp-init)
-(require 'c-init)
-(require 'php-init)
-(require 'lisp-init)
-(require 'racket-init)
-(require 'python-init)
-(require 'edi-init)
-(require 'java-init)
+(require 'elisp-init)      ;; Emacs Lisp
+(require 'c-init)          ;; C/C++ and ObjC
+(require 'php-init)        ;; PHP
+(require 'lisp-init)       ;; Common Lisp
+(require 'racket-init)     ;; Racket/Scheme
+(require 'python-init)     ;; Python
+(require 'java-init)       ;; Java
+(require 'perl-init)       ;; Perl
+(require 'haskell-init)    ;; Haskell
+(require 'ruby-init)       ;; Ruby
 
-;(load-library "w3m-init")
-;(load-library "multi-term-init")
+;; File Formats
+(require 'edi-init)
+(require 'json-init)
+
 ;(load-library "auto-complete-init")
 ;(load-library "multi-web-mode-init")
 ;(load-library "sql-init")
 ;(load-library "yaml-init")
-;(load-library "scheme-init")
-;(load-library "perl-init")
-;(load-library "flyspell-init")
 ;(load-library "geben-init")
 ;;(load-library "etags-init")
 ;;(load-library "etags-table-init")
-;(load-library "ruby-init")
 ;(load-library "puppet-init")
-;(load-library "cider-init")
-;(load-library "haskell-init")
-;(load-library "json-init")
 ;(load-library "nix-init")
 ;(load-library "emacsclient-init")
 ;(load-library "cmake-init")
