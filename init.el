@@ -67,7 +67,9 @@
             smtpmail-smtp-service 587
             smtpmail-local-domain "inin.com"
             smtpmail-queue-mail nil
-            smtpmail-queue-dir "~/IninMaildir/queue/cur"))
+            smtpmail-queue-dir "~/IninMaildir/queue/cur")
+	  ;; Mail
+	  (require 'mu4e-work-init))
   (progn
     ; Email and user's name.
     (setq user-mail-address "tim@easyfreeunix.com")

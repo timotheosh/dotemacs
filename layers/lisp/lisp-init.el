@@ -5,8 +5,10 @@
            ("\\.lsp\\'" . lisp-mode))
     :init
     (require 'programming-init)
+	(require 'slime)
     (require 'ac-slime)
-    (add-to-list 'ac-modes 'lisp-mode)
+    (add-hook 'lisp-mode-hook 'my-programming-hooks)
+    (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
     (setq slime-contribs '(slime-fancy slime-banner))
     (setq inferior-lisp-program "~/programs/bin/sbcl")
     (setq slime-startup-animation t)
@@ -27,13 +29,8 @@
 
     ; Some hooks
     (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
-    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-
-    (dolist (func '(my-programming-hooks
-		    (lambda () (slime-mode t))))
-      (add-hook 'lisp-mode-hook func))
-
+    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
     (eval-after-load "auto-complete"
       '(add-to-list 'ac-modes 'slime-repl-mode))
     (slime-setup))
