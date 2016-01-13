@@ -15,9 +15,6 @@
 (setq max-specpdl-size 1000)    ;; default is 1000
 ; Custom file
 (setq custom-file "~/.emacs.d/lisp/custom.el")
-; Email and user's name.
-(setq user-mail-address "tim@easyfreeunix.com")
-(setq user-full-name "Tim Hawes")
 
 ;; Allow for UTF-8 in place of utf-8
 (define-coding-system-alias 'UTF-8 'utf-8)
@@ -39,17 +36,6 @@
 ; Hide menu bar
 (menu-bar-mode -1)
 
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("mail.althusius.net" 25 nil nil))
-      smtpmail-auth-credentials '("~/.netrc")
-      smtpmail-default-smtp-server "mail.althusius.net"
-      smtpmail-smtp-server "mail.althusius.net"
-      smtpmail-smtp-service 25
-      smtpmail-local-domain "althusius.net"
-      smtpmail-queue-mail nil
-      smtpmail-queue-dir "~/Maildir/INBOX.Queue/cur"
-      )
-
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
@@ -66,8 +52,40 @@
 ;; Org-mode
 (require 'org-init)
 
-;; Mail
-(require 'mu4e-init)
+(setq user-full-name "Tim Hawes")
+
+(if (string= system-name "scotus")
+    (progn
+      ; Email and user's name.
+      (setq user-mail-address "Tim.Hawes@inin.com")
+
+      (setq message-send-mail-function 'smtpmail-send-it
+            smtpmail-starttls-credentials '(("smtp.office365.com" 587 nil nil))
+            smtpmail-auth-credentials '("~/.netrc")
+            smtpmail-default-smtp-server "smtp.office365.com"
+            smtpmail-smtp-server "smtp.office365.com"
+            smtpmail-smtp-service 587
+            smtpmail-local-domain "inin.com"
+            smtpmail-queue-mail nil
+            smtpmail-queue-dir "~/IninMaildir/queue/cur"))
+  (progn
+    ; Email and user's name.
+    (setq user-mail-address "tim@easyfreeunix.com")
+
+    (setq message-send-mail-function 'smtpmail-send-it
+          smtpmail-starttls-credentials '(("mail.althusius.net" 25 nil nil))
+          smtpmail-auth-credentials '("~/.netrc")
+          smtpmail-default-smtp-server "mail.althusius.net"
+          smtpmail-smtp-server "mail.althusius.net"
+          smtpmail-smtp-service 25
+          smtpmail-local-domain "althusius.net"
+          smtpmail-queue-mail nil
+          smtpmail-queue-dir "~/Maildir/INBOX.Queue/cur")
+    ;; Mail
+    (require 'mu4e-init)))
+
+
+
 
 ;; General Utilities
 (require 'flyspell-init)
