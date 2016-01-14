@@ -9,8 +9,8 @@ https://github.com/pinard/Pymacs.git \
 repos=" \
 https://github.com/timotheosh/inferior-cling.git \
 https://github.com/python-rope/ropemacs.git \
-https://github.com/senny/emacs-eclim.git \
 https://github.com/timotheosh/aws-el.git \
+https://github.com/ensime/ensime-server.git \
 "
 
 # Run python setup.py on these directories (after they have been
