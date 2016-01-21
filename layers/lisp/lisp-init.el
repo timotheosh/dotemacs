@@ -34,5 +34,10 @@
     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'auto-complete-mode)
     (add-hook 'lisp-mode-hook 'auto-complete-mode)
-    (slime-setup))
+    (slime-setup)
+
+    ;; Hyperspec lookup
+    ;; open CL REPL and execute: (ql:quickload "clhs")
+    ;; Then follow instructions.
+    (load "/home/thawes/programs/share/quicklisp/clhs-use-local.el" t))
 (provide 'lisp-init)
