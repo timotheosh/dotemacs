@@ -70,6 +70,7 @@
 (depends-on "highlight-indentation")
 (depends-on "ht")
 (depends-on "htmlize")
+(depends-on "ido-completing-read+")
 (depends-on "iedit")
 (depends-on "inf-groovy")
 (depends-on "inf-ruby")

@@ -102,6 +102,7 @@
 (require 'ggtags-init)
 (require 'projectile-init)
 (require 'auto-complete-init)
+(require 'magit-init)
 
 ;; Language modes
 (require 'elisp-init)      ;; Emacs Lisp
