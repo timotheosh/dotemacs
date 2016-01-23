@@ -1,8 +1,20 @@
+;; Set up load paths
+(let ((default-directory  "~/.emacs.d/layers/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(push (expand-file-name "~/.emacs.d/libraries") load-path)
+(push (expand-file-name "~/.emacs.d/programs") load-path)
+(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/") load-path)
+(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e") load-path)
+(require 'packages-init)
+(require 'benchmark-init)
+
+(benchmark-init/activate)
+
+;; Some importtant emacs configuration(s)
+(setq max-lisp-eval-depth 500)  ;; default is 500
+(setq max-specpdl-size 1000)    ;; default is 1000
 ; Custom file
 (setq custom-file "~/.emacs.d/lisp/custom.el")
-; Email and user's name.
-(setq user-mail-address "tim@easyfreeunix.com")
-(setq user-full-name "Tim Hawes")
 
 ;; Allow for UTF-8 in place of utf-8
 (define-coding-system-alias 'UTF-8 'utf-8)
@@ -24,91 +36,118 @@
 ; Hide menu bar
 (menu-bar-mode -1)
 
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("mail.althusius.net" 25 nil nil))
-      smtpmail-auth-credentials '("~/.netrc")
-      smtpmail-default-smtp-server "mail.althusius.net"
-      smtpmail-smtp-server "mail.althusius.net"
-      smtpmail-smtp-service 25
-      smtpmail-local-domain "althusius.net"
-      smtpmail-queue-mail nil
-      smtpmail-queue-dir "~/Maildir/INBOX.Queue/cur"
-      )
-
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/libraries"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/programs"))
-(add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/"))
-(add-to-list 'load-path (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e"))
-(load-library "packages-init")
-(load-library "use-package-init")
-(load-library "cedet-init")
-(load-library "ido-init")
-(load-library "helm-init")
-(load-library "keys")
-(load-library "column-enforce-init")
-(load-library "column-marker-init")
-(load-library "transparent-window")
-(load-library "edi-init")
-(load-library "mu4e-init")
-(load-library "indent-buffer")
-(load-library "unbound")
-(load-library "w3m-init")
-(load-library "minimap-init")
-(load-library "multi-term-init")
-(load-library "matchparenthesis")
-(load-library "auto-complete-init")
-(load-library "yasnippet-init")
-(load-library "php-init")
-(load-library "multi-web-mode-init")
-(load-library "sql-init")
-(load-library "yaml-init")
-(load-library "scheme-init")
-(load-library "lisp-init")
-(load-library "python-init")
-(load-library "perl-init")
-(load-library "flyspell-init")
-(load-library "geben-init")
-;(load-library "etags-init")
-;(load-library "etags-table-init")
-(load-library "ecb-init")
-(load-library "org-init")
-(load-library "org-templates")
-(load-library "malabar-init")
-(load-library "ruby-init")
-(load-library "puppet-init")
-(load-library "cider-init")
-(load-library "haskell-init")
-(load-library "json-init")
-(load-library "nix-init")
-(load-library "org-page-init")
-(load-library "emacsclient-init")
-(load-library "cmake-init")
-(load-library "diatheke-init")
-(load-library "smartparens-init")
-(load-library "function-args-init")
-(load-library "environment-init")
-(load-library "cbible-init")
-(load-library "my-funcs")
-(load-library "powerline-init")
-(load-library "projectile-init")
-(load-library "graphiz-init")
+;; Initial packages
+(require 'use-package-init)
+(require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
+(require 'ecb-init)
+(require 'yasnippet-init)
 
-;; C/C++
-(load-library "c-init")
+;; Customizations
+(require 'custom-keys)
+(require 'environment-init)
+
+;; Org-mode
+(require 'org-init)
+
+(setq user-full-name "Tim Hawes")
+
+(if (string= system-name "scotus")
+    (progn
+      ; Email and user's name.
+      (setq user-mail-address "Tim.Hawes@inin.com")
+
+      (setq message-send-mail-function 'smtpmail-send-it
+            smtpmail-starttls-credentials '(("smtp.office365.com" 587 nil nil))
+            smtpmail-auth-credentials '("~/.netrc")
+            smtpmail-default-smtp-server "smtp.office365.com"
+            smtpmail-smtp-server "smtp.office365.com"
+            smtpmail-smtp-service 587
+            smtpmail-local-domain "inin.com"
+            smtpmail-queue-mail nil
+            smtpmail-queue-dir "~/IninMaildir/queue/cur")
+	  ;; Mail
+	  (require 'mu4e-work-init))
+  (progn
+    ; Email and user's name.
+    (setq user-mail-address "tim@easyfreeunix.com")
+
+    (setq message-send-mail-function 'smtpmail-send-it
+          smtpmail-starttls-credentials '(("mail.althusius.net" 25 nil nil))
+          smtpmail-auth-credentials '("~/.netrc")
+          smtpmail-default-smtp-server "mail.althusius.net"
+          smtpmail-smtp-server "mail.althusius.net"
+          smtpmail-smtp-service 25
+          smtpmail-local-domain "althusius.net"
+          smtpmail-queue-mail nil
+          smtpmail-queue-dir "~/Maildir/INBOX.Queue/cur")
+    ;; Mail
+    (require 'mu4e-init)))
+
+
+
+
+;; General Utilities
+(require 'flyspell-init)
+(require 'ido-init)
+(require 'helm-init)
+(require 'my-funcs)
+(require 'unbound)
+(require 'multi-term-init)
+
+;; Programming Utilities
+(require 'minimap-init)
+(require 'ggtags-init)
+(require 'projectile-init)
+(require 'auto-complete-init)
+(require 'magit-init)
+
+;; Language modes
+(require 'elisp-init)      ;; Emacs Lisp
+(require 'c-init)          ;; C/C++ and ObjC
+(require 'php-init)        ;; PHP
+(require 'lisp-init)       ;; Common Lisp
+(require 'racket-init)     ;; Racket/Scheme
+(require 'python-init)     ;; Python
+(require 'java-init)       ;; Java
+(require 'perl-init)       ;; Perl
+(require 'haskell-init)    ;; Haskell
+(require 'ruby-init)       ;; Ruby
+
+;; File Formats
+(require 'edi-init)
+(require 'json-init)
+
+;(load-library "auto-complete-init")
+;(load-library "multi-web-mode-init")
+;(load-library "sql-init")
+;(load-library "yaml-init")
+;(load-library "geben-init")
+;;(load-library "etags-init")
+;;(load-library "etags-table-init")
+;(load-library "puppet-init")
+;(load-library "nix-init")
+;(load-library "emacsclient-init")
+;(load-library "cmake-init")
+;(load-library "diatheke-init")
+;(load-library "function-args-init")
+;(load-library "cbible-init")
+;(load-library "graphiz-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
-(setq desktop-dirname             "~/.emacs.d/desktop/"
-  desktop-base-file-name      "emacs24.desktop"
-  desktop-base-lock-name      "emacs24.lock"
-  desktop-path                (list desktop-dirname)
-  desktop-save                t
-  desktop-files-not-to-save   "^$" ;reload tramp paths
-  desktop-load-locked-desktop nil
-)
-(desktop-save-mode 1)
+;(setq desktop-dirname             "~/.emacs.d/desktop/"
+;  desktop-base-file-name      "emacs24.desktop"
+;  desktop-base-lock-name      "emacs24.lock"
+;  desktop-path                (list desktop-dirname)
+;  desktop-save                t
+;  desktop-files-not-to-save   "^$" ;reload tramp paths
+;  desktop-load-locked-desktop nil
+;)
+;(desktop-save-mode 1)
+(require 'transparent-window)
 (load custom-file)
-(load "terminal-mode-init")
+(require 'terminal-mode-init)
+
+(benchmark-init/deactivate)

@@ -9,6 +9,8 @@ https://github.com/pinard/Pymacs.git \
 repos=" \
 https://github.com/timotheosh/inferior-cling.git \
 https://github.com/python-rope/ropemacs.git \
+https://github.com/timotheosh/aws-el.git \
+https://github.com/ensime/ensime-server.git \
 "
 
 # Run python setup.py on these directories (after they have been
@@ -57,23 +59,39 @@ function curlprog {
   popd
 }
 
-for x in $repobuilds $repos;do
-  gitclone programs $x 
-  echo ""
+function directoryname {
+  echo $(basename $1|sed -e 's/\.git$//')
+}
+
+for x in $repos;do
+  DIR=programs/$(directoryname $x)
+  if [[ ! -d $DIR ]];then
+    gitclone programs $x
+    echo ""
+  fi
 done
 
-for x in $repobuilds; do
-  DIR=programs/$(basename $x|sed -e 's/\.git$//')
-  makerepo $DIR
+for x in $repobuilds;do
+  DIR=programs/$(directoryname $x)
+  if [[ ! -d $DIR ]];then
+    gitclone programs $x
+    echo ""
+    makerepo $DIR
+  fi
 done
 
 for x in $snippetrepos;do
-  gitclone yasnippets $x
+  DIR=yasnippets/$(directoryname $x)
+  if [[ ! -d $DIR ]];then
+    gitclone yasnippets $x
+  fi
 done
 
 for x in $pythonsetup;do
-  DIR=programs/$(basename $x|sed -e 's/\.git$//')
-  run-py-setup $DIR
+  DIR=programs/$(directoryname $x)
+  if [[ ! -d $DIR/build/lib.linux-x86_64-2.7 ]];then
+    run-py-setup $DIR
+  fi
 done
 
 echo "Repos retrieved and ready."
