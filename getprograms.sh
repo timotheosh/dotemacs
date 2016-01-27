@@ -11,6 +11,7 @@ https://github.com/timotheosh/inferior-cling.git \
 https://github.com/python-rope/ropemacs.git \
 https://github.com/timotheosh/aws-el.git \
 https://github.com/ensime/ensime-server.git \
+https://github.com/fukamachi/kindly-mode.git \
 "
 
 # Run python setup.py on these directories (after they have been

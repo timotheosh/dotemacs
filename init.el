@@ -120,6 +120,9 @@
 (require 'edi-init)
 (require 'json-init)
 
+;; Reading
+(require 'kindly-init)
+
 ;(load-library "auto-complete-init")
 ;(load-library "multi-web-mode-init")
 ;(load-library "sql-init")
