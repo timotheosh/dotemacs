@@ -9,6 +9,22 @@
   (require 'ox-gfm)
   (require 'ox-odt)
   (require 'org-bullets)
+  (require 'ox-confluence)
+
+  ;; active Babel languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (ruby . t)
+     (groovy . t)
+     (scala . t)
+     (lisp . t)
+     (clojure . t)
+     (emacs-lisp . t)
+     (shell . t)
+     (C . t)
+   ))
+
 
   (setq org-log-done t)
   (setq org-agenda-files (file-expand-wildcards "~/org/GTD/*.org"))
