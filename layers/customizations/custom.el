@@ -8,7 +8,7 @@
  '(custom-enabled-themes (quote (odersky)))
  '(custom-safe-themes
    (quote
-    ("46fd293ff6e2f6b74a5edf1063c32f2a758ec24a5f63d13b07a20255c074d399" default)))
+    ("e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4" "46fd293ff6e2f6b74a5edf1063c32f2a758ec24a5f63d13b07a20255c074d399" default)))
  '(display-time-mode t)
  '(ecb-options-version "2.40")
  '(ede-project-directories
