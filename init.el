@@ -149,6 +149,12 @@
 ;  desktop-load-locked-desktop nil
 ;)
 ;(desktop-save-mode 1)
+
+;; themes directory
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'odersky t)
+(load-theme 'org-beautify t)
+
 (require 'transparent-window)
 (load custom-file)
 (require 'terminal-mode-init)

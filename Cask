@@ -95,6 +95,8 @@
 (depends-on "mustache")
 (depends-on "newlisp-mode")
 (depends-on "org")
+(depends-on "org-beautify-theme")
+(depends-on "org-bullets")
 (depends-on "org-jekyll")
 (depends-on "org-jira")
 (depends-on "org-page")

@@ -8,6 +8,7 @@
   (require 'ox-wk)
   (require 'ox-gfm)
   (require 'ox-odt)
+  (require 'org-bullets)
 
   (setq org-log-done t)
   (setq org-agenda-files (file-expand-wildcards "~/org/GTD/*.org"))
@@ -117,8 +118,9 @@
 
           ("selfdidactic" :components ("org-selfdidactic" "org-static-selfdidactic"))))
 
-  (add-hook 'org-mode-hook
-            (lambda ()
-              (set-fill-column 80)))
-  (add-hook 'org-mode-hook 'turn-on-auto-fill))
+  (dolist (func '((lambda ()
+                    (set-fill-column 80)
+                    (turn-on-auto-fill))
+                  org-bullets-mode))
+    (add-hook 'org-mode-hook func)))
 (provide 'org-init)
