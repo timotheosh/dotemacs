@@ -3,8 +3,8 @@
   :bind (("RET" . newline-and-indent)
          ("C-c !" . python-shell-send-buffer)
          ("C-c |" . python-shell-send-buffer))
-  :config
-  (add-to-list 'ac-modes 'python-mode)
+  ;:config
+  ;(add-to-list 'ac-modes 'python-mode)
   :init
   (require 'programming-init)
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/Pymacs"))
