@@ -21,7 +21,7 @@
  '(minimap-window-location (quote right))
  '(org-agenda-files
    (quote
-    ("~/org/AWSCommandLine.org" "~/org/AgileTraining.org" "~/org/CodeForCary.org" "~/org/CodeForRaleigh.org" "~/org/CommonLisp-FastCGI-Hostmonster.org" "~/org/Contacts.org" "~/org/CoverLetter.org" "~/org/DEVOPS.org" "~/org/HawesResume.org" "~/org/IBM_Streams_presentation.org" "~/org/ININ_Scrum.org" "~/org/ININ_TODO.org" "~/org/ININ_Thing_to_learn.org" "~/org/LogscapeSearchHowTo.org" "~/org/Monitoring.org" "~/org/ReinventMyself.org" "~/org/SciMed.org" "~/org/UpgradeLogscape.org" "~/org/anx.org" "~/org/dev-cloud-email.org" "~/org/easyfreeunix.org" "~/org/history.org" "~/org/home.org" "~/org/pelican-template.org" "~/org/programming.org")))
+    ("~/org/GTD/newgtd.org" "~/org/programming.org" "~/org/home.org")))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
