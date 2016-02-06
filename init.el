@@ -48,6 +48,7 @@
 ;; Customizations
 (require 'custom-keys)
 (require 'environment-init)
+(require 'powerline-init)
 
 ;; Org-mode
 (require 'org-init)
