@@ -25,6 +25,19 @@
      (C . t)
    ))
 
+  (setq auto-insert-alist
+        '(
+          ((org-mode . "Org mode file")
+           nil
+           ""
+           '(setq doc-title (skeleton-read "Document Title: "))
+           '(setq author-name (user-full-name))
+           "#+OPTIONS: ^:nil" \n
+           "#+TAGS: " \n
+           "#+STARTUP: hidestars" \n
+           "#+TITLE: " doc-title \n
+           "#+AUTHOR: " author-name \n
+           "")))
 
   (setq org-log-done t)
   (setq org-agenda-files (file-expand-wildcards "~/org/GTD/*.org"))
@@ -137,6 +150,7 @@
   (dolist (func '((lambda ()
                     (set-fill-column 80)
                     (turn-on-auto-fill))
+                  auto-insert
                   org-bullets-mode))
     (add-hook 'org-mode-hook func)))
 (provide 'org-init)
