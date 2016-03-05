@@ -3,23 +3,18 @@
   :bind (("RET" . newline-and-indent)
          ("C-c !" . python-shell-send-buffer)
          ("C-c |" . python-shell-send-buffer))
-  ;:config
-  ;(add-to-list 'ac-modes 'python-mode)
-  :init
+  :config
   (require 'programming-init)
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/Pymacs"))
   (require 'pymacs)
   (require 'python)
   (pymacs-load "ropemacs" "rope-")
-
-  ; Our main python module
-  (elpy-enable)
-
-  ; Use ipython (maybe we can get a REPL?)
-  (elpy-use-ipython)
-  (setq jedi:complete-on-dot t)             ;; Jedi complete on dot (.)
-
+  :init
+  (with-eval-after-load 'python (progn
+                                  (elpy-enable) ;; Our main python module
+                                  (elpy-use-ipython)
+                                  (setq jedi:complete-on-dot t)))
   (dolist (func '(my-programming-hooks
-                  jedi:setup))              ;; Jedi server for auto-completion
+                  jedi:setup))          ;; Jedi server for auto-completion
     (add-hook 'python-mode-hook func)))
 (provide 'python-init)

@@ -3,7 +3,6 @@
   :config
   (require 'auto-complete)
   (add-to-list 'ac-modes 'jdee-mode)
-  :init
   (require 'programming-init)
   (require 'jdee)
   (require 'java-imports)

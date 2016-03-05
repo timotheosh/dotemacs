@@ -11,6 +11,9 @@
   (require 'org-bullets)
   (require 'ox-confluence)
 
+  ;; Remove html validation link
+  (setq org-html-validation-link nil)
+
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages
@@ -129,28 +132,29 @@
 
   (setq org-publish-project-alist
         `(("org-selfdidactic"
-           ;; Path to your org files.
-           :base-directory "/home/thawes/src/sources/selfdidactic/org"
+           :base-directory "~/selfdidactic.org"
            :base-extension "org"
-
-           ;; Path to your Pelican project.
-           :publishing-directory "/home/thawes/src/sources/selfdidactic/content"
+           :publishing-directory "~/selfdidactic.com"
            :recursive t
-           :publishing-function org-pelican-md-publish-to-md
+           :publishing-function org-html-publish-to-html
+           :headline-levels 4
+           :auto-preamble t
+           :auto-sitemap t
+           :sitemap-filename "sitemap.org"
+           :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
            )
           ("org-static-selfdidactic"
-           :base-directory "/home/thawes/blog/org"
+           :base-directory "~/selfdidactic.org/"
            :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|php"
-           :publishing-directory "/home/thawes/blog/pelican/content"
+           :publishing-directory "~/selfdidactic.com/"
            :recursive t
-           :publishing-function org-publish-attachment)
-
+           :publishing-function org-publish-attachment
+           )
           ("selfdidactic" :components ("org-selfdidactic" "org-static-selfdidactic"))))
 
   (dolist (func '((lambda ()
                     (set-fill-column 80)
                     (turn-on-auto-fill))
-                  auto-insert
                   org-bullets-mode))
     (add-hook 'org-mode-hook func)))
 (provide 'org-init)
