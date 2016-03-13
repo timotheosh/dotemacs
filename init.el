@@ -116,6 +116,7 @@
 (require 'perl-init)       ;; Perl
 (require 'haskell-init)    ;; Haskell
 (require 'ruby-init)       ;; Ruby
+(require 'clojure-init)    ;; Clojure
 
 ;; File Formats
 (require 'edi-init)

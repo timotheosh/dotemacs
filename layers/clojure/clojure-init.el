@@ -7,9 +7,6 @@
   ; (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
   (add-hook 'clojure-mode-hook 'cider-mode)
-  (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
-  (add-hook 'cider-mode-hook 'ac-nrepl-setup)
-  (add-to-list 'ac-modes 'cider-repl-mode)
 
   ;; clojure completion
   (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
