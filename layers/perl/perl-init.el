@@ -2,9 +2,8 @@
 (use-package cperl
   :mode ("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode)
   :config
-  (defalias 'perl-mode 'cperl-mode)
-  :init
   (progn
+    (defalias 'perl-mode 'cperl-mode)
     (add-hook 'cperl-mode-hook
               (lambda ()
                 (abbrev-mode t)
