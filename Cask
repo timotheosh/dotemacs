@@ -70,6 +70,7 @@
 (depends-on "ggtags")
 (depends-on "ghc")
 (depends-on "ghci-completion")
+(depends-on "go-mode")
 (depends-on "google-c-style")
 (depends-on "graphviz-dot-mode")
 (depends-on "groovy-mode")
