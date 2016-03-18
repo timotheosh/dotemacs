@@ -39,5 +39,9 @@
     ;; Hyperspec lookup
     ;; open CL REPL and execute: (ql:quickload "clhs")
     ;; Then follow instructions.
-    (load "/home/thawes/programs/share/quicklisp/clhs-use-local.el" t))
+    (load "/home/thawes/programs/share/quicklisp/clhs-use-local.el" t)
+    (use-package parinfer-mode
+      :load-path "programs/parinfer-mode/"
+      :init
+      (add-hook 'lisp-mode-hook 'parinfer-mode)))
 (provide 'lisp-init)

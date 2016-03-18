@@ -24,7 +24,11 @@
   (defun set-auto-complete-as-completion-at-point-function ()
     (setq completion-at-point-functions '(auto-complete)))
   (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function))
+  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
+  (use-package parinfer-mode
+      :load-path "programs/parinfer-mode/"
+      :init
+      (add-hook 'clojure-mode-hook 'parinfer-mode)))
 
 ;; NOTE: 4clojure is installed.
 ;; To open a specific problem, use `4clojure-open-question':
