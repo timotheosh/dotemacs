@@ -14,6 +14,9 @@
   ;; Remove html validation link
   (setq org-html-validation-link nil)
 
+  ;; Smart quotes on
+  (setq org-export-with-smart-quotes t)
+
   ;; active Babel languages
   (org-babel-do-load-languages
    'org-babel-load-languages

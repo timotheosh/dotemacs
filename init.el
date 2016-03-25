@@ -52,6 +52,7 @@
 
 ;; Org-mode
 (require 'org-init)
+(require 'cbible-init)
 
 (setq user-full-name "Tim Hawes")
 
@@ -138,7 +139,6 @@
 ;(load-library "cmake-init")
 ;(load-library "diatheke-init")
 ;(load-library "function-args-init")
-;(load-library "cbible-init")
 ;(load-library "graphiz-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
