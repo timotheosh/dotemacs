@@ -6,15 +6,20 @@
   (add-to-list 'ac-modes 'scheme-mode)
   (add-to-list 'ac-modes 'racket-mode)
   (require 'flymake-racket)
+  :init
+  (require 'programming-init)
   (dolist (func '(racket-unicode-input-method-enable
                   auto-complete-mode
                   flymake-racket-load
-                   (lambda ()
-                     (define-key racket-mode-map
-                       (kbd "C-c r") 'racket-run)
-                     (define-key racket-mode-map
-                       (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
+                  my-programming-hooks
+                  (lambda ()
+                    (define-key racket-mode-map
+                      (kbd "C-c r") 'racket-run)
+                    (define-key racket-mode-map
+                      (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
                 (add-hook 'racket-mode-hook func)))
-
-  (add-hook 'racket-repl-mode-hook #'racket-unicode-input-method-enable))
+  (dolist (func '(racket-unicode-input-method-enable)
+                (add-hook 'racket-repl-mode-hook func)))
+  (add-hook 'racket-mode-hook #'smartparens-strict-mode)
+  (add-hook 'racket-repl-mode-hook #'smartparens-strict-mode))
 (provide 'racket-init)

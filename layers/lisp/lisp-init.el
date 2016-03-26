@@ -32,16 +32,14 @@
     (add-hook 'slime-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'auto-complete-mode)
+    (add-hook 'slime-repl-mode-hook #'smartparens-strict-mode)
     (add-hook 'lisp-mode-hook 'my-programming-hooks)
     (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
     (add-hook 'lisp-mode-hook 'auto-complete-mode)
+    (add-hook 'lisp-mode-hook #'smartparens-strict-mode)
 
     ;; Hyperspec lookup
     ;; open CL REPL and execute: (ql:quickload "clhs")
     ;; Then follow instructions.
-    (load "/home/thawes/programs/share/quicklisp/clhs-use-local.el" t)
-    (use-package parinfer-mode
-      :load-path "programs/parinfer-mode/"
-      :init
-      (add-hook 'lisp-mode-hook 'parinfer-mode)))
+    (load "/home/thawes/programs/share/quicklisp/clhs-use-local.el" t))
 (provide 'lisp-init)

@@ -3,10 +3,33 @@
   :init
   (require 'clojure-mode-extra-font-locking)
   (require 'ac-cider)
+  (require 'rainbow-delimiters)
   (eval-after-load 'flycheck '(flycheck-clojure-setup))
-  ; (add-hook 'clojure-mode-hook #'paredit-mode)
-  (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
+  ; (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
   (add-hook 'clojure-mode-hook 'cider-mode)
+
+  ;; This is useful for working with camel-case tokens, like names of
+  ;; Java classes (e.g. JavaClassName)
+  (add-hook 'clojure-mode-hook 'subword-mode)
+
+  ;; A little more syntax highlighting
+  (require 'clojure-mode-extra-font-locking)
+
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+
+  ;; syntax hilighting for midje
+  (add-hook 'clojure-mode-hook
+            (lambda ()
+              (setq inferior-lisp-program "lein repl")
+              (font-lock-add-keywords
+               nil
+               '(("(\\(facts?\\)"
+                  (1 font-lock-keyword-face))
+                 ("(\\(background?\\)"
+                  (1 font-lock-keyword-face))))
+              (define-clojure-indent (fact 1))
+              (define-clojure-indent (facts 1))))
 
   ;; clojure completion
   (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
@@ -24,12 +47,7 @@
   (defun set-auto-complete-as-completion-at-point-function ()
     (setq completion-at-point-functions '(auto-complete)))
   (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
-  (use-package parinfer-mode
-      :load-path "programs/parinfer-mode/"
-      :init
-      (add-hook 'clojure-mode-hook 'parinfer-mode)))
-
+  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function))
 ;; NOTE: 4clojure is installed.
 ;; To open a specific problem, use `4clojure-open-question':
 ;; e.g. "M-x 4clojure-open-question RET 2" opens question 2.

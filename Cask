@@ -136,6 +136,7 @@
 (depends-on "pyvenv")
 (depends-on "queue")
 (depends-on "racket-mode")
+(depends-on "rainbow-delimiters")
 (depends-on "realgud")
 (depends-on "rubocop")
 (depends-on "ruby-tools")
