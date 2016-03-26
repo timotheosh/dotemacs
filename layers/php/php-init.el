@@ -12,7 +12,12 @@
   :config
   (add-to-list 'ac-modes 'php-mode)
   :init
-  (require 'programming-init)
+  (use-package programming-init
+    :init
+    (require 'smartparens)
+    (sp-local-pair '(php-mode)
+                   "{" nil :post-handlers
+                   '((my/create-newline-format "RET"))))
   (use-package flymake)
   (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 

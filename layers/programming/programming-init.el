@@ -15,6 +15,17 @@
 ;; <backtab> is Shift-tab
 (global-set-key (kbd "<backtab>") 'match-paren)
 
+(defun my/create-newline-format (&rest _ignored)
+  ;; Usage: (sp-local-pair '(c-mode)
+  ;;                       "{" nil :post-handlers
+  ;;                       '((my/create-newline-format "RET")))
+  (interactive)
+  (progn
+    (newline)
+    (indent-according-to-mode)
+    (previous-line)
+    (indent-according-to-mode)))
+
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert normally."
   (interactive "p")
@@ -22,7 +33,15 @@
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
         (t (self-insert-command (or arg 1)))))
 
-(require 'smartparens-config)
-(show-smartparens-global-mode t)
+(use-package smartparens-config
+    :ensure smartparens
+    :bind (("C->" . sp-forward-slurp-sexp)
+           ("C-<" . sp-forward-barf-sexp))
+    :config
+    (progn
+      (show-smartparens-global-mode t)))
+
+(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
 
 (provide 'programming-init)

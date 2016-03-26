@@ -9,8 +9,18 @@
 	 ("\\.objc\\'" . objc-mode)
 	 ("\\.m\\'" . objc-mode))
   :init
-  (use-package programming-init)
-
+  (use-package programming-init
+    :init
+    (require 'smartparens)
+    (sp-local-pair '(c-mode)
+                   "{" nil :post-handlers
+                   '((my/create-newline-format "RET")))
+    (sp-local-pair '(c++-mode)
+                   "{" nil :post-handlers
+                   '((my/create-newline-format "RET")))
+    (sp-local-pair '(objc-mode)
+                   "{" nil :post-handlers
+                   '((my/create-newline-format "RET"))))
 
   (defun my/company-c-header-init()
     "Set paths for auto-header."
@@ -49,12 +59,13 @@
    )
 
   ;; CC-mode
-  (add-hook 'c-mode-common-hook '(lambda ()
-					;(setq ac-sources (append '(ac-source-semantic) ac-sources))
-				   (linum-mode 1)
-				   (local-set-key [f5] #'compile)
-				   (local-set-key [f6] #'gdb)
-				   ))
+  (add-hook 'c-mode-common-hook
+            '(lambda ()
+               ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
+               (linum-mode 1)
+               (local-set-key [f5] #'compile)
+               (local-set-key [f6] #'gdb)
+               ))
 
   ;; Sword
   (setq sword-includes "/usr/include/sword")

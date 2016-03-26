@@ -5,8 +5,6 @@
   (require 'ac-cider)
   (require 'rainbow-delimiters)
   (eval-after-load 'flycheck '(flycheck-clojure-setup))
-  ; (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-  (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
   (add-hook 'clojure-mode-hook 'cider-mode)
 
   ;; This is useful for working with camel-case tokens, like names of
@@ -47,7 +45,9 @@
   (defun set-auto-complete-as-completion-at-point-function ()
     (setq completion-at-point-functions '(auto-complete)))
   (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function))
+  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+  (add-hook 'cider-repl-mode-hook 'smartparens-strict-mode))
 ;; NOTE: 4clojure is installed.
 ;; To open a specific problem, use `4clojure-open-question':
 ;; e.g. "M-x 4clojure-open-question RET 2" opens question 2.

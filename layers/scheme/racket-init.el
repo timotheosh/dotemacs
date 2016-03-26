@@ -19,7 +19,5 @@
                       (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
                 (add-hook 'racket-mode-hook func)))
   (dolist (func '(racket-unicode-input-method-enable)
-                (add-hook 'racket-repl-mode-hook func)))
-  (add-hook 'racket-mode-hook #'smartparens-strict-mode)
-  (add-hook 'racket-repl-mode-hook #'smartparens-strict-mode))
+                (add-hook 'racket-repl-mode-hook func))))
 (provide 'racket-init)
