@@ -38,6 +38,10 @@
        (add-to-list 'ac-modes 'cider-mode)
        (add-to-list 'ac-modes 'cider-repl-mode)))
 
+
+  (if (string= system-type "cygwin")
+      (setq cider-lein-command "~/bin/lein"))
+  
   ;; If you want to trigger auto-complete using TAB in CIDER buffers, add this to
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):

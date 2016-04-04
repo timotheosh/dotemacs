@@ -13,8 +13,10 @@
 ;; Some importtant emacs configuration(s)
 (setq max-lisp-eval-depth 500)  ;; default is 500
 (setq max-specpdl-size 1000)    ;; default is 1000
-; Custom file
-(setq custom-file "~/.emacs.d/layers/customizations/custom.el")
+;; Custom file
+(if (string= system-type "cygwin")
+    (setq custom-file "~/.emacs.d/layers/customizations/cygwin-custom.el")
+  (setq custom-file "~/.emacs.d/layers/customizations/custom.el"))
 
 ;; Allow for UTF-8 in place of utf-8
 (define-coding-system-alias 'UTF-8 'utf-8)
