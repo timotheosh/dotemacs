@@ -105,6 +105,7 @@
 (depends-on "list-utils")
 (depends-on "load-relative")
 (depends-on "loc-changes")
+(depends-on "magit")
 (depends-on "minimap")
 (depends-on "multi-term")
 (depends-on "multi-web-mode")

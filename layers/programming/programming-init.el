@@ -39,8 +39,8 @@
                 ("C-M-a" . sp-beginning-of-sexp)
                 ("C-M-e" . sp-end-of-sexp)
 
-                ("C-<down>" . sp-down-sexp)
-                ("C-<up>"   . sp-up-sexp)
+                ;;("C-<down>" . sp-down-sexp) ;; Conflicts with REPL bindings
+                ;;("C-<up>"   . sp-up-sexp)   ;; Conflicts with REPL bindings
                 ("M-<down>" . sp-backward-down-sexp)
                 ("M-<up>"   . sp-backward-up-sexp)
 
