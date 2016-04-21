@@ -124,6 +124,7 @@
 (depends-on "pallet")
 (depends-on "paredit")
 (depends-on "pde")
+(depends-on "pdf-tools")
 (depends-on "php-boris")
 (depends-on "php-boris-minor-mode")
 (depends-on "php-extras")
