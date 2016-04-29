@@ -3,7 +3,8 @@
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c u" . org-jira-get-issues)
-         ("C-c c" . org-capture))
+         ("C-c c" . org-capture)
+         ("C-c b" . org-iswitchb))
   :init
   (require 'ox-wk)
   (require 'ox-gfm)
