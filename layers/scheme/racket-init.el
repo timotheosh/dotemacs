@@ -1,9 +1,6 @@
 (use-package racket
-  :mode (("\\.rkt\\'" . racket-mode)
-         ("\\.scm\\'" . racket-mode))
+  :mode ("\\.rkt\\'" . racket-mode)
   :config
-  (defalias 'scheme-mode 'racket-mode)
-  (add-to-list 'ac-modes 'scheme-mode)
   (add-to-list 'ac-modes 'racket-mode)
   (require 'flymake-racket)
   :init
