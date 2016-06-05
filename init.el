@@ -127,7 +127,7 @@
 (require 'json-init)
 
 ;; Amazon AWS
-(require 'aws-el-init)
+;;(require 'aws-el-init)
 
 ;; Reading
 (require 'kindly-init)
