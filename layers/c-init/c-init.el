@@ -1,4 +1,7 @@
-;;
+;; Modes for c/c++ programming
+;; Install cpplint with "pip install cpplint"
+;;     (yes, cpplint is a python program)
+;; Be sure clang compiler is on your path for irony-mode
 (use-package c-mode
   :mode (("\\.c\\'" . c-mode)
 	 ("\\.h\\'" . c-mode)
@@ -9,6 +12,7 @@
 	 ("\\.objc\\'" . objc-mode)
 	 ("\\.m\\'" . objc-mode))
   :init
+  (setq gcc-version 5) ;Set the gcc-version in preparing the header-paths below.
   (use-package programming-init
     :init
     (require 'smartparens)
@@ -26,12 +30,12 @@
     "Set paths for auto-header."
     (require 'company-c-headers)
     (setq my-header-paths
-          '("/usr/include/c++/4.8"
-            "/usr/include/x86_64-linux-gnu/c++/4.8"
-            "/usr/include/c++/4.8/backward"
-            "/usr/lib/gcc/x86_64-linux-gnu/4.8/include"
+          '((format "/usr/include/c++/%s" gcc-version)
+            (format "/usr/include/x86_64-linux-gnu/c++/%s" gcc-version)
+            (format "/usr/include/c++/%s/backward" gcc-version)
+            (format "/usr/lib/gcc/x86_64-linux-gnu/%s/include" gcc-version)
             "/usr/local/include"
-            "/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"
+            (format "/usr/lib/gcc/x86_64-linux-gnu/%s/include-fixed" gcc-version)
             "/usr/include/x86_64-linux-gnu"
             "/usr/include"
             "/usr/include/sword"))
@@ -108,7 +112,7 @@
 	(define-key irony-mode-map [remap complete-symbol]
 	  'irony-completion-at-point-async)))
 
-    (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+    ;(add-hook 'irony-mode-hook 'my-irony-mode-hook)
     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
     (use-package company
