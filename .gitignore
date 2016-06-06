@@ -30,3 +30,4 @@ bookmarks
 elpa/
 ac-html-csswatcher/
 .chicken-scheme-symbols-dump.el
+request/
