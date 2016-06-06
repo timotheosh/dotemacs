@@ -28,6 +28,8 @@ Cell: 919-656-2135
   (setq mu4e-view-show-images t)
   (when (fboundp 'imagemagick-register-types)
     (imagemagick-register-types))
+;;; convert org mode to HTML automatically
+  (setq org-mu4e-convert-to-html t)
 ;;; message view action in a web browser option
   (defun mu4e-msgv-action-view-in-browser (msg)
     "View the body of the message in a web browser."
@@ -57,5 +59,9 @@ Cell: 919-656-2135
                '("maildir:/INBOX flag:unread"       "Unread INBOX"     ?i))
 
   ;; Signature
-  (setq mu4e-compose-signature-auto-include t))
+  (setq mu4e-compose-signature-auto-include t)
+  ;; org-mail should use org-mu4e
+  (defalias 'org-mail 'org-mu4e-compose-org-mode)
+  ;; don't keep message buffers around
+  (setq message-kill-buffer-on-exit t))
 (provide 'mu4e-work-init)
