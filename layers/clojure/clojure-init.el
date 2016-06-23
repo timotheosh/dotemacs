@@ -1,6 +1,10 @@
 (use-package clojure-mode
   :mode ("\\.clj\\'" . clojure-mode)
   :init
+  (use-package programming-init
+    :init
+    (require 'smartparens))
+  (add-hook 'clojure-mode-hook 'my-programming-hooks)
   (require 'clojure-mode-extra-font-locking)
   (require 'ac-cider)
   (require 'rainbow-delimiters)
@@ -41,7 +45,7 @@
 
   (if (string= system-type "cygwin")
       (setq cider-lein-command "~/bin/lein"))
-  
+
   ;; If you want to trigger auto-complete using TAB in CIDER buffers, add this to
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
