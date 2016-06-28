@@ -159,15 +159,19 @@
                                         ;)
                                         ;(desktop-save-mode 1)
 
-;; themes directory (only if not running in terminal!)
-(if (display-graphic-p)
+;; Themes directory
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; We want themes only if we are in gui. We need to create a hook
+;; as the themes will need to be activated on a per-case basis, while
+;; running emacs in server mode.
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+      (set-face-background 'default "unspecified-bg" frame)
     (progn
-      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-      (load-theme 'odersky t)
-      (load-theme 'org-beautify t))
-  (progn
-    ;; For when running in a terminal
-    (require 'terminal-mode-init)))
+        (load-theme 'odersky t)
+        (load-theme 'org-beautify t))))
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
 
 (require 'transparent-window)
 (load custom-file)
