@@ -21,7 +21,7 @@
 ;; Allow for UTF-8 in place of utf-8
 (define-coding-system-alias 'UTF-8 'utf-8)
 
-; Display clock and line and column numbers.
+                                        ; Display clock and line and column numbers.
 (display-time)
 (line-number-mode 1)
 (column-number-mode 1)
@@ -29,13 +29,13 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-size nil)
 
-; Color the cursor
+                                        ; Color the cursor
 (set-cursor-color "#98fb98")
 
-; Hide tool bar
+                                        ; Hide tool bar
 (tool-bar-mode -1)
 
-; Hide menu bar
+                                        ; Hide menu bar
 (menu-bar-mode -1)
 
 ;; Open files remotely after sudo'ing as root
@@ -60,7 +60,7 @@
 
 (if (string= system-name "scotus")
     (progn
-      ; Email and user's name.
+                                        ; Email and user's name.
       (setq user-mail-address "Tim.Hawes@inin.com")
 
       (setq message-send-mail-function 'smtpmail-send-it
@@ -72,10 +72,10 @@
             smtpmail-local-domain "inin.com"
             smtpmail-queue-mail nil
             smtpmail-queue-dir "~/IninMaildir/queue/cur")
-	  ;; Mail
-	  (require 'mu4e-work-init))
+      ;; Mail
+      (require 'mu4e-work-init))
   (progn
-    ; Email and user's name.
+                                        ; Email and user's name.
     (setq user-mail-address "tim@easyfreeunix.com")
 
     (setq message-send-mail-function 'smtpmail-send-it
@@ -133,45 +133,49 @@
 ;; Reading
 (require 'kindly-init)
 
-;(load-library "auto-complete-init")
-;(load-library "multi-web-mode-init")
-;(load-library "sql-init")
-;(load-library "yaml-init")
-;(load-library "geben-init")
+                                        ;(load-library "auto-complete-init")
+                                        ;(load-library "multi-web-mode-init")
+                                        ;(load-library "sql-init")
+                                        ;(load-library "yaml-init")
+                                        ;(load-library "geben-init")
 ;;(load-library "etags-init")
 ;;(load-library "etags-table-init")
-;(load-library "puppet-init")
-;(load-library "nix-init")
-;(load-library "emacsclient-init")
-;(load-library "cmake-init")
-;(load-library "diatheke-init")
-;(load-library "function-args-init")
-;(load-library "graphiz-init")
+                                        ;(load-library "puppet-init")
+                                        ;(load-library "nix-init")
+                                        ;(load-library "emacsclient-init")
+                                        ;(load-library "cmake-init")
+                                        ;(load-library "diatheke-init")
+                                        ;(load-library "function-args-init")
+                                        ;(load-library "graphiz-init")
 
 ;; Save desktop on exit, load saved desktop on startup.
-;(setq desktop-dirname             "~/.emacs.d/desktop/"
-;  desktop-base-file-name      "emacs24.desktop"
-;  desktop-base-lock-name      "emacs24.lock"
-;  desktop-path                (list desktop-dirname)
-;  desktop-save                t
-;  desktop-files-not-to-save   "^$" ;reload tramp paths
-;  desktop-load-locked-desktop nil
-;)
-;(desktop-save-mode 1)
+                                        ;(setq desktop-dirname             "~/.emacs.d/desktop/"
+                                        ;  desktop-base-file-name      "emacs24.desktop"
+                                        ;  desktop-base-lock-name      "emacs24.lock"
+                                        ;  desktop-path                (list desktop-dirname)
+                                        ;  desktop-save                t
+                                        ;  desktop-files-not-to-save   "^$" ;reload tramp paths
+                                        ;  desktop-load-locked-desktop nil
+                                        ;)
+                                        ;(desktop-save-mode 1)
 
-;; themes directory
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'odersky t)
-(load-theme 'org-beautify t)
+;; themes directory (only if not running in terminal!)
+(if (display-graphic-p)
+    (progn
+      (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+      (load-theme 'odersky t)
+      (load-theme 'org-beautify t))
+  (progn
+    ;; For when running in a terminal
+    (require 'terminal-mode-init)))
 
 (require 'transparent-window)
 (load custom-file)
-(require 'terminal-mode-init)
 
 (set-default 'server-socket-dir "~/.emacs.d/server")
 (if (functionp 'window-system)
-  (when (and (window-system)
-    (>= emacs-major-version 24))
-   (server-start)))
+    (when (and (window-system)
+               (>= emacs-major-version 24))
+      (server-start)))
 
 (benchmark-init/deactivate)
