@@ -35,7 +35,8 @@
     (require 'geiser)
     (require 'cmuscheme)
     (setq geiser-active-implementations '(chicken))
-    (setq geiser-mode-start-repl-p t)
+    (setq geiser-chicken-compile-geiser-p nil)
+    ;;(setq geiser-mode-start-repl-p t)
     (define-key scheme-mode-map
       (kbd "C-c C-c") 'run-chicken)
     (define-key scheme-mode-map
