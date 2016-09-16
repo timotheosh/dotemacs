@@ -15,6 +15,7 @@
                                   (elpy-use-ipython)
                                   (setq jedi:complete-on-dot t)))
   (dolist (func '(my-programming-hooks
+                  semantic-mode
                   jedi:setup))          ;; Jedi server for auto-completion
     (add-hook 'python-mode-hook func)))
 (provide 'python-init)
