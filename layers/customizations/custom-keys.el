@@ -1,6 +1,15 @@
 ; Keep the second mouse button from moving the cursor while pasting.
 (global-set-key [mouse-2] 'yank)
 
+
+(defun my/activate-ecb()
+  (interactive)
+  (if (bound-and-true-p ecb-minor-mode)
+      (ecb-toggle-ecb-windows)
+    (progn
+      (ecb-activate)
+      (ecb-toggle-ecb-windows))))
+
 (global-set-key [f1] 'dired)
 ;(global-set-key [f2] 'mu4e)
 (global-set-key [f3] 'shell)
@@ -11,7 +20,7 @@
 ;(global-set-key [f6] 'kill-this-buffer)
 ;(global-set-key [f7] 'make-frame)
 (global-set-key [f9] 'menu-bar-mode)
-(global-set-key [f10] 'ecb-toggle-ecb-windows)
+(global-set-key [f10] 'my/activate-ecb)
 
 ;;  WindowMaker uses f11 and f12 by default
 
