@@ -21,7 +21,7 @@
 ;; Allow for UTF-8 in place of utf-8
 (define-coding-system-alias 'UTF-8 'utf-8)
 
-                                        ; Display clock and line and column numbers.
+;; Display clock and line and column numbers.
 (display-time)
 (line-number-mode 1)
 (column-number-mode 1)
@@ -29,14 +29,21 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-size nil)
 
-                                        ; Color the cursor
+;; Color the cursor
 (set-cursor-color "#98fb98")
-
-                                        ; Hide tool bar
+;; Hide tool bar
 (tool-bar-mode -1)
-
-                                        ; Hide menu bar
+;; Hide menu bar
 (menu-bar-mode -1)
+
+;; Default buffer to open
+(setq initial-buffer-choice
+      '(lambda ()
+         (interactive)
+         (setq buff (get-buffer-create "*text-scratch*"))
+         (switch-to-buffer buff)
+         (text-mode)
+         buff))
 
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
