@@ -12,7 +12,7 @@
             (clisp ("~/programs/bin/ros" "-L" "clisp" "run" "--"))
             (clozure-cl ("~/programs/bin/ros" "-L" "ccl-bin" "run" "--"))
             (cmucl ("~/.nix-profile/bin/lisp" "-quiet"))
-            (ecl ("~/programs/bin/ros" "-L" "ecl" "run" "--" "-q" "--"))
+            (ecl ("~/programs/bin/ecl") :coding-system utf-8-unix)
             (abcl ("~/programs/bin/abcl"))))
     (with-eval-after-load 'lisp-mode-hook
       (progn
