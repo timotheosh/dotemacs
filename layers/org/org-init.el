@@ -6,7 +6,6 @@
          ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb))
   :init
-  (require 'ox-wk)
   (require 'ox-gfm)
   (require 'ox-odt)
   (require 'org-bullets)
