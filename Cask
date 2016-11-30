@@ -151,7 +151,6 @@
 (depends-on "rust-mode")
 (depends-on "s")
 (depends-on "sauron")
-(depends-on "scala-mode2")
 (depends-on "shut-up")
 (depends-on "slime")
 (depends-on "smartparens")
