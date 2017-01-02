@@ -1,5 +1,5 @@
 (use-package racket
-  :mode ("\\.rkt\\'" . racket-mode)
+  :mode ("\\.rkt$" . racket-mode)
   :config
   (add-to-list 'ac-modes 'racket-mode)
   (require 'flymake-racket)
