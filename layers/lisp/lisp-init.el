@@ -4,16 +4,19 @@
            ("\\.ros\\'" . lisp-mode)
            ("\\.lsp\\'" . lisp-mode))
     :init
+    ;; Load roswell
+    (load (expand-file-name "~/.roswell/helper.el"))
+
     (setq slime-contribs '(slime-fancy slime-banner))
-    (setq inferior-lisp-program "~/programs/bin/sbcl")
+    (setq inferior-lisp-program "~/programs/bin/ros -Q run")
     (setq slime-startup-animation t)
     (setq slime-lisp-implementations
-          '((sbcl ("~/programs/bin/sbcl") :coding-system utf-8-unix)
-            (clisp ("~/programs/bin/ros" "-L" "clisp" "run" "--"))
-            (clozure-cl ("~/programs/bin/ros" "-L" "ccl-bin" "run" "--"))
-            (cmucl ("~/.nix-profile/bin/lisp" "-quiet"))
-            (ecl ("~/programs/bin/ecl") :coding-system utf-8-unix)
-            (abcl ("~/programs/bin/abcl"))))
+          '((sbcl ("~/programs/bin/ros" "-L" "sbcl" "-Q" "run") :coding-system utf-8-unix)
+            (clisp ("~/programs/bin/ros" "-L" "clisp" "-Q" "run"))
+            (clozure-cl ("~/programs/bin/ros" "-L" "ccl-bin" "-Q" "run"))
+            (cmucl ("~/programs/bin/ros" "-L" "cmu-bin" "-Q" "run"))
+            (ecl ("~/programs/bin/ros" "-L" "ecl" "-Q" "run") :coding-system utf-8-unix)
+            (abcl ("~/programs/bin/ros" "-L" "abcl-bin" "-Q" "run"))))
     (with-eval-after-load 'lisp-mode-hook
       (progn
         (require 'programming-init)
