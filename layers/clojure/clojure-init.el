@@ -6,10 +6,8 @@
     (require 'smartparens))
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
   (require 'clojure-mode-extra-font-locking)
-  (require 'ac-cider)
   (require 'rainbow-delimiters)
   (eval-after-load 'flycheck '(flycheck-clojure-setup))
-  (add-hook 'clojure-mode-hook 'cider-mode)
 
   ;; This is useful for working with camel-case tokens, like names of
   ;; Java classes (e.g. JavaClassName)
@@ -33,18 +31,8 @@
               (define-clojure-indent (fact 1))
               (define-clojure-indent (facts 1))))
 
-  ;; clojure completion
-  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-  (add-hook 'cider-mode-hook 'ac-cider-setup)
-  (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
   ;; Path to lein for Cider-mode
   (setq cider-lein-command (format "%s/bin/lein" (getenv "HOME")))
-  (eval-after-load "auto-complete"
-    '(progn
-       (add-to-list 'ac-modes 'cider-mode)
-       (add-to-list 'ac-modes 'cider-repl-mode)))
-
-
   (if (string= system-type "cygwin")
       (setq cider-lein-command "~/bin/lein"))
 
@@ -52,12 +40,10 @@
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
 
-  (defun set-auto-complete-as-completion-at-point-function ()
-    (setq completion-at-point-functions '(auto-complete)))
-  (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-  (add-hook 'cider-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-  (add-hook 'cider-repl-mode-hook 'smartparens-strict-mode))
+  (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
+  (add-hook 'cider-repl-mode-hook #'company-mode)
+  (add-hook 'cider-mode-hook #'company-mode)
+  (add-hook 'clojure-mode-hook 'cider-mode))
 ;; NOTE: 4clojure is installed.
 ;; To open a specific problem, use `4clojure-open-question':
 ;; e.g. "M-x 4clojure-open-question RET 2" opens question 2.
