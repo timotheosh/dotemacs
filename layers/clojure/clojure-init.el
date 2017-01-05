@@ -43,7 +43,13 @@
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-mode-hook #'company-mode)
-  (add-hook 'clojure-mode-hook 'cider-mode))
+  (add-hook 'clojure-mode-hook 'cider-mode)
+
+  ;; For figwheel clojurescript projects
+  (setq cider-cljs-lein-repl
+        "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))"))
 ;; NOTE: 4clojure is installed.
 ;; To open a specific problem, use `4clojure-open-question':
 ;; e.g. "M-x 4clojure-open-question RET 2" opens question 2.
