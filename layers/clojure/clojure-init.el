@@ -47,13 +47,14 @@
 
   ;; For figwheel clojurescript projects
   ;;   To set the clojurescript repo back to default, run:
-  ;;    (setq cider-cljs-lein-repl
-  ;;          "(cemerick.piggieback/cljs-repl (cljs.repl.rhino/repl-env))")
+      (setq cider-cljs-lein-repl
+            "(cemerick.piggieback/cljs-repl (cljs.repl.rhino/repl-env))")
   ;; or change with M-x customize-variable <ENTER> cider-cljs-lein-repl
-  (setq cider-cljs-lein-repl
-        "(do (require 'figwheel-sidecar.repl-api)
-           (figwheel-sidecar.repl-api/start-figwheel!)
-           (figwheel-sidecar.repl-api/cljs-repl))"))
+  ;;(setq cider-cljs-lein-repl
+  ;;      "(do (require 'figwheel-sidecar.repl-api)
+  ;;         (figwheel-sidecar.repl-api/start-figwheel!)
+  ;;         (figwheel-sidecar.repl-api/cljs-repl))")
+)
 ;; NOTE: 4clojure is installed.
 ;; To open a specific problem, use `4clojure-open-question':
 ;; e.g. "M-x 4clojure-open-question RET 2" opens question 2.
