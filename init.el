@@ -117,6 +117,7 @@
 (require 'magit-init)
 
 ;; Language modes
+(require 'html-init)       ;; Editing html files
 (require 'elisp-init)      ;; Emacs Lisp
 (require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
