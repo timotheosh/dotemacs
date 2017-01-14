@@ -13,7 +13,6 @@ https://github.com/timotheosh/aws-el.git \
 https://github.com/ensime/ensime-server.git \
 https://github.com/fukamachi/kindly-mode.git \
 https://github.com/timotheosh/cbible.git \
-https://github.com/timotheosh/parinfer-mode.git \
 "
 
 # Run python setup.py on these directories (after they have been
