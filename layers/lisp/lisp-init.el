@@ -35,7 +35,6 @@
     (add-hook 'slime-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'auto-complete-mode)
-    (add-hook 'slime-repl-mode-hook 'smartparens-strict-mode)
     (add-hook 'lisp-mode-hook 'my-programming-hooks)
     (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
     (add-hook 'lisp-mode-hook 'auto-complete-mode)
