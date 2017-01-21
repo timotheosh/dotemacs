@@ -1,5 +1,5 @@
 (use-package web-mode
-  :mode ("\\.html\\'" . python-mode)
+  :mode ("\\.html\\'" . web-mode)
   :bind (("RET" . newline-and-indent))
   :config
   (require 'programming-init)
