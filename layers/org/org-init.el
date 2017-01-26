@@ -22,7 +22,6 @@
    'org-babel-load-languages
    '((python . t)
      (ruby . t)
-     (groovy . t)
      (scala . t)
      (lisp . t)
      (clojure . t)
