@@ -48,6 +48,7 @@ function run-py-setup {
   DIRECTORY=$1
   mkdir -p $DIRECTORY
   pushd $DIRECTORY
+  python setup.py build
   sudo python setup.py install
   popd
 }
