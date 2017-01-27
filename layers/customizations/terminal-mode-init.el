@@ -18,6 +18,15 @@
 
 
 (if (is-in-terminal)
-    (enab-theme 'tango-dark))
+    (progn
+        (define-key function-key-map "\eOA" [up])
+        (define-key function-key-map "\e[A" [up])
+        (define-key function-key-map "\eOB" [down])
+        (define-key function-key-map "\e[B" [down])
+        (define-key function-key-map "\eOC" [right])
+        (define-key function-key-map "\e[C" [right])
+        (define-key function-key-map "\eOD" [left])
+        (define-key function-key-map "\e[D" [left])
+        (enab-theme 'tango-dark)))
 
 (provide 'terminal-mode-init)
