@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(display-time-mode t)
- '(ecb-options-version "2.40")
+ '(ecb-options-version "2.50")
  '(ede-project-directories
    (quote
     ("/home/thawes/src/sources/cbible/include" "/home/thawes/src/sources/cbible/src" "/home/thawes/src/sources/cbible" "/home/hawest/src/sources/AwsConfigMFA" "/home/hawest/src/sources/cl-blog" "/home/hawest/src/sources/cloudformation" "/home/hawest/src/sources/devops" "/home/hawest/src/sources/elasticbrainsurgeon" "/home/hawest/src/sources/hiera-provisioning" "/home/hawest/src/sources/inin-framework" "/home/hawest/src/sources/learnyouahaskell" "/home/hawest/src/sources/llthw" "/home/hawest/src/sources/project-eulor" "/home/hawest/src/sources/provisioning" "/home/hawest/src/sources/re-tools" "/home/hawest/src/sources/SimianArmy" "/home/hawest/src/sources/nixpkgs")))
