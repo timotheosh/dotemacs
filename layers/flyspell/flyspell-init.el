@@ -23,10 +23,12 @@
 
     (global-set-key (kbd "C-x <f8>") 'flyspell-check-next-highlighted-word)
 
+    ;; Flyspell overrides key bindings in places it shouldn't
+    ;; Disabling naughty package for programming.
+    ;; (add-hook 'prog-mode-hook
+    ;;   (lambda ()
+    ;;     (flyspell-prog-(message "message" format-args)ode)))
     (add-hook 'mu4e-compose-mode-hook 'flyspell-mode)
     (add-hook 'text-mode-hook 'flyspell-mode)
-    (add-hook 'Org-mode-hook 'flyspell-mode)
-    (add-hook 'prog-mode-hook
-      (lambda ()
-        (flyspell-prog-mode))))
+    (add-hook 'Org-mode-hook 'flyspell-mode))
 (provide 'flyspell-init)

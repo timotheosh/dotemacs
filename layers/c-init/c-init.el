@@ -2,6 +2,8 @@
 ;; Install cpplint with "pip install cpplint"
 ;;     (yes, cpplint is a python program)
 ;; Be sure clang compiler is on your path for irony-mode
+;; rtags needs to be installed and rdm running for navigation.
+
 (use-package c-mode
   :mode (("\\.c\\'" . c-mode)
 	 ("\\.h\\'" . c-mode)
@@ -12,6 +14,7 @@
 	 ("\\.objc\\'" . objc-mode)
 	 ("\\.m\\'" . objc-mode))
   :init
+  ;; Headers
   (setq gcc-version 5) ;Set the gcc-version in preparing the header-paths below.
   (use-package programming-init
     :init
@@ -41,58 +44,39 @@
             "/usr/include/sword"))
     (setq company-c-headers-path-system my-header-paths))
 
-  ; start flymake-google-cpplint-load
-  (defun my/flymake-google-init()
-    (custom-set-variables
-     '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
-    (require 'flymake-google-cpplint)
-    (flymake-google-cpplint-load))
-
-  (use-package google-c-style
+  ;; Set up rtags
+  (use-package rtags
+    :config
+    ;; Start rtags upon entering a C/C++ file
+    (add-hook
+     'c-mode-common-hook
+     (lambda () (if (not (is-current-file-tramp))
+                    (rtags-start-process-unless-running))))
+    (add-hook
+     'c++-mode-common-hook
+     (lambda () (if (not (is-current-file-tramp))
+                    (rtags-start-process-unless-running))))
+    ;; Flycheck setup
+    (require 'flycheck-rtags)
+    (defun my-flycheck-rtags-setup ()
+      (flycheck-select-checker 'rtags)
+      ;; RTags creates more accurate overlays.
+      (setq-local flycheck-highlighting-mode nil)
+      (setq-local flycheck-check-syntax-automatically nil))
+    ;; c-mode-common-hook is also called by c++-mode
+    (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup)
     :init
-    (add-hook 'c-mode-common-hook 'google-set-c-style)
-    (add-hook 'c-mode-common-hook 'google-make-newline-indent))
-
-  ;; setup GDB
-  (setq
-   ;; use gdb-many-windows by default
-   gdb-many-windows t
-
-   ;; Non-nil means display source file containing the main routine at startup
-   gdb-show-main t
-   )
-
-  ;; CC-mode
-  (add-hook 'c-mode-common-hook
-            '(lambda ()
-               ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
-               (linum-mode 1)
-               (local-set-key [f5] #'compile)
-               (local-set-key [f6] #'gdb)
-               ))
-
-  ;; Sword
-  (setq sword-includes "/usr/include/sword")
-
-  ;; Set key bindings
-  (eval-after-load "helm-gtags"
-    '(progn
-       (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
-       (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
-       (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
-       (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
-       (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-       (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-       (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
-
-  (setq-local ggtags-process-environment "GTAGSLIBPATH=/home/thawes/.gtags")
-
+    (require 'rtags)
+    (rtags-restart-process)
+    (rtags-diagnostics)
+    (rtags-enable-standard-keybindings c-mode-base-map "\C-cr"))
 
   ;; Cling the C++ REPL
   (use-package cling
     :init
     (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/inferior-cling")))
 
+  ;; Set up irony and company-mode for completion.
   (use-package irony
     :init
     ;; Irony mode
@@ -126,6 +110,44 @@
       )
     (add-hook 'irony-mode-hook 'company-mode))
 
+  ;; Google style compliance
+  ;; start flymake-google-cpplint-load
+  (defun my/flymake-google-init()
+    (custom-set-variables
+     '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
+    (require 'flymake-google-cpplint)
+    (flymake-google-cpplint-load))
+
+  (use-package google-c-style
+    :init
+    (add-hook 'c-mode-common-hook 'google-set-c-style)
+    (add-hook 'c-mode-common-hook 'google-make-newline-indent))
+
+  ;; setup GDB
+  (setq
+   ;; use gdb-many-windows by default
+   gdb-many-windows t
+
+   ;; Non-nil means display source file containing the main routine at startup
+   gdb-show-main t
+   )
+
+  ;; CC-mode
+  (add-hook 'c-mode-common-hook
+            '(lambda ()
+               ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
+               (linum-mode 1)
+               (local-set-key [f5] #'compile)
+               (local-set-key [f6] #'gdb)
+               (local-unset-key [67108910])
+               (local-unset-key [67108908])
+               (local-set-key [67108910] ;; Bind key C-.
+                              (quote rtags-find-symbol-at-point))
+               (local-set-key [67108908] ;; Bind key C-,
+                              (quote helm-gtags-find-rtag))
+               ))
+
+
   (add-hook 'c-mode-hook 'my-programming-hooks)
   (add-hook 'c++-mode-hook 'my-programming-hooks)
   (add-hook 'objc-mode-hook 'my-programming-hooks)
@@ -138,9 +160,8 @@
   (add-hook 'c++-mode-hook 'my/flymake-google-init)
   (add-hook 'objc-mode-hook 'my/flymake-google-init)
 
-  (add-hook 'c-mode-hook 'helm-gtags-mode)
-  (add-hook 'c++-mode-hook 'helm-gtags-mode)
-  (add-hook 'objc-mode-hook 'helm-gtags-mode)
+  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+  (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
 
   (add-hook 'c++-mode-hook 'my-irony-mode-hook)
   (add-hook 'c-mode-hook 'my-irony-mode-hook)

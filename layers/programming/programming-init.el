@@ -6,7 +6,7 @@
   (linum-mode 1)
   (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
   (setq tab-width (default-value 'tab-width))
-  (when (derived-mode-p 'c-mode 'c++-mode 'java)
+  (when (derived-mode-p 'java)
     (ggtags-mode 1))
   (column-marker-1 80)
   (column-enforce-mode 1))
