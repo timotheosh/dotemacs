@@ -2,6 +2,7 @@
   :init
   (setq erc-autojoin-channels-alist
         '(("freenode.net"
+           "##aws"
            "##C"
            "##C++-general"
            "#clang"
