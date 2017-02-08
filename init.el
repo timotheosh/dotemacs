@@ -108,6 +108,7 @@
 (require 'my-funcs)
 (require 'unbound)
 (require 'multi-term-init)
+(require 'erc-init)
 
 ;; Programming Utilities
 (require 'minimap-init)
