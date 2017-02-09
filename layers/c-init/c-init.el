@@ -132,12 +132,15 @@
    gdb-show-main t
    )
 
+  ;; Cmake project support
+  (cmake-ide-setup)
+
   ;; CC-mode
   (add-hook 'c-mode-common-hook
             '(lambda ()
                ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
                (linum-mode 1)
-               (local-set-key [f5] #'compile)
+               (local-set-key [f5] #'cmake-ide-compile)
                (local-set-key [f6] #'gdb)
                (local-unset-key [67108910])
                (local-unset-key [67108908])
@@ -146,8 +149,6 @@
                (local-set-key [67108908] ;; Bind key C-,
                               (quote helm-gtags-find-rtag))
                ))
-
-  (cmake-ide-setup)
 
   (add-hook 'c-mode-hook 'my-programming-hooks)
   (add-hook 'c++-mode-hook 'my-programming-hooks)
