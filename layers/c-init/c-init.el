@@ -147,6 +147,7 @@
                               (quote helm-gtags-find-rtag))
                ))
 
+  (cmake-ide-setup)
 
   (add-hook 'c-mode-hook 'my-programming-hooks)
   (add-hook 'c++-mode-hook 'my-programming-hooks)
