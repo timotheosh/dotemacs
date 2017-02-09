@@ -135,12 +135,17 @@
   ;; Cmake project support
   (cmake-ide-setup)
 
+  (defun proper-cmake-compile ()
+    (interactive)
+    (cmake-ide-run-cmake)
+    (cmake-ide-compile))
+
   ;; CC-mode
   (add-hook 'c-mode-common-hook
             '(lambda ()
                ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
                (linum-mode 1)
-               (local-set-key [f5] #'cmake-ide-compile)
+               (local-set-key [f5] #'proper-cmake-compile)
                (local-set-key [f6] #'gdb)
                (local-unset-key [67108910])
                (local-unset-key [67108908])
