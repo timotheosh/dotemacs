@@ -111,7 +111,8 @@
 (require 'erc-init)
 
 ;; Programming Utilities
-(require 'minimap-init)
+;;(require 'minimap-init) ;; Minimap is too annoying. Can't get rid of once
+                          ;; enabled. No other options work.
 (require 'ggtags-init)
 (require 'projectile-init)
 (require 'auto-complete-init)
