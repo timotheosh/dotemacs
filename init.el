@@ -111,7 +111,7 @@
 (require 'erc-init)
 
 ;; Programming Utilities
-(require 'minimap-init)
+;;(require 'minimap-init)
 (require 'ggtags-init)
 (require 'projectile-init)
 (require 'auto-complete-init)
