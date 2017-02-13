@@ -65,5 +65,19 @@
                                (other-window 1)
                                (if (equal (selected-window) ecb-compile-window)
                                    (other-window 1))))))
-    (setq ecb-tip-of-the-day nil)))
+    (setq ecb-tip-of-the-day nil)
+
+    (defun my/activate-ecb()
+      (interactive)
+      (if (bound-and-true-p ecb-minor-mode)
+          (ecb-toggle-ecb-windows)
+        (progn
+          (ecb-activate)
+          (ecb-toggle-ecb-windows))))
+
+    (defun ecb-mode-hook ()
+      "Key binding for starting and stopping ecb mode. Convenient
+for emacs running in terminal."
+      (local-set-key (kbd "C-x x")
+                     'ecb-toggle-ecb-windows))))
 (provide 'ecb-init)

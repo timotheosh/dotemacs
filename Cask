@@ -157,6 +157,7 @@
 (depends-on "slime")
 (depends-on "smartparens")
 (depends-on "sql-indent")
+(depends-on "sr-speedbar")
 (depends-on "sublime-themes")
 (depends-on "swiper")
 (depends-on "test-simple")

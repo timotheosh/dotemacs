@@ -52,7 +52,7 @@
 (require 'use-package-init)
 (require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
 (require 'tramp-init)
-(require 'ecb-init)
+(require 'sr-speedbar-init)
 (require 'yasnippet-init)
 
 ;; Customizations
