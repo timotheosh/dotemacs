@@ -95,6 +95,7 @@
 (depends-on "hy-mode")
 (depends-on "ido-completing-read+")
 (depends-on "iedit")
+(depends-on "impatient-mode")
 (depends-on "inf-groovy")
 (depends-on "inf-ruby")
 (depends-on "irony")
