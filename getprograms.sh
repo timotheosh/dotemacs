@@ -49,7 +49,7 @@ function run-py-setup {
   mkdir -p $DIRECTORY
   pushd $DIRECTORY
   python setup.py build
-  sudo python setup.py install
+  python setup.py install --user
   popd
 }
 
