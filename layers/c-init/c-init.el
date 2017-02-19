@@ -44,33 +44,6 @@
             "/usr/include/sword"))
     (setq company-c-headers-path-system my-header-paths))
 
-  ;; Set up rtags
-  (use-package rtags
-    :config
-    ;; Start rtags upon entering a C/C++ file
-    (add-hook
-     'c-mode-common-hook
-     (lambda () (if (not (is-current-file-tramp))
-                    (rtags-start-process-unless-running))))
-    (add-hook
-     'c++-mode-common-hook
-     (lambda () (if (not (is-current-file-tramp))
-                    (rtags-start-process-unless-running))))
-    ;; Flycheck setup
-    (require 'flycheck-rtags)
-    (defun my-flycheck-rtags-setup ()
-      (flycheck-select-checker 'rtags)
-      ;; RTags creates more accurate overlays.
-      (setq-local flycheck-highlighting-mode nil)
-      (setq-local flycheck-check-syntax-automatically nil))
-    ;; c-mode-common-hook is also called by c++-mode
-    (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup)
-    :init
-    (require 'rtags)
-    (rtags-restart-process)
-    (rtags-diagnostics)
-    (rtags-enable-standard-keybindings c-mode-base-map "\C-cr"))
-
   ;; Cling the C++ REPL
   (use-package cling
     :init
@@ -84,31 +57,38 @@
     (setq irony-user-dir "~/.emacs.d/programs/irony/")
 
     (defun my-irony-mode-hook ()
-      "Enable the hooks in the preferred order: 'yas -> auto-complete -> irony'."
-      ;; if yas is not set before (auto-complete-mode 1), overlays may persist after
-      ;; an expansion.
-      (when (member major-mode '(c++-mode c-mode objc-mode))
-	(irony-mode 1)
-        ; replace the `completion-at-point' and `complete-symbol' bindings in
-        ; irony-mode's buffers by irony-mode's function
-	(define-key irony-mode-map [remap completion-at-point]
-	  'irony-completion-at-point-async)
-	(define-key irony-mode-map [remap complete-symbol]
-	  'irony-completion-at-point-async)))
-
-    ;(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+      (define-key irony-mode-map [remap completion-at-point]
+        'irony-completion-at-point-async)
+      (define-key irony-mode-map [remap complete-symbol]
+        'irony-completion-at-point-async))
 
     (use-package company
       :config
       (eval-after-load 'company
-	'(add-to-list 'company-backends 'company-irony))
-      ;; (optional) adds CC special commands to `company-begin-commands' in order to
-      ;; trigger completion at interesting places, such as after scope operator
-      ;;     std::|
-      ;;  (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands))
-      )
-    (add-hook 'irony-mode-hook 'company-mode))
+	'(add-to-list 'company-backends 'company-irony)))
+
+    (add-hook 'irony-mode-hook
+              '(lambda ()
+                 (my-irony-mode-hook)
+                 (irony-cdb-autosetup-compile-options)
+                 (company-mode))))
+
+  ;; Set up rtags
+  (use-package rtags
+    :init
+    ;; Flycheck setup
+    (use-package flycheck-rtags
+      :init
+      (defun my-flycheck-rtags-setup ()
+        (flycheck-select-checker 'rtags)
+        ;; RTags creates more accurate overlays.
+        (setq-local flycheck-highlighting-mode nil)
+        (setq-local flycheck-check-syntax-automatically nil)))
+    (require 'rtags)
+    (rtags-restart-process)
+    (rtags-diagnostics)
+    (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
+    (add-hook 'rtags-mode-hook 'my-flycheck-rtags-setup))
 
   ;; Google style compliance
   ;; start flymake-google-cpplint-load
@@ -118,10 +98,7 @@
     (require 'flymake-google-cpplint)
     (flymake-google-cpplint-load))
 
-  (use-package google-c-style
-    :init
-    (add-hook 'c-mode-common-hook 'google-set-c-style)
-    (add-hook 'c-mode-common-hook 'google-make-newline-indent))
+  (use-package google-c-style)
 
   ;; setup GDB
   (setq
@@ -140,38 +117,35 @@
     (cmake-ide-run-cmake)
     (cmake-ide-compile))
 
-  ;; CC-mode
-  (add-hook 'c-mode-common-hook
+  (defun my/c-common-hooks ()
+    ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
+    (linum-mode 1)
+    (local-set-key [f5] #'proper-cmake-compile)
+    (local-set-key [f6] #'gdb)
+    (local-unset-key [67108910])
+    (local-unset-key [67108908])
+    (local-set-key [67108910] ;; Bind key C-.
+                   (quote rtags-find-symbol-at-point))
+    (local-set-key [67108908] ;; Bind key C-,
+                   (quote helm-gtags-find-rtag))
+    (rtags-start-process-unless-running)
+    (my-flycheck-rtags-setup)
+    (google-set-c-style)
+    (google-make-newline-indent)
+    (my-programming-hooks)
+    (my/company-c-header-init)
+    (my/flymake-google-init)
+    (irony-mode)
+    (rtags-start-process-unless-running))
+
+  (add-hook 'c-mode-hook
             '(lambda ()
-               ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))
-               (linum-mode 1)
-               (local-set-key [f5] #'proper-cmake-compile)
-               (local-set-key [f6] #'gdb)
-               (local-unset-key [67108910])
-               (local-unset-key [67108908])
-               (local-set-key [67108910] ;; Bind key C-.
-                              (quote rtags-find-symbol-at-point))
-               (local-set-key [67108908] ;; Bind key C-,
-                              (quote helm-gtags-find-rtag))
-               ))
-
-  (add-hook 'c-mode-hook 'my-programming-hooks)
-  (add-hook 'c++-mode-hook 'my-programming-hooks)
-  (add-hook 'objc-mode-hook 'my-programming-hooks)
-
-  (add-hook 'c++-mode-hook 'my/company-c-header-init)
-  (add-hook 'c-mode-hook 'my/company-c-header-init)
-  (add-hook 'objc-mode-hook 'my/company-c-header-init)
-
-  (add-hook 'c-mode-hook 'my/flymake-google-init)
-  (add-hook 'c++-mode-hook 'my/flymake-google-init)
-  (add-hook 'objc-mode-hook 'my/flymake-google-init)
-
-  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
-  (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
-
-  (add-hook 'c++-mode-hook 'my-irony-mode-hook)
-  (add-hook 'c-mode-hook 'my-irony-mode-hook)
-  (add-hook 'objc-mode-hook 'my-irony-mode-hook)
+               (my/c-common-hooks)))
+  (add-hook 'c++-mode-hook
+            '(lambda ()
+               (my/c-common-hooks)))
+  (add-hook 'objc-mode-hook
+            '(lambda ()
+               (my/c-common-hooks)))
   )
 (provide 'c-init)
