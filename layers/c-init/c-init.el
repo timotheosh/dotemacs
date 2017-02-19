@@ -75,10 +75,10 @@
 
   ;; Set up rtags
   (use-package rtags
-    :init
+    :config
     ;; Flycheck setup
     (use-package flycheck-rtags
-      :init
+      :config
       (defun my-flycheck-rtags-setup ()
         (flycheck-select-checker 'rtags)
         ;; RTags creates more accurate overlays.
@@ -129,13 +129,13 @@
     (local-set-key [67108908] ;; Bind key C-,
                    (quote helm-gtags-find-rtag))
     (rtags-start-process-unless-running)
-    (my-flycheck-rtags-setup)
-    (google-set-c-style)
-    (google-make-newline-indent)
     (my-programming-hooks)
     (my/company-c-header-init)
-    (my/flymake-google-init)
     (irony-mode)
+    (google-set-c-style)
+    (google-make-newline-indent)
+    (my/flymake-google-init)
+    (flycheck-mode)
     (rtags-start-process-unless-running))
 
   (add-hook 'c-mode-hook
