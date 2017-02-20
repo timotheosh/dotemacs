@@ -14,8 +14,6 @@
 	 ("\\.objc\\'" . objc-mode)
 	 ("\\.m\\'" . objc-mode))
   :init
-  ;; Headers
-  (setq gcc-version 5) ;Set the gcc-version in preparing the header-paths below.
   (use-package programming-init
     :init
     (require 'smartparens)
@@ -33,12 +31,12 @@
     "Set paths for auto-header."
     (require 'company-c-headers)
     (setq my-header-paths
-          '((format "/usr/include/c++/%s" gcc-version)
-            (format "/usr/include/x86_64-linux-gnu/c++/%s" gcc-version)
-            (format "/usr/include/c++/%s/backward" gcc-version)
-            (format "/usr/lib/gcc/x86_64-linux-gnu/%s/include" gcc-version)
+          '("/usr/include/c++/5"
+            "/usr/include/x86_64-linux-gnu/c++/5"
+            "/usr/include/c++/5/backward"
+            "/usr/lib/gcc/x86_64-linux-gnu/5/include"
             "/usr/local/include"
-            (format "/usr/lib/gcc/x86_64-linux-gnu/%s/include-fixed" gcc-version)
+            "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"
             "/usr/include/x86_64-linux-gnu"
             "/usr/include"
             "/usr/include/sword"))
@@ -60,18 +58,18 @@
       (define-key irony-mode-map [remap completion-at-point]
         'irony-completion-at-point-async)
       (define-key irony-mode-map [remap complete-symbol]
-        'irony-completion-at-point-async))
+        'irony-completion-at-point-async)))
 
-    (use-package company
-      :config
-      (eval-after-load 'company
-	'(add-to-list 'company-backends 'company-irony)))
+  (use-package company
+    :config
+    (add-to-list 'company-backends 'company-irony)
+    (add-to-list 'company-backends 'company-c-headers))
 
-    (add-hook 'irony-mode-hook
-              '(lambda ()
-                 (my-irony-mode-hook)
-                 (irony-cdb-autosetup-compile-options)
-                 (company-mode))))
+  (add-hook 'irony-mode-hook
+            '(lambda ()
+               (my-irony-mode-hook)
+               (irony-cdb-autosetup-compile-options)
+               (company-mode)))
 
   ;; Set up rtags
   (use-package rtags
