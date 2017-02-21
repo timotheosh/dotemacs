@@ -1,12 +1,11 @@
 ;; Enable EDE (Project Management) features
-(load-library "~/.emacs.d/programs/cedet/cedet-devel-load.el")
 
 (defun cedet-init-loader ()
   "Initializes cedet"
   (if (not (featurep 'cedet))
       (load-library "~/.emacs.d/programs/cedet/cedet-devel-load"))
   ;(global-ede-mode 1)
-  (semantic-load-enable-excessive-code-helpers)      ; Enable prototype help and smart completion 
+  (semantic-load-enable-excessive-code-helpers)      ; Enable prototype help and smart completion
   ;;(global-srecode-minor-mode 1)            ; Enable template insertion menu
 
   ;; Semantic
