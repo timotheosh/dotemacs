@@ -8,7 +8,7 @@
   (use-package org-mu4e)
 
   (setq
-   mu4e-mu-binary               "~/programs/bin/mu"
+   mu4e-mu-binary               "~/.nix-profile/bin/mu"
    mu4e-maildir			"~/IninMaildir"	;; top-level Maildir
    mu4e-sent-folder		"/Sent Items"	;; folder for sent messages
    mu4e-drafts-folder	"/Drafts"		;; unfinished messages
