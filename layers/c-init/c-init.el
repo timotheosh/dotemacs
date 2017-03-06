@@ -83,7 +83,9 @@
     :load-path "~/programs/share/emacs/site-lisp/rtags/"
     :config
     ;; Flycheck setup
-    (require 'flycheck-rtags)
+    (use-package flycheck-init
+      :init
+      (require 'flycheck-rtags))
     (defun my-flycheck-rtags-setup ()
       (flycheck-select-checker 'rtags)
       ;; RTags creates more accurate overlays.
