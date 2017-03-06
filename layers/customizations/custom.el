@@ -13,7 +13,7 @@
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
-    (pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package))))
+    (darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -151,23 +151,22 @@
 ;; End Add packages
 
 ;; Themes
-(use-package sublime-themes
-  :ensure t)
-(use-package org-beautify-theme
-  :ensure t)
+(use-package darktooth-theme
+  :ensure t
+  :defer t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; We want themes only if we are in gui. We need to create a hook
 ;; as the themes will need to be activated on a per-case basis, while
 ;; running emacs in server mode.
 (defun on-frame-open (frame)
   (if (not (display-graphic-p frame))
-      (set-face-background 'default "unspecified-bg" frame)
+      (progn
+          (set-face-background 'default "unspecified-bg" frame))
     (progn
-        (load-theme 'odersky t)
+        (load-theme 'darktooth t)
         (load-theme 'org-beautify t))))
 (on-frame-open (selected-frame))
 (add-hook 'after-make-frame-functions 'on-frame-open)
-(require 'terminal-mode-init)
 
 (require 'transparent-window)
 (load custom-file)
