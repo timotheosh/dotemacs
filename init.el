@@ -126,7 +126,7 @@
 (require 'elisp-init)      ;; Emacs Lisp
 (require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
-;;(require 'lisp-init)       ;; Common Lisp
+(require 'lisp-init)       ;; Common Lisp
 ;;(require 'chicken-init)    ;; Chicken Scheme
 ;;(require 'racket-init)     ;; Racket/Scheme
 ;;(require 'python-init)     ;; Python
