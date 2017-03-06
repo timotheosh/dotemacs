@@ -131,7 +131,7 @@
 (require 'racket-init)     ;; Racket/Scheme
 (require 'python-init)     ;; Python
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
-;;(require 'java-init)       ;; Java
+;;(require 'java-init)       ;; Java ; Broken package
 ;;(require 'perl-init)       ;; Perl
 ;;(require 'haskell-init)    ;; Haskell
 ;;(require 'ruby-init)       ;; Ruby
