@@ -1,11 +1,13 @@
 (use-package jdee
+  :ensure t
   :mode ("\\.java\\'" . jdee-mode)
   :config
-  (require 'auto-complete)
+  (require 'auto-complete-init)
   (add-to-list 'ac-modes 'jdee-mode)
-  (require 'jdee)
-  (require 'java-imports)
-  (require 'javadoc-lookup)
+  (use-package java-imports
+    :ensure t)
+  (use-package javadoc-lookup
+    :ensure t)
   (setq jde-complete-add-space-after-method t)
   (dolist (func '(auto-complete-mode)
                 (add-hook 'jdee-mode-hook func)))

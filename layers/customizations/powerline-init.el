@@ -1,4 +1,5 @@
 (use-package powerline
-    :init
-    (powerline-default-theme))
+  :ensure powerline
+  :init
+  (powerline-default-theme))
 (provide 'powerline-init)

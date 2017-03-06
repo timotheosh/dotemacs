@@ -35,9 +35,14 @@
   (require 'cl))
 
 (use-package rust-mode
+  :ensure t
   :mode (("\\.rs\\'" . rust-mode)
          ("\\.toml\\'" . rust-mode))
   :init
+  (use-package cargo
+    :ensure t)
+  (use-package flycheck-rust
+    :ensure t)
   (autoload 'rust-mode "rust-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
   (add-hook 'rust-mode-hook 'cargo-minor-mode))

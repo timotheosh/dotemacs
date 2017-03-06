@@ -1,5 +1,6 @@
 ;; Hy mode
 (use-package hy-mode
+  :ensure t
   :mode ("\\.hy\\'" . hy-mode)
   :config
   (require 'programming-init)

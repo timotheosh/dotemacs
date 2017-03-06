@@ -16,39 +16,43 @@
   :init
   (use-package programming-init
     :init
-    (require 'smartparens)
-    (sp-local-pair '(c-mode)
-                   "{" nil :post-handlers
-                   '((my/create-newline-format "RET")))
-    (sp-local-pair '(c++-mode)
-                   "{" nil :post-handlers
-                   '((my/create-newline-format "RET")))
-    (sp-local-pair '(objc-mode)
-                   "{" nil :post-handlers
-                   '((my/create-newline-format "RET"))))
+    (use-package smartparens
+      :ensure t
+      :config
+      (sp-local-pair '(c-mode)
+                     "{" nil :post-handlers
+                     '((my/create-newline-format "RET")))
+      (sp-local-pair '(c++-mode)
+                     "{" nil :post-handlers
+                     '((my/create-newline-format "RET")))
+      (sp-local-pair '(objc-mode)
+                     "{" nil :post-handlers
+                     '((my/create-newline-format "RET")))))
 
   (defun my/company-c-header-init()
     "Set paths for auto-header."
-    (require 'company-c-headers)
-    (setq my-header-paths
-          '("/usr/include/c++/5"
-            "/usr/include/x86_64-linux-gnu/c++/5"
-            "/usr/include/c++/5/backward"
-            "/usr/lib/gcc/x86_64-linux-gnu/5/include"
-            "/usr/local/include"
-            "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"
-            "/usr/include/x86_64-linux-gnu"
-            "/usr/include"
-            "/usr/include/sword"))
-    (setq company-c-headers-path-system my-header-paths))
+    (use-package company-c-headers
+      :ensure t
+      :config
+      (setq my-header-paths
+            '("/usr/include/c++/5"
+              "/usr/include/x86_64-linux-gnu/c++/5"
+              "/usr/include/c++/5/backward"
+              "/usr/lib/gcc/x86_64-linux-gnu/5/include"
+              "/usr/local/include"
+              "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"
+              "/usr/include/x86_64-linux-gnu"
+              "/usr/include"
+              "/usr/include/sword"))
+      (setq company-c-headers-path-system my-header-paths)))
 
   ;; Cling the C++ REPL
   (use-package cling
-    :init
-    (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/inferior-cling")))
+    :load-path "~/.emacs.d/programs/inferior-cling")
 
   ;; Set up irony and company-mode for completion.
   (use-package irony
+    :ensure t
     :init
     ;; Irony mode
     (setq irony-server-install-prefix "~/.emacs.d/programs/irony/")
@@ -61,6 +65,7 @@
         'irony-completion-at-point-async)))
 
   (use-package company
+    :ensure t
     :config
     (add-to-list 'company-backends 'company-irony)
     (add-to-list 'company-backends 'company-c-headers))
@@ -72,17 +77,18 @@
                (company-mode)))
 
   ;; Set up rtags
+  ;; I am using a later version of rtags because the rdm daemon has
+  ;; log-flush option.
   (use-package rtags
+    :load-path "~/programs/share/emacs/site-lisp/rtags/"
     :config
     ;; Flycheck setup
-    (use-package flycheck-rtags
-      :config
-      (defun my-flycheck-rtags-setup ()
-        (flycheck-select-checker 'rtags)
-        ;; RTags creates more accurate overlays.
-        (setq-local flycheck-highlighting-mode nil)
-        (setq-local flycheck-check-syntax-automatically nil)))
-    (require 'rtags)
+    (require 'flycheck-rtags)
+    (defun my-flycheck-rtags-setup ()
+      (flycheck-select-checker 'rtags)
+      ;; RTags creates more accurate overlays.
+      (setq-local flycheck-highlighting-mode nil)
+      (setq-local flycheck-check-syntax-automatically nil))
     (rtags-restart-process)
     (rtags-diagnostics)
     (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
@@ -93,10 +99,13 @@
   (defun my/flymake-google-init()
     (custom-set-variables
      '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
-    (require 'flymake-google-cpplint)
-    (flymake-google-cpplint-load))
+    (use-package flymake-google-cpplint
+      :ensure t
+      :init
+      (flymake-google-cpplint-load)))
 
-  (use-package google-c-style)
+  (use-package google-c-style
+    :ensure t)
 
   ;; setup GDB
   (setq
@@ -108,12 +117,14 @@
    )
 
   ;; Cmake project support
-  (cmake-ide-setup)
-
-  (defun proper-cmake-compile ()
-    (interactive)
-    (cmake-ide-run-cmake)
-    (cmake-ide-compile))
+  (use-package cmake-ide
+    :ensure t
+    :init
+    (cmake-ide-setup)
+    (defun proper-cmake-compile ()
+      (interactive)
+      (cmake-ide-run-cmake)
+      (cmake-ide-compile)))
 
   (defun my/c-common-hooks ()
     ;;(setq ac-sources (append '(ac-source-semantic) ac-sources))

@@ -2,6 +2,9 @@
 ;; If you want to create a file, visit that file with C-x C-f,
 ;; then enter the text in that file's own buffer.
 
+;; This should load after a theme has been applied. It will change the
+;; theme only if in terminal mode.
+
 (defun is-in-terminal()
   (not (display-graphic-p)))
 
@@ -9,7 +12,7 @@
 
 
 (defadvice load-theme (before theme-dont-propagate activate)
-  (mapcar #'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 (defun enab-theme (theme)
   (if current-t43m3 (disable-theme current-t43m3))

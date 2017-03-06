@@ -1,4 +1,5 @@
 (use-package chicken-scheme
+  :ensure t
   :mode ("\\.scm$" . scheme-mode)
   :config
   (add-to-list 'ac-modes 'scheme-mode)
@@ -32,8 +33,9 @@
             (switch-to-scheme t)
           (message "\"%s\" compiled and loaded." file-name))))
     (require 'programming-init)
-    (require 'geiser)
-    (require 'cmuscheme)
+    (require 'geiser-init)
+    (use-package cmuscheme
+      :ensure t)
     (setq geiser-active-implementations '(chicken))
     (setq geiser-chicken-compile-geiser-p nil)
     ;;(setq geiser-mode-start-repl-p t)

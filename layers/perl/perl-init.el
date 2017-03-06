@@ -8,5 +8,8 @@
               (lambda ()
                 (abbrev-mode t)
                 (cperl-set-style "C++")))
-    (load "pde-load")))
+    (use-package pde
+      :ensure t
+      :init
+      (load "pde-load"))))
 (provide 'perl-init)

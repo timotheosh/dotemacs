@@ -1,8 +1,10 @@
 (use-package racket
+  :ensure racket-mode
   :mode ("\\.rkt$" . racket-mode)
   :config
   (add-to-list 'ac-modes 'racket-mode)
-  (require 'flymake-racket)
+  (use-package flymake-racket
+    :ensure t)
   :init
   (require 'programming-init)
   (dolist (func '(racket-unicode-input-method-enable

@@ -1,4 +1,5 @@
 (use-package python-mode
+  :ensure t
   :mode ("\\.py\\'" . python-mode)
   :bind (("RET" . newline-and-indent)
          ("C-c !" . python-shell-send-buffer)
@@ -6,8 +7,12 @@
   :config
   (require 'programming-init)
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/Pymacs"))
-  (require 'pymacs)
-  (require 'python)
+  (use-package pymacs
+    :ensure t)
+  (use-package python
+    :ensure t)
+  (use-package virtualenvwrapper
+    :ensure t)
   (pymacs-load "ropemacs" "rope-")
   :init
   (with-eval-after-load 'python (progn

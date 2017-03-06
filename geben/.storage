@@ -1,2 +1,0 @@
-((:proxy nil :port 9000 :language :php :fileuri "file:///home/hawest/src/sources/DxGenerator/SegmentProcessor.class.php" :source
-         ("file:///home/hawest/src/sources/DxGenerator/SegmentProcessor.class.php")))

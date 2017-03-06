@@ -6,6 +6,7 @@
 ;; <ENTER>   New line at the next indentation level.
 ;;
 (use-package php-mode
+  :ensure t
   :mode (("\\.php\\'" . php-mode)
          ("\\.php5\\'" . php-mode)
 	 ("\\.inc\\'" . php-mode))
@@ -18,7 +19,8 @@
     (sp-local-pair '(php-mode)
                    "{" nil :post-handlers
                    '((my/create-newline-format "RET"))))
-  (use-package flymake)
+  (use-package flymake
+    :ensure t)
   (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 
   ;;This is the error format for : php -f somefile.php -l
@@ -57,14 +59,15 @@
 
   ;; Debug a simple PHP script. Use geben with xdebug for PHP
   ;; Change the session key my-php-53 to any session key text you like
-  (defun my-php-debug ()
-    "Run current PHP script for debugging with geben"
-    (interactive)
-    (call-interactively 'geben)
-    (shell-command
-     (concat "XDEBUG_CONFIG='idekey=my-php-53' /usr/bin/php "
-             (buffer-file-name) " &"))
-    )
+  (use-package geben-init
+    :config
+    (defun my-php-debug ()
+      "Run current PHP script for debugging with geben"
+      (interactive)
+      (call-interactively 'geben)
+      (shell-command
+       (concat "XDEBUG_CONFIG='idekey=my-php-53' /usr/bin/php "
+               (buffer-file-name) " &"))))
 
   (dolist (func '(my-programming-hooks
                   pear/php-mode-init

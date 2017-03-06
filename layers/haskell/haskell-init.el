@@ -1,8 +1,11 @@
 (use-package haskell-mode
+  :ensure t
   :mode (("\\.has\\'" . haskell-mode)
          ("\\.hs\\'" . haskell-mode))
   :init
-  (add-to-list 'ac-modes 'haskell-mode)
+  (use-package auto-complete-init
+    :config
+    (add-to-list 'ac-modes 'haskell-mode))
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
   (setenv "PATH" (concat "~/.cabal/bin:" (getenv "PATH")))
   (add-to-list 'exec-path "~/.cabal/bin")

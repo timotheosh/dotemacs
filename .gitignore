@@ -1,33 +1,39 @@
-*~
-.#*
-\#*
-*.swp
+# Compiled
 *.elc
-.cask/
-ac-comphist.dat
-emacs24.desktop
-emacs24.lock
-tramp
-session.*
-eshell/
-semanticdb/
-srecode-map.el*
-url/
-.python-environments
-ido.last
+
+# Packaging
 elpa/
-helm-history
-helm-adaptive-history
+
+# Emacs artifacts
+*~
+\#*
+.\#*
+
+# Vi artifacts
+*.swp
+
+# Not wanted in repo
+server/server
+auto-save-list/
 programs/
 yasnippets/yasnippet-licenses/
 yasnippets/yasnippet-snippets/
+semanticdb/
+srecode-map.el*
+helm-history
+helm-adaptive-history
 recentf
+ac-comphist.dat
+tramp
+eshell/
+url/
+.python-environments
+ido.last
 games/
 projectile-bookmarks.eld
 abbrev_defs
 javadoc-cache
 bookmarks
-elpa/
 ac-html-csswatcher/
 .chicken-scheme-symbols-dump.el
 request/

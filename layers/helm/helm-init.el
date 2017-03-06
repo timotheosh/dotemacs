@@ -1,6 +1,8 @@
 ;; Helm config
 (use-package helm
+  :ensure helm
   :init
+  (require 'helm-config)
   (setq helm-ff-transformer-show-only-basename nil
 	helm-adaptive-history-file             "~/.emacs.d/helm-history"
 	helm-yank-symbol-first                 t
@@ -11,6 +13,7 @@
   (autoload 'helm-descbinds      "helm-descbinds" t)
   (autoload 'helm-eshell-history "helm-eshell"    t)
   (autoload 'helm-esh-pcomplete  "helm-eshell"    t)
+  (helm-adaptive-mode t)
 
   (global-set-key (kbd "C-h a")    #'helm-apropos)
   (global-set-key (kbd "C-h i")    #'helm-info-emacs)
@@ -30,25 +33,21 @@
   (global-set-key (kbd "M-y")     #'helm-show-kill-ring)
   (global-set-key (kbd "M-s o")   #'helm-swoop)
   (global-set-key (kbd "M-s /")   #'helm-multi-swoop)
-
-  (require 'helm-config)
-					;(helm-mode t)
-  (helm-adaptive-mode t)
-
   (global-set-key (kbd "C-x c!")   #'helm-calcul-expression)
   (global-set-key (kbd "C-x c:")   #'helm-eval-expression-with-eldoc)
   (define-key helm-map (kbd "M-o") #'helm-previous-source)
-
   (global-set-key (kbd "M-s s")   #'helm-ag)
 
-  (require 'helm-projectile)
-  (setq helm-projectile-sources-list (cons 'helm-source-projectile-files-list
-					   (remove 'helm-source-projectile-files-list
-						   helm-projectile-sources-list)))
-  (helm-projectile-on)
+  (use-package helm-projectile
+    :ensure t
+    :config
+    (setq helm-projectile-sources-list (cons 'helm-source-projectile-files-list
+                                             (remove 'helm-source-projectile-files-list
+                                                     helm-projectile-sources-list)))
+    (helm-projectile-on)
 
-  (define-key projectile-mode-map (kbd "C-c p /")
-    #'(lambda ()
-	(interactive)
-	(helm-ag (projectile-project-root)))))
+    (define-key projectile-mode-map (kbd "C-c p /")
+      #'(lambda ()
+          (interactive)
+          (helm-ag (projectile-project-root))))))
 (provide 'helm-init)

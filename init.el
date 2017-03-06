@@ -1,4 +1,4 @@
-;; Set up load paths
+;; dotemacs
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -6,17 +6,15 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Libraries. Packages that get used more than one place. WARNING: No
+;; consistent use, yet.
+(let ((default-directory  "~/.emacs.d/libraries/"))
+  (normal-top-level-add-subdirs-to-load-path))
+;; Configuration for specific modes
 (let ((default-directory  "~/.emacs.d/layers/"))
   (normal-top-level-add-subdirs-to-load-path))
-(push (expand-file-name "~/.emacs.d/libraries") load-path)
+;; Third-party packages, usually found in github and other sundry places.
 (push (expand-file-name "~/.emacs.d/programs") load-path)
-(push (expand-file-name "~/programs/share/emacs/site-lisp/rtags/") load-path)
-(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/") load-path)
-(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e") load-path)
-(require 'packages-init)
-(require 'benchmark-init)
-
-(benchmark-init/activate)
 
 ;; Some importtant emacs configuration(s)
 (setq max-lisp-eval-depth 500)  ;; default is 500
@@ -56,9 +54,11 @@
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
+(require 'packages-init)
+;; Add packages here
 ;; Initial packages
-(require 'use-package-init)
-(require 'cedet-init)         ;; Gets loaded since we are using the latest CEDET.
+(require 'paradox-init)
+(require 'cedet-init)
 (require 'tramp-init)
 (require 'sr-speedbar-init)
 (require 'yasnippet-init)
@@ -73,12 +73,11 @@
 (require 'cbible-init)
 
 (setq user-full-name "Tim Hawes")
-
+;; Mu4e Email
 (if (string= system-name "scotus")
     (progn
-                                        ; Email and user's name.
+      ;; Email and user's name.
       (setq user-mail-address "Tim.Hawes@inin.com")
-
       (setq message-send-mail-function 'smtpmail-send-it
             smtpmail-starttls-credentials '(("smtp.office365.com" 587 nil nil))
             smtpmail-auth-credentials '("~/.netrc")
@@ -88,10 +87,9 @@
             smtpmail-local-domain "inin.com"
             smtpmail-queue-mail nil
             smtpmail-queue-dir "~/IninMaildir/queue/cur")
-      ;; Mail
       (require 'mu4e-work-init))
   (progn
-                                        ; Email and user's name.
+    ;; Email and user's name.
     (setq user-mail-address "tim@easyfreeunix.com")
 
     (setq message-send-mail-function 'smtpmail-send-it
@@ -103,11 +101,7 @@
           smtpmail-local-domain "althusius.net"
           smtpmail-queue-mail nil
           smtpmail-queue-dir "~/Maildir/INBOX.Queue/cur")
-    ;; Mail
     (require 'mu4e-init)))
-
-
-
 
 ;; General Utilities
 (require 'flyspell-init)
@@ -125,6 +119,7 @@
 (require 'projectile-init)
 (require 'auto-complete-init)
 (require 'magit-init)
+(require 'ansible-init)
 
 ;; Language modes
 (require 'html-init)       ;; Editing html files
@@ -136,49 +131,29 @@
 (require 'racket-init)     ;; Racket/Scheme
 (require 'python-init)     ;; Python
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
-(require 'java-init)       ;; Java
+;;(require 'java-init)       ;; Java ; Broken package
 (require 'perl-init)       ;; Perl
 (require 'haskell-init)    ;; Haskell
 (require 'ruby-init)       ;; Ruby
 (require 'clojure-init)    ;; Clojure
+(require 'rust-init)
 
 ;; File Formats
 (require 'edi-init)
 (require 'json-init)
 
-;; Amazon AWS
-;;(require 'aws-el-init)
-
 ;; Reading
 (require 'kindly-init)
 
-                                        ;(load-library "auto-complete-init")
-                                        ;(load-library "multi-web-mode-init")
-                                        ;(load-library "sql-init")
-                                        ;(load-library "yaml-init")
-                                        ;(load-library "geben-init")
-;;(load-library "etags-init")
-;;(load-library "etags-table-init")
-                                        ;(load-library "puppet-init")
-                                        ;(load-library "nix-init")
-                                        ;(load-library "emacsclient-init")
-                                        ;(load-library "cmake-init")
-                                        ;(load-library "diatheke-init")
-                                        ;(load-library "function-args-init")
-                                        ;(load-library "graphiz-init")
+;; Writing
+(require 'input-init) ; For Greek and Hebrew.
+;; End Add packages
 
-;; Save desktop on exit, load saved desktop on startup.
-                                        ;(setq desktop-dirname             "~/.emacs.d/desktop/"
-                                        ;  desktop-base-file-name      "emacs24.desktop"
-                                        ;  desktop-base-lock-name      "emacs24.lock"
-                                        ;  desktop-path                (list desktop-dirname)
-                                        ;  desktop-save                t
-                                        ;  desktop-files-not-to-save   "^$" ;reload tramp paths
-                                        ;  desktop-load-locked-desktop nil
-                                        ;)
-                                        ;(desktop-save-mode 1)
-
-;; Themes directory
+;; Themes
+(use-package sublime-themes
+  :ensure t)
+(use-package org-beautify-theme
+  :ensure t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; We want themes only if we are in gui. We need to create a hook
 ;; as the themes will need to be activated on a per-case basis, while
@@ -191,6 +166,7 @@
         (load-theme 'org-beautify t))))
 (on-frame-open (selected-frame))
 (add-hook 'after-make-frame-functions 'on-frame-open)
+(require 'terminal-mode-init)
 
 (require 'transparent-window)
 (load custom-file)
@@ -200,5 +176,3 @@
     (when (and (window-system)
                (>= emacs-major-version 24))
       (server-start)))
-
-(benchmark-init/deactivate)

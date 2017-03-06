@@ -20,16 +20,14 @@
     (with-eval-after-load 'lisp-mode-hook
       (progn
         (require 'programming-init)
-        (require 'ac-slime)
-	(add-to-list 'ac-modes 'slime-repl-mode)
-        ;(defun my:slime-eval-last-expression()
-        ;    (unless (slime-connected-p)
-        ;        (save-excursion (slime)))
-        ;    (slime-eval-last-expression))
-        ;(add-hook 'lisp-mode-hook (lambda ()
-        ;    (local-set-key (kbd "C-c C-c") #'my:slime-eval-last-expression)))
-
-        (slime-setup)))
+        (use-package ac-slime
+          :ensure t
+          :config
+          (add-to-list 'ac-modes 'slime-repl-mode))
+        (use-package slime
+          :ensure t
+          :init
+          (slime-setup))))
     ; Some hooks
     (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
     (add-hook 'slime-mode-hook 'set-up-slime-ac)
@@ -42,5 +40,5 @@
     ;; Hyperspec lookup
     ;; open CL REPL and execute: (ql:quickload "clhs")
     ;; Then follow instructions.
-    (load "/home/thawes/programs/share/quicklisp/clhs-use-local.el" t))
+    (load "/home/thawes/.roswell/lisp/quicklisp/clhs-use-local.el" t))
 (provide 'lisp-init)

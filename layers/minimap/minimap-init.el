@@ -1,15 +1,17 @@
 ;; Setting up the minimap
 ;;;###autoload
-(defun minimap-toggle ()
-  "Toggle minimap for current buffer."
-  (interactive)
-  (if (or (not (boundp 'minimap-bufname))
-          (null minimap-bufname))
-      (minimap-create)
-    (minimap-kill)))
-
 (use-package minimap
+  :ensure minimap
+  :defer t
   :bind ("<f7>" . minimap-toggle)
+  :config
+  (defun minimap-toggle ()
+    "Toggle minimap for current buffer."
+    (interactive)
+    (if (or (not (boundp 'minimap-bufname))
+            (null minimap-bufname))
+        (minimap-create)
+      (minimap-kill)))
   :init
   (require 'minimap)
   (custom-set-variables

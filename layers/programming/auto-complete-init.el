@@ -1,5 +1,6 @@
 ;; Auto-complete
 (use-package auto-complete
+  :ensure t
   :init
   (require 'auto-complete-config)
 

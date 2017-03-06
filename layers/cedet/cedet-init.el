@@ -20,4 +20,5 @@
     (semanticdb-enable-gnu-global-databases 'c++-mode)
     (semanticdb-enable-gnu-global-databases 'objc-mode)
     (semanticdb-enable-gnu-global-databases 'lisp-mode)))
+(cedet-init-loader)
 (provide 'cedet-init)

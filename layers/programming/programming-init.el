@@ -8,8 +8,14 @@
   (setq tab-width (default-value 'tab-width))
   (when (derived-mode-p 'java)
     (ggtags-mode 1))
-  (column-marker-1 80)
-  (column-enforce-mode 1))
+  (use-package column-marker
+    :ensure t
+    :config
+    (column-marker-1 80))
+  (use-package column-enforce-mode
+    :ensure t
+    :config
+    (column-enforce-mode 1)))
 
 ;; Key for jumping from begining to end parens and brackets.
 ;; <backtab> is Shift-tab

@@ -35,6 +35,7 @@
   (require 'cl))
 
 (use-package magit
+  :ensure t
   :init
   (defun magit-push-arguments-maybe-upstream (magit-push-popup-fun &rest args)
     "Enable --set-upstream switch if there isn't a current upstream."
@@ -46,7 +47,5 @@
 
   ;; NOTE: requires ido-completing-read+
   (setq magit-completing-read-function #'magit-ido-completing-read))
-
-
 (provide 'magit-init)
 ;;; magit-init.el ends here
