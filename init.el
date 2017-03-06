@@ -125,7 +125,7 @@
 ;;(require 'haskell-init)    ;; Haskell
 ;;(require 'ruby-init)       ;; Ruby
 ;;(require 'clojure-init)    ;; Clojure
-
+(require 'rust-init)
 
 ;; File Formats
 (require 'edi-init)
