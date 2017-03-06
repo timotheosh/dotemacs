@@ -113,7 +113,7 @@
 ;; Language modes
 (require 'html-init)       ;; Editing html files
 (require 'elisp-init)      ;; Emacs Lisp
-;;(require 'c-init)          ;; C/C++ and ObjC
+(require 'c-init)          ;; C/C++ and ObjC
 ;;(require 'php-init)        ;; PHP
 ;;(require 'lisp-init)       ;; Common Lisp
 ;;(require 'chicken-init)    ;; Chicken Scheme
