@@ -5,6 +5,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flymake-google-cpplint-command "/usr/local/bin/cpplint")
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-tags-on-save t)
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
