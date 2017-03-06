@@ -1,4 +1,6 @@
 (use-package org-mode
+  :ensure org
+  :pin org
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -6,10 +8,18 @@
          ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb))
   :init
-  (require 'ox-gfm)
+  (use-package ox-gfm
+    :ensure t)
+  (use-package org-bullets
+    :ensure t)
+  ;; Comes with org
   (require 'ox-odt)
-  (require 'org-bullets)
-  (require 'ox-confluence)
+
+  (use-package org-plus-contrib
+    :ensure t
+    :pin org
+    :init
+    (require 'ox-confluence))
 
   ;; Remove html validation link
   (setq org-html-validation-link nil)
