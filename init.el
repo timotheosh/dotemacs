@@ -129,8 +129,8 @@
 (require 'lisp-init)       ;; Common Lisp
 (require 'chicken-init)    ;; Chicken Scheme
 (require 'racket-init)     ;; Racket/Scheme
-;;(require 'python-init)     ;; Python
-;;(require 'hy-init)         ;; Hy-mode (Lisp for Python)
+(require 'python-init)     ;; Python
+(require 'hy-init)         ;; Hy-mode (Lisp for Python)
 ;;(require 'java-init)       ;; Java
 ;;(require 'perl-init)       ;; Perl
 ;;(require 'haskell-init)    ;; Haskell
