@@ -134,6 +134,8 @@
 ;; Reading
 (require 'kindly-init)
 
+;; Writing
+(require 'input-init) ; For Greek and Hebrew.
 ;; End Add packages
 
 ;; Themes

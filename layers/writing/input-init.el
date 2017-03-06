@@ -16,3 +16,4 @@
 
 (add-hook 'input-method-activate-hook #'my-change-font-according-to-input-method)
 (add-hook 'input-method-deactivate-hook #'my-switch-to-default-font)
+(provide 'input-init)
