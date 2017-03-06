@@ -1,10 +1,21 @@
+;; dotemacs
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
 (package-initialize)
+
+;; Libraries. Packages that get used more than one place. WARNING: No
+;; consistent use, yet.
+(let ((default-directory  "~/.emacs.d/libraries/"))
+  (normal-top-level-add-subdirs-to-load-path))
+;; Configuration for specific modes
 (let ((default-directory  "~/.emacs.d/layers/"))
   (normal-top-level-add-subdirs-to-load-path))
+;; Third-party packages, usually found in github and other sundry places.
 (push (expand-file-name "~/.emacs.d/programs") load-path)
-(push (expand-file-name "~/programs/share/emacs/site-lisp/rtags/") load-path)
-(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/") load-path)
-(push (expand-file-name "~/.nix-profile/share/emacs/site-lisp/mu4e") load-path)
+
 ;; Some importtant emacs configuration(s)
 (setq max-lisp-eval-depth 500)  ;; default is 500
 (setq max-specpdl-size 1000)    ;; default is 1000
@@ -114,7 +125,7 @@
 (require 'html-init)       ;; Editing html files
 (require 'elisp-init)      ;; Emacs Lisp
 (require 'c-init)          ;; C/C++ and ObjC
-;;(require 'php-init)        ;; PHP
+(require 'php-init)        ;; PHP
 ;;(require 'lisp-init)       ;; Common Lisp
 ;;(require 'chicken-init)    ;; Chicken Scheme
 ;;(require 'racket-init)     ;; Racket/Scheme

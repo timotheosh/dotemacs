@@ -77,8 +77,10 @@
                (company-mode)))
 
   ;; Set up rtags
+  ;; I am using a later version of rtags because the rdm daemon has
+  ;; log-flush option.
   (use-package rtags
-    :ensure t
+    :load-path "~/programs/share/emacs/site-lisp/rtags/"
     :config
     ;; Flycheck setup
     (require 'flycheck-rtags)
