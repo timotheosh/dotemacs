@@ -6,15 +6,23 @@
          ("C-c |" . python-shell-send-buffer))
   :config
   (require 'programming-init)
-  (add-to-list 'load-path (expand-file-name "~/.emacs.d/programs/Pymacs"))
   (use-package pymacs
-    :ensure t)
+    :load-path "programs/Pymacs"
+    :diminish ropemacs-mode
+    :config (pymacs-load "ropemacs" "rope-")
+    :bind (("C-<tab>" . rope-lucky-assist)
+           ("M-." . rope-goto-definition)))
   (use-package python
     :ensure t)
   (use-package virtualenvwrapper
     :ensure t)
-  (pymacs-load "ropemacs" "rope-")
+  (use-package jedi
+    :ensure t
+    :commands jedi:setup)
   :init
+  (use-package elpy
+    :ensure t
+    :commands elpy-enable)
   (with-eval-after-load 'python (progn
                                   (elpy-enable) ;; Our main python module
                                   (elpy-use-ipython)
