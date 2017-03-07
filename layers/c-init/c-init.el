@@ -80,7 +80,7 @@
   ;; I am using a later version of rtags because the rdm daemon has
   ;; log-flush option.
   (use-package rtags
-    :load-path "~/programs/share/emacs/site-lisp/rtags/"
+    :load-path "~/.nix-profile/share/emacs/site-lisp/rtags/"
     :config
     ;; Flycheck setup
     (use-package flycheck-init
