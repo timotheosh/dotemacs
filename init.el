@@ -143,6 +143,9 @@
 (require 'edi-init)
 (require 'json-init)
 
+;; AWS Mode
+(require 'aws-el-init)
+
 ;; Reading
 (require 'kindly-init)
 
