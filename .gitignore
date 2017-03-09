@@ -38,3 +38,4 @@ ac-html-csswatcher/
 .chicken-scheme-symbols-dump.el
 request/
 projectile.cache
+network-security.data

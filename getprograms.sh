@@ -7,11 +7,12 @@ https://github.com/pinard/Pymacs.git \
 # Repos that just need to be retrieved.
 repos=" \
 https://github.com/emacsmirror/edi-mode.git \
-https://github.com/timotheosh/inferior-cling.git \
 https://github.com/python-rope/ropemacs.git \
-https://github.com/timotheosh/aws-el.git \
 https://github.com/ensime/ensime-server.git \
 https://github.com/fukamachi/kindly-mode.git \
+https://github.com/wallyqs/ob-racket.git \
+https://github.com/timotheosh/inferior-cling.git \
+https://github.com/timotheosh/aws-el.git \
 https://github.com/timotheosh/cbible.git \
 "
 

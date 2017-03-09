@@ -14,6 +14,8 @@
     :ensure t)
   ;; Comes with org
   (require 'ox-odt)
+  ;; getprograms retrieves this from git
+  (require 'ob-rocket)
 
   (use-package org-plus-contrib
     :ensure t
@@ -40,6 +42,7 @@
      (emacs-lisp . t)
      (shell . t)
      (C . t)
+     (racket . t)
    ))
 
   (setq auto-insert-alist
