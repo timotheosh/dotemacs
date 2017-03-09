@@ -5,6 +5,8 @@
   (add-to-list 'ac-modes 'racket-mode)
   (use-package flymake-racket
     :ensure t)
+  (use-package dr-racket-like-unicode
+    :ensure dr-racket-like-unicode)
   :init
   (require 'programming-init)
   (dolist (func '(racket-unicode-input-method-enable
@@ -18,5 +20,6 @@
                       (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
                 (add-hook 'racket-mode-hook func)))
   (dolist (func '(racket-unicode-input-method-enable)
+                (dr-racket-like-unicode-mode)
                 (add-hook 'racket-repl-mode-hook func))))
 (provide 'racket-init)
