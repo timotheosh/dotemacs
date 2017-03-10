@@ -39,6 +39,19 @@ function get_cedet {
   fi
 }
 
+function install_powerline_fonts {
+  DIRECTORY=$HOME/.local/share/fonts
+  TEMP=/tmp/${USER}-powerline-font-install
+  if [[ ! -e $DIRECTORY/Ubuntu\ Mono\ derivative\ Powerline.ttf ]];then
+    rm -rf ${TEMP}
+    git clone https://github.com/powerline/fonts.git ${TEMP}
+    pushd ${TEMP}
+    ./install.sh
+    popd
+    rm -rf ${TMP}
+  fi
+}
+
 function gitclone {
   DIRECTORY=$1
   REPO=$2
@@ -79,6 +92,9 @@ function directoryname {
 
 # Install cedet
 get_cedet
+
+# Install powerline patch fonts
+install_powerline_fonts
 
 for x in $repos;do
   DIR=programs/$(directoryname $x)
