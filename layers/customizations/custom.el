@@ -15,13 +15,15 @@
    (quote
     (dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
  '(paradox-automatically-star t)
- '(powerline-default-separator (quote contour)))
+ '(powerline-default-separator (quote contour))
+ '(powerline-height 18))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background nil))))
+ '(mode-line-buffer-id ((t (:weight normal :family "Ubuntu Mono"))))
  '(mode-line-buffer-id-inactive ((t (:family "Ubuntu Mono"))))
  '(powerline-active1 ((t (:background "#504945" :family "Ubuntu Mono"))))
  '(powerline-active2 ((t (:background "#3C3836" :family "Ubuntu Mono"))))
