@@ -38,9 +38,10 @@
   :defer t
   :load-path "programs/aws-el/"
   :init
+  (use-package epc
+    :ensure t)
   (require 'aws-el))
 
 
 (provide 'aws-el-init)
 ;;; aws-el-init.el ends here
-
