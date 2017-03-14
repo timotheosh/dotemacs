@@ -142,6 +142,7 @@
 ;; File Formats
 (require 'edi-init)
 (require 'json-init)
+(require 'yaml-init)
 
 ;; AWS Mode
 (require 'aws-el-init)

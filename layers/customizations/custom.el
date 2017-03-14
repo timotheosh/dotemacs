@@ -13,10 +13,11 @@
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
-    (impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
+    (yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
  '(paradox-automatically-star t)
  '(powerline-default-separator (quote contour))
- '(powerline-height 18))
+ '(powerline-height 18)
+ '(safe-local-variable-values (quote ((eval ansible 1)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
