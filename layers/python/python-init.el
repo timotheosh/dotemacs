@@ -26,6 +26,7 @@
   (with-eval-after-load 'python (progn
                                   (elpy-enable) ;; Our main python module
                                   (elpy-use-ipython)
+                                  (setq elpy-dedicated-shells t)
                                   (setq jedi:complete-on-dot t)))
   (dolist (func '(my-programming-hooks
                   semantic-mode
