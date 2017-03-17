@@ -1,9 +1,16 @@
 (use-package chicken-scheme
   :ensure t
   :mode ("\\.scm$" . scheme-mode)
+  :bind (("C-c C-q m" . quack-view-manual)
+         ("C-c C-q s" . quack-view-srfi)
+         ("C-c C-q t" . quack-tidy-buffer))
   :config
   (add-to-list 'ac-modes 'scheme-mode)
   (add-to-list 'ac-modes 'geiser-mode)
+  (use-package flymake-racket
+    :ensure t
+    :config
+    (add-hook 'scheme-mode-hook 'flymake-racket-load))
   :init
   (progn
     (defun scheme-load-current-file (&optional switch)

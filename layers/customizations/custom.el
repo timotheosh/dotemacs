@@ -13,7 +13,7 @@
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
-    (persp-projectile perspective yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
+    (quack yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
  '(paradox-automatically-star t)
  '(powerline-default-separator (quote contour))
  '(powerline-height 18)
