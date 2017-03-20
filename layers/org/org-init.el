@@ -64,15 +64,39 @@
   (setq org-agenda-files (file-expand-wildcards "~/org/GTD/*.org"))
 
   (setq org-capture-templates
-        `(
-          ("t" "Todo" entry (file+datetree "~/org/GTD/newgtd.org" "Tasks")
+        `(("h" "Home Templates")
+          ("ht" "Todo" entry (file+datetree "~/org/GTD/home-gtd.org" "Tasks")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("j" "Journal" entry (file+datetree "~/org/journal.org")
-           "* %?\nEntered on %U\n  %i\n  %a")))
+          ("hj" "Journal" entry (file+datetree "~/org/journal.org")
+           "* %?\nEntered on %U\n  %i\n  %a")
+          ("w" "Work Templates")
+          ("wt" "Todo" entry (file+datetree "~/org/GTD/work-gtd.org" "Tasks")
+           "* TODO %?\nEntered on %U\n  %i\n  %a")
+          ("wT" "Training" entry (file+datetree "~/org/GTD/work-gtd.org" "Training")
+           "* TODO %?\nEntered on %U\n  %i\n  %a")
+          ("wk" "Kafka" entry (file+datetree "~/org/GTD/work-gtd.org" "Kafka")
+           "* TODO %?\nEntered on %U\n  %i\n  %a")
+          ("wz" "Zookeeper" entry (file+datetree "~/org/GTD/work-gtd.org" "Zookeeper")
+           "* TODO %?\nEntered on %U\n  %i\n  %a")
+          ("wm" "Tokumx" entry (file+datetree "~/org/GTD/work-gtd.org" "Tokumx")
+           "* TODO %?\nEntered on %U\n  %i\n  %a")
+
+          ))
 
   (dolist (func '((lambda ()
                     (set-fill-column 80)
                     (turn-on-auto-fill))
                   org-bullets-mode))
-    (add-hook 'org-mode-hook func)))
+    (add-hook 'org-mode-hook func))
+
+  (use-package org-projectile
+  :bind (("C-c n p" . org-projectile:project-todo-completing-read)
+         ("C-c c" . org-capture))
+  :ensure t
+  :config
+  (progn
+    (setq org-projectile:projects-file
+          "~/org/GTD/code-projects.org")
+    (setq org-agenda-files (append org-agenda-files (org-projectile:todo-files)))
+    (add-to-list 'org-capture-templates (org-projectile:project-todo-entry "p")))))
 (provide 'org-init)
