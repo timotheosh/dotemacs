@@ -17,7 +17,6 @@
   (require 'programming-init)
   (add-to-list 'ac-modes 'racket-mode)
   (add-hook 'racket-mode-hook 'auto-complete-mode)
-  (add-hook 'racket-mode-hook 'racket-unicode-input-method-enable)
   (add-hook 'racket-mode-hook 'flymake-racket-load)
   (add-hook 'racket-mode-hook 'my-programming-hooks)
   (add-hook 'racket-mode-hook
@@ -26,6 +25,5 @@
                 (kbd "C-c r") 'racket-run)
               (define-key racket-mode-map
                 (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
-  (add-hook 'racket-repl-mode-hook 'racket-unicode-input-method-enable)
   (add-hook 'racket-repl-mode-hook 'dr-racket-like-unicode-mode))
 (provide 'racket-init)
