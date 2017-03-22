@@ -40,6 +40,7 @@
 
   (use-package helm-projectile
     :ensure t
+    :bind (("<f6>" . helm-projectile-find-file))
     :config
     (setq helm-projectile-sources-list (cons 'helm-source-projectile-files-list
                                              (remove 'helm-source-projectile-files-list
