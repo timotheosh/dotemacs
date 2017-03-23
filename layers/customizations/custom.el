@@ -17,6 +17,7 @@
  '(paradox-automatically-star t)
  '(powerline-default-separator (quote contour))
  '(powerline-height 18)
+ '(quack-default-program "racket")
  '(safe-local-variable-values (quote ((eval ansible 1)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
