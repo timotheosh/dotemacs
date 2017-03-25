@@ -17,18 +17,17 @@
             (cmucl ("~/programs/bin/ros" "-L" "cmu-bin" "-Q" "run"))
             (ecl ("~/programs/bin/ros" "-L" "ecl" "-Q" "run") :coding-system utf-8-unix)
             (abcl ("~/programs/bin/ros" "-L" "abcl-bin" "-Q" "run"))))
-    (with-eval-after-load 'lisp-mode-hook
-      (progn
-        (require 'programming-init)
-        (use-package ac-slime
-          :ensure t
-          :config
-          (add-to-list 'ac-modes 'slime-repl-mode))
-        (use-package slime
-          :ensure t
-          :init
-          (slime-setup))))
-    ; Some hooks
+
+    (require 'programming-init)
+    (use-package ac-slime
+      :ensure t
+      :init
+      (add-to-list 'ac-modes 'slime-repl-mode))
+    (use-package slime
+      :ensure t
+      :init
+      (slime-setup))
+    ;; Some hooks
     (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
     (add-hook 'slime-mode-hook 'set-up-slime-ac)
     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
