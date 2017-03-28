@@ -15,6 +15,8 @@
   (use-package quack
     :ensure t)
   (require 'programming-init)
+  (add-hook 'racket-mode-hook 'smartparens-strict-mode)
+
   (add-to-list 'ac-modes 'racket-mode)
   (add-hook 'racket-mode-hook 'auto-complete-mode)
   (add-hook 'racket-mode-hook 'flymake-racket-load)
@@ -25,5 +27,10 @@
                 (kbd "C-c r") 'racket-run)
               (define-key racket-mode-map
                 (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
-  (add-hook 'racket-repl-mode-hook 'dr-racket-like-unicode-mode))
+  (add-hook 'racket-repl-mode-hook 'dr-racket-like-unicode-mode)
+  (use-package parinfer
+    :ensure t
+    :init
+    (add-hook 'racket-mode-hook 'parinfer-mode)
+    (add-hook 'racket-repl-mode-hook 'parinfer-mode)))
 (provide 'racket-init)

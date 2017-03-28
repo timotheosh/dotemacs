@@ -14,5 +14,10 @@
   (dolist (func '(my-programming-hooks
                   smartparens-strict-mode
                   rainbow-delimiters-mode))
-    (add-hook 'hy-mode-hook func)))
+    (add-hook 'hy-mode-hook func))
+  (use-package parinfer
+    :ensure t
+    :init
+    (add-hook 'racket-mode-hook 'parinfer-mode)
+    (add-hook 'racket-repl-mode-hook 'parinfer-mode)))
 (provide 'hy-init)

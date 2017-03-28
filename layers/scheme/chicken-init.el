@@ -40,6 +40,7 @@
             (switch-to-scheme t)
           (message "\"%s\" compiled and loaded." file-name))))
     (require 'programming-init)
+    (add-hook 'scheme-mode-hook 'smartparens-strict-mode)
     (require 'geiser-init)
     (use-package cmuscheme
       :ensure t)
@@ -53,5 +54,10 @@
     (define-key scheme-mode-map
       (kbd "C-c C-k") 'scheme-compile-current-file)
     (add-hook 'scheme-mode-hook 'my-programming-hooks)
-    (add-hook 'scheme-mode-hook 'geiser-mode)))
+    (add-hook 'scheme-mode-hook 'geiser-mode)
+    (use-package parinfer
+      :ensure t
+      :init
+      (add-hook 'scheme-mode-hook 'parinfer-mode)
+      (add-hook 'gieser-mode-hook 'parinfer-mode))))
 (provide 'chicken-init)

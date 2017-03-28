@@ -104,8 +104,4 @@
                          (or (sp--org-skip-markup ms mb me)
                              (not (sp-point-in-string-or-comment))))
                         (t (not (sp-point-in-string-or-comment))))))))
-
-(add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
-(add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
-
 (provide 'programming-init)

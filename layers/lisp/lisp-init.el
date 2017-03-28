@@ -4,6 +4,9 @@
            ("\\.ros\\'" . lisp-mode)
            ("\\.lsp\\'" . lisp-mode))
     :init
+    (require 'programming-init)
+    (add-hook 'lisp-mode-hook 'smartparens-strict-mode)
+
     ;; Load roswell
     (load (expand-file-name "~/.roswell/helper.el"))
 
@@ -35,6 +38,12 @@
     (add-hook 'lisp-mode-hook 'my-programming-hooks)
     (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
     (add-hook 'lisp-mode-hook 'auto-complete-mode)
+
+    (use-package parinfer
+      :ensure t
+      :init
+      (add-hook 'lisp-mode-hook 'parinfer-mode)
+      (add-hook 'slime-repl-mode-hook 'parinfer-mode))
 
     ;; Hyperspec lookup
     ;; open CL REPL and execute: (ql:quickload "clhs")
