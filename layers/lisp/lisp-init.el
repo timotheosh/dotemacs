@@ -42,8 +42,7 @@
     (use-package parinfer
       :ensure t
       :init
-      (add-hook 'lisp-mode-hook 'parinfer-mode)
-      (add-hook 'slime-repl-mode-hook 'parinfer-mode))
+      (add-hook 'lisp-mode-hook 'parinfer-mode))
 
     ;; Hyperspec lookup
     ;; open CL REPL and execute: (ql:quickload "clhs")
