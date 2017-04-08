@@ -39,10 +39,10 @@
     (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
     (add-hook 'lisp-mode-hook 'auto-complete-mode)
 
-    (use-package parinfer
+    (use-package aggressive-indent
       :ensure t
       :init
-      (add-hook 'lisp-mode-hook 'parinfer-mode))
+      (add-hook 'lisp-mode-hook 'aggressive-indent-mode))
 
     ;; Hyperspec lookup
     ;; open CL REPL and execute: (ql:quickload "clhs")

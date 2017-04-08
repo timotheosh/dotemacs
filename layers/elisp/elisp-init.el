@@ -3,12 +3,12 @@
   :init
   (require 'programming-init)
   (add-hook 'emacs-lisp-mode-hook 'auto-complete-mode)
-  (use-package parinfer
+  (use-package aggressive-indent
     :ensure t)
   (dolist (func '(my-programming-hooks
                   eldoc-mode
                   flyspell-prog-mode
                   smartparens-strict-mode
-                  parinfer-mode))
+                  aggressive-indent-mode))
     (add-hook 'emacs-lisp-mode-hook func)))
 (provide 'elisp-init)

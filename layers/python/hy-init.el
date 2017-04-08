@@ -15,9 +15,9 @@
                   smartparens-strict-mode
                   rainbow-delimiters-mode))
     (add-hook 'hy-mode-hook func))
-  (use-package parinfer
+  (use-package aggressive-indent
     :ensure t
     :init
-    (add-hook 'racket-mode-hook 'parinfer-mode)
-    (add-hook 'racket-repl-mode-hook 'parinfer-mode)))
+    (add-hook 'racket-mode-hook 'aggressive-indent-mode)
+    (add-hook 'racket-repl-mode-hook 'aggressive-indent-mode)))
 (provide 'hy-init)

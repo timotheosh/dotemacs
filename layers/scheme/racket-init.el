@@ -28,9 +28,9 @@
               (define-key racket-mode-map
                 (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
   (add-hook 'racket-repl-mode-hook 'dr-racket-like-unicode-mode)
-  (use-package parinfer
+  (use-package aggressive-indent
     :ensure t
     :init
-    (add-hook 'racket-mode-hook 'parinfer-mode)
-    (add-hook 'racket-repl-mode-hook 'parinfer-mode)))
+    (add-hook 'racket-mode-hook 'aggressive-indent-mode)
+    (add-hook 'racket-repl-mode-hook 'aggressive-indent-mode)))
 (provide 'racket-init)

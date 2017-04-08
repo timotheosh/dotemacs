@@ -55,9 +55,9 @@
       (kbd "C-c C-k") 'scheme-compile-current-file)
     (add-hook 'scheme-mode-hook 'my-programming-hooks)
     (add-hook 'scheme-mode-hook 'geiser-mode)
-    (use-package parinfer
+    (use-package aggressive-indent
       :ensure t
       :init
-      (add-hook 'scheme-mode-hook 'parinfer-mode)
-      (add-hook 'gieser-mode-hook 'parinfer-mode))))
+      (add-hook 'scheme-mode-hook 'aggressive-indent-mode)
+      (add-hook 'gieser-mode-hook 'aggressive-indent-mode))))
 (provide 'chicken-init)
