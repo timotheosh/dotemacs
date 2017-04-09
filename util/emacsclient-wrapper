@@ -1,0 +1,21 @@
+#!/bin/bash
+ 
+#emacsdir=/usr
+emacsdir=~/.nix-profile
+socket=$HOME/.emacs.d/server/server
+ 
+if [ ! -e $socket ]; then
+    $emacsdir/bin/emacs &
+    while [ ! -e $socket ]; do
+        sleep 1
+    done
+else
+    ARGS="$@"
+    if [[ -z $ARGS ]];then
+        ARGS='-c'
+    fi
+ 
+    $emacsdir/bin/emacsclient \
+       --no-wait \
+       --socket-name=$socket $ARGS
+fi

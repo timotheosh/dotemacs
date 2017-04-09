@@ -1,0 +1,2 @@
+# Options for running the rtags daemon
+RDM_OPTIONS="-v --log-flush"
