@@ -3,7 +3,7 @@ Description=Daemon for rtags
 
 [Service]
 Type=simple
-EnvironmentFile=-/home/thawes/programs/etc/defaults/rdm
+EnvironmentFile=-/home/thawes/programs/etc/default/rdm
 ExecStart=/home/thawes/.nix-profile/bin/rdm $RDM_OPTIONS
 Restart=on-failure
 
