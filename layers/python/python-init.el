@@ -3,7 +3,9 @@
   :mode ("\\.py\\'" . python-mode)
   :bind (("RET" . newline-and-indent)
          ("C-c !" . python-shell-send-buffer)
-         ("C-c |" . python-shell-send-buffer))
+         ("C-c |" . python-shell-send-buffer)
+         ("C->" . python-indent-shift-right)
+         ("C-<" . python-indent-shift-left))
   :config
   (require 'programming-init)
   (use-package pymacs
@@ -30,6 +32,7 @@
                                   (setq jedi:complete-on-dot t)))
   (dolist (func '(my-programming-hooks
                   semantic-mode
+                  smartparens-mode
                   jedi:setup))          ;; Jedi server for auto-completion
     (add-hook 'python-mode-hook func)))
 (provide 'python-init)
