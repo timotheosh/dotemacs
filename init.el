@@ -131,6 +131,7 @@
 (require 'chicken-init)    ;; Chicken Scheme
 (require 'racket-init)     ;; Racket/Scheme
 (require 'python-init)     ;; Python
+(require 'cython-init)     ;; Cython
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
 ;;(require 'java-init)       ;; Java ; Broken package
 (require 'perl-init)       ;; Perl
