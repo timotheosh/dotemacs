@@ -24,6 +24,11 @@
     :init
     (require 'ox-confluence))
 
+  (use-package org-jira
+    :ensure t
+    :config
+    (setq jiralib-url "https://inindca.atlassian.net"))
+
   ;; Remove html validation link
   (setq org-html-validation-link nil)
 
@@ -44,7 +49,7 @@
      (shell . t)
      (C . t)
      (racket . t)
-   ))
+     ))
 
   (setq auto-insert-alist
         '(
