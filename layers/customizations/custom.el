@@ -4,6 +4,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(display-time-mode t)
  '(flymake-google-cpplint-command "/usr/local/bin/cpplint")
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
@@ -18,13 +20,14 @@
  '(powerline-default-separator (quote contour))
  '(powerline-height 18)
  '(quack-default-program "racket")
- '(safe-local-variable-values (quote ((eval ansible 1)))))
+ '(safe-local-variable-values (quote ((eval ansible 1))))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
+ '(default ((t (:background nil :family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 128 :width normal))))
  '(mode-line-buffer-id ((t (:weight normal :family "Ubuntu Mono"))))
  '(mode-line-buffer-id-inactive ((t (:family "Ubuntu Mono"))))
  '(powerline-active1 ((t (:background "#504945" :family "Ubuntu Mono"))))
