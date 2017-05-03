@@ -15,7 +15,7 @@
   ;; Comes with org
   (require 'ox-odt)
   ;; getprograms retrieves this from git
-  (use-package ob-rocket
+  (use-package ob-racket
     :load-path "programs/ob-racket")
 
   (use-package org-plus-contrib
