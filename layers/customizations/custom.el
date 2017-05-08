@@ -15,7 +15,7 @@
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
-    (org-jira cyphon-mode flycheck-cython cython-mode aggressive-indent org-projectile elnode quack yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
+    (emr org-jira cyphon-mode flycheck-cython cython-mode aggressive-indent org-projectile elnode quack yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
  '(paradox-github-token t)
  '(powerline-default-separator (quote contour))
  '(powerline-height 18)
@@ -27,7 +27,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil :family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 128 :width normal))))
+ '(default ((t (:background nil))))
  '(mode-line-buffer-id ((t (:weight normal :family "Ubuntu Mono"))))
  '(mode-line-buffer-id-inactive ((t (:family "Ubuntu Mono"))))
  '(powerline-active1 ((t (:background "#504945" :family "Ubuntu Mono"))))
