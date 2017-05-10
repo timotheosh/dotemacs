@@ -7,6 +7,8 @@
          ("C->" . python-indent-shift-right)
          ("C-<" . python-indent-shift-left))
   :config
+  (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+  (setenv "JUPYTER_CONSOLE_TEST" "1")
   (require 'programming-init)
   (use-package pymacs
     :load-path "programs/Pymacs"
