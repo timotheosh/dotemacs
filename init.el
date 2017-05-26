@@ -181,3 +181,12 @@
     (when (and (window-system)
                (>= emacs-major-version 24))
       (server-start)))
+
+(set-face-attribute 'default nil
+                    :family "Ubuntu Mono"
+                    :foundry "DAMA"
+                    :slant 'normal
+                    :weight 'bold
+                    :height 151
+                    :width 'normal)
+
