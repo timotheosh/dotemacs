@@ -67,8 +67,12 @@
   (use-package company
     :ensure t
     :config
-    (add-to-list 'company-backends 'company-irony)
     (add-to-list 'company-backends 'company-c-headers))
+
+  (use-package company-irony
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-irony))
 
   (add-hook 'irony-mode-hook
             '(lambda ()

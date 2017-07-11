@@ -44,7 +44,10 @@
     :config
     (eval-after-load 'company
       '(add-to-list 'company-backends 'company-ansible)))
-  (add-hook 'ansible-mode-hook 'company-mode)
-  (add-hook 'ansible-mode-hook 'ansible-doc-mode-hook))
+  (add-hook 'ansible-mode-hook 'ansible-doc-mode-hook)
+  (use-package company-ansible
+    :ensure t
+    :config
+    (add-hook 'ansible-mode-hook 'company-mode)))
 (provide 'ansible-init)
 ;;; ansible-init.el ends here
