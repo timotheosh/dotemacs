@@ -1,6 +1,8 @@
 (use-package clojure-mode
   :ensure t
-  :mode ("\\.clj\\'" . clojure-mode)
+  :mode (("\\.clj\\'" . clojure-mode)
+         ("\\.cljs\\'" . clojurescript-mode)
+         ("\\.hl\\'" . clojurescript-mode))
   :init
   (use-package programming-init
     :init
