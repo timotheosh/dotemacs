@@ -16,6 +16,7 @@
            "#emacs"
            "#emacs-beginners"
            "#lisp"
+           "#osv"
            ;; "#llvm"
            "#racket"
            "#scheme"
