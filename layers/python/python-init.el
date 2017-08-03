@@ -25,6 +25,8 @@
     :commands jedi:setup)
   :init
   (use-package elpy
+    ;; NOTE: Elpy makes use of py-flake. You may have to change
+    ;; settings in ~/.config/flake8
     :ensure t
     :commands elpy-enable)
   (with-eval-after-load 'python (progn
