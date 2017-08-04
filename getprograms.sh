@@ -14,6 +14,7 @@ https://github.com/wallyqs/ob-racket.git \
 https://github.com/timotheosh/inferior-cling.git \
 https://github.com/timotheosh/aws-el.git \
 https://github.com/timotheosh/cbible.git \
+https://github.com/jdee-emacs/jdee-server.git \
 "
 
 # Run python setup.py on these directories (after they have been
