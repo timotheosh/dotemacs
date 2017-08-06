@@ -33,4 +33,6 @@
     :init
     (add-hook 'racket-mode-hook 'aggressive-indent-mode)
     (add-hook 'racket-repl-mode-hook 'aggressive-indent-mode)))
+(add-to-list 'magic-mode-alist
+             '("^#lang racket" . racket-mode))
 (provide 'racket-init)
