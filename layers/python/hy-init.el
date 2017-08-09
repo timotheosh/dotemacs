@@ -18,6 +18,6 @@
   (use-package aggressive-indent
     :ensure t
     :init
-    (add-hook 'racket-mode-hook 'aggressive-indent-mode)
-    (add-hook 'racket-repl-mode-hook 'aggressive-indent-mode)))
+    (add-hook 'hy-mode-hook 'aggressive-indent-mode)
+    (add-hook 'inferior-lisp-mode-hook 'aggressive-indent-mode)))
 (provide 'hy-init)
