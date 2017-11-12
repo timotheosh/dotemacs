@@ -133,7 +133,7 @@
 (require 'python-init)     ;; Python
 (require 'cython-init)     ;; Cython
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
-;;(require 'java-init)       ;; Java ; Broken package
+(require 'java-init)       ;; Java ; Broken package
 (require 'perl-init)       ;; Perl
 (require 'haskell-init)    ;; Haskell
 (require 'ruby-init)       ;; Ruby

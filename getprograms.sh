@@ -14,7 +14,6 @@ https://github.com/wallyqs/ob-racket.git \
 https://github.com/timotheosh/inferior-cling.git \
 https://github.com/timotheosh/aws-el.git \
 https://github.com/timotheosh/cbible.git \
-https://github.com/jdee-emacs/jdee-server.git \
 "
 
 # Run python setup.py on these directories (after they have been
@@ -28,6 +27,10 @@ ropemacs \
 snippetrepos=" \
 https://github.com/AndreaCrotti/yasnippet-snippets.git \
 https://github.com/jonatkinson/yasnippet-licenses.git \
+"
+
+java_repos_maven=" \
+https://github.com/jdee-emacs/jdee-server.git \
 "
 
 function get_cedet {
@@ -125,6 +128,15 @@ for x in $pythonsetup;do
   DIR=programs/$(directoryname $x)
   if [[ ! -d $DIR/build/lib.linux-x86_64-2.7 ]];then
     run-py-setup $DIR
+  fi
+done
+
+for x in $java_repos_maven;do
+  DIR=programs/$(directoryname $x)
+  if [[ ! -d $DIR ]];then
+    gitclone programs $x
+    cd ${DIR}
+    mvn clean package
   fi
 done
 
