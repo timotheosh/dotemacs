@@ -104,11 +104,13 @@
                        (or (sp--org-skip-markup ms mb me)
                            (not (sp-point-in-string-or-comment))))
                       (t (not (sp-point-in-string-or-comment)))))))
-  (use-package emr
-    ;; emr is for refactoring lisp, elisp, scheme, ruby, javascript, and c
-    :ensure t
-    :config
-    (autoload 'emr-show-refactor-menu "emr")
-    (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
-    (eval-after-load "emr" '(emr-initialize))))
+  ;; emr package is broken in melpa
+  ;;(use-package emr
+  ;;  ;; emr is for refactoring lisp, elisp, scheme, ruby, javascript, and c
+  ;;  :ensure t
+  ;;  :config
+  ;;  (autoload 'emr-show-refactor-menu "emr")
+  ;;  (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
+  ;;  (eval-after-load "emr" '(emr-initialize)))
+  )
 (provide 'programming-init)
