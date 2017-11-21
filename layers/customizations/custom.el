@@ -4,9 +4,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(display-time-mode t)
- '(flymake-google-cpplint-command "/usr/local/bin/cpplint")
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
  '(haskell-process-suggest-remove-import-lines t)
@@ -15,22 +12,11 @@
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
-    (epresent javadoc-lookup java-imports ein jdee ob-sagemath company-ansible ido-completing-read+ emr org-jira cyphon-mode flycheck-cython cython-mode aggressive-indent org-projectile elnode quack yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
- '(paradox-github-token t)
- '(powerline-default-separator (quote contour))
- '(powerline-height 18)
- '(quack-default-program "racket")
- '(safe-local-variable-values (quote ((eval ansible 1))))
- '(tool-bar-mode nil))
+    (emr yaml-mode web-mode virtualenvwrapper use-package sr-speedbar smartparens rainbow-delimiters racket-mode quack python-mode powerline php-mode persp-projectile paradox ox-gfm org-projectile org-plus-contrib org-jira org-bullets multi-term magit json-mode jedi jdee javadoc-lookup java-imports hy-mode helm-projectile haskell-mode google-c-style geiser geben flymake-racket flycheck-rust flycheck-cython flycheck-clojure exec-path-from-shell epresent elpy dr-racket-like-unicode darktooth-theme cython-mode company-irony company-ansible column-marker column-enforce-mode cmake-ide clojure-mode-extra-font-locking chicken-scheme cargo ansible aggressive-indent ac-slime 4clojure)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
- '(mode-line-buffer-id ((t (:weight normal :family "Ubuntu Mono"))))
- '(mode-line-buffer-id-inactive ((t (:family "Ubuntu Mono"))))
- '(powerline-active1 ((t (:background "#504945" :family "Ubuntu Mono"))))
- '(powerline-active2 ((t (:background "#3C3836" :family "Ubuntu Mono"))))
- '(powerline-inactive1 ((t (:background "#928374" :family "Ubuntu Mono"))))
- '(powerline-inactive2 ((t (:background "#504945" :family "Ubuntu Mono")))))
+ )
