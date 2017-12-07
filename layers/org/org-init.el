@@ -8,11 +8,13 @@
          ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb))
   :init
+  ;; Github Flavored Markdown
   (use-package ox-gfm
     :ensure t)
+  ;; Pretty bullets
   (use-package org-bullets
     :ensure t)
-  ;; Comes with org
+  ;; Convert org to OpenOffice. Comes with org
   (require 'ox-odt)
   ;; getprograms retrieves this from git
   (use-package ob-racket
@@ -48,6 +50,7 @@
      (emacs-lisp . t)
      (shell . t)
      (C . t)
+     (java . t)
      (racket . t)
      ))
 
