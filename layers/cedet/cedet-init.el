@@ -13,7 +13,6 @@
   (global-semantic-idle-completions-mode)
   (global-semantic-decoration-mode)
   (global-semantic-highlight-func-mode)
-  (global-semantic-show-unmatched-syntax-mode)
 
   (when (cedet-gnu-global-version-check t)
     (semanticdb-enable-gnu-global-databases 'c-mode)
