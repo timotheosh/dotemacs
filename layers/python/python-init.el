@@ -9,6 +9,7 @@
   :config
   (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
   (setenv "JUPYTER_CONSOLE_TEST" "1")
+  (setenv "PYLINTRC" (concat (getenv "HOME") "/.pylintrc"))
   (require 'programming-init)
   (use-package pymacs
     :load-path "programs/Pymacs"
@@ -29,12 +30,25 @@
     ;; settings in ~/.config/flake8
     :ensure t
     :commands elpy-enable)
+
+  (use-package flycheck-pycheckers
+    :ensure t)
+
+  (defun my-python-hooks ()
+    (linum-mode 1)
+    (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
+    (setq tab-width (default-value 'tab-width)))
+
+  (with-eval-after-load 'flycheck
+    (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
+
   (with-eval-after-load 'python (progn
                                   (elpy-enable) ;; Our main python module
                                   (elpy-use-ipython)
                                   (setq elpy-dedicated-shells t)
                                   (setq jedi:complete-on-dot t)))
-  (dolist (func '(my-programming-hooks
+  (dolist (func '(my-python-hooks
+                  flycheck-mode
                   semantic-mode
                   smartparens-mode
                   jedi:setup))          ;; Jedi server for auto-completion
