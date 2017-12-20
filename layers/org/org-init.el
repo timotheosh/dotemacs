@@ -1,5 +1,5 @@
-(use-package org-mode
-  :ensure org
+(use-package org
+  :ensure org-plus-contrib
   :pin org
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
@@ -16,15 +16,10 @@
     :ensure t)
   ;; Convert org to OpenOffice. Comes with org
   (require 'ox-odt)
+  (require 'ox-confluence)
   ;; getprograms retrieves this from git
   (use-package ob-racket
     :load-path "programs/ob-racket")
-
-  (use-package org-plus-contrib
-    :ensure t
-    :pin org
-    :init
-    (require 'ox-confluence))
 
   (use-package org-jira
     :ensure t
@@ -98,12 +93,14 @@
     (add-hook 'org-mode-hook func))
 
   (use-package org-projectile
-    :bind (("C-c n p" . org-projectile:capture-for-current-project)
+    :bind (("C-c n p" . org-projectile-project-todo-completing-read)
            ("C-c c" . org-capture))
     :ensure t
     :config
     (progn
-      (setq org-projectile:projects-file
+      (setq org-projectile-projects-file
             "~/org/GTD/code-projects.org")
-      (add-to-list 'org-capture-templates (org-projectile:project-todo-entry "p")))))
+      (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+      (push (org-projectile-project-todo-entry) org-capture-templates))
+    :ensure t))
 (provide 'org-init)
