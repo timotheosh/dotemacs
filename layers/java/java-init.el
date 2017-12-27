@@ -2,6 +2,9 @@
 (use-package jdee
   :ensure t
   :init
+  (setq jdee-sourcepath '("~/src" "~/programs/src"))  ; TODO Find a
+                                        ; way to make this dependent
+                                        ; on projectile.
   (setq jdee-server-dir "~/.emacs.d/programs/jdee-server/target")
   (add-to-list 'ac-modes 'jdee-mode)
   (use-package java-imports
