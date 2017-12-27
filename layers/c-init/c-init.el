@@ -78,7 +78,8 @@
             '(lambda ()
                (my-irony-mode-hook)
                (irony-cdb-autosetup-compile-options)
-               (company-mode)))
+               (company-mode)
+               (irony-eldoc)))
 
   ;; Set up rtags
   ;; I am using a later version of rtags because the rdm daemon has
@@ -100,18 +101,36 @@
     (rtags-enable-standard-keybindings c-mode-base-map "\C-cr")
     (add-hook 'rtags-mode-hook 'my-flycheck-rtags-setup))
 
-  ;; Google style compliance
-  ;; start flymake-google-cpplint-load
-  (defun my/flymake-google-init()
-    (custom-set-variables
-     '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
-    (use-package flymake-google-cpplint
-      :ensure t
-      :init
-      (flymake-google-cpplint-load)))
+  ;; flycheck-irony
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
-  (use-package google-c-style
-    :ensure t)
+  ;; flycheck-clang-analyzer
+  (use-package flycheck-clang-analyzer
+    :ensure t
+    :after flycheck
+    :config (flycheck-clang-analyzer-setup))
+
+  ;; clang-tidy
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup))
+
+  ;; clangCheck
+  (use-package flycheck-clangcheck
+    :ensure t
+    :after flycheck
+    :config
+    ;; enable static analysis
+    (setq flycheck-clangcheck-analyze t))
+
+  (defun my-select-clangcheck-for-checker ()
+    "Select clang-check for flycheck's checker."
+    (flycheck-set-checker-executable 'c/c++-clangcheck
+                                     "/path/to/clang-check")
+    (flycheck-select-checker 'c/c++-clangcheck))
+
+  (add-hook 'c-mode-hook #'my-select-clangcheck-for-checker)
+  (add-hook 'c++-mode-hook #'my-select-clangcheck-for-checker)
 
   ;; setup GDB
   (setq
