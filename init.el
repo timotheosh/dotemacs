@@ -121,6 +121,7 @@
 (require 'auto-complete-init)
 (require 'magit-init)
 (require 'ansible-init)
+(require 'docker-init)
 
 ;; Language modes
 (require 'html-init)       ;; Editing html files
@@ -189,4 +190,3 @@
                     :weight 'bold
                     :height 151
                     :width 'normal)
-
