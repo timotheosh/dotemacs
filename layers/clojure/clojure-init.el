@@ -9,6 +9,11 @@
     (require 'smartparens))
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
+  (use-package cljdoc
+    :ensure t
+    :config
+    (add-hook 'clojure-mode-hook 'cljdoc))
+
   ;; A little more syntax highlighting
   (use-package clojure-mode-extra-font-locking
     :ensure t)
@@ -17,11 +22,6 @@
     :ensure t
     :config
     (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
-
-  (use-package flycheck-clojure
-    :ensure
-    :config
-    (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 
   ;; This is useful for working with camel-case tokens, like names of
   ;; Java classes (e.g. JavaClassName)
@@ -50,6 +50,7 @@
         (setq cider-lein-command "~/bin/lein"))
     (add-hook 'cider-repl-mode-hook #'company-mode)
     (add-hook 'cider-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'flycheck-clojure-setup)
     (add-hook 'clojure-mode-hook 'cider-mode)
     ;; For figwheel clojurescript projects
     ;;   To set the clojurescript repo back to default, run:
@@ -66,6 +67,10 @@
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode))
+
+  (use-package flycheck-clojure
+    :ensure t)
+  (add-hook 'clojure-mode-hook 'flycheck-mode)
 
 (use-package 4clojure
   :ensure t
