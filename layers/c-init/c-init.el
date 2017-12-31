@@ -168,7 +168,6 @@
     (irony-mode)
     (google-set-c-style)
     (google-make-newline-indent)
-    (my/flymake-google-init)
     (flycheck-mode)
     (rtags-start-process-unless-running))
 
