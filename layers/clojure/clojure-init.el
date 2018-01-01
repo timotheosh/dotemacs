@@ -9,10 +9,9 @@
     (require 'smartparens))
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
-  (use-package cljdoc
-    :ensure t
-    :config
-    (add-hook 'clojure-mode-hook 'cljdoc))
+  ;; This keeps throwing errors.
+  ;;(use-package cljdoc
+  ;;  :ensure t)
 
   ;; A little more syntax highlighting
   (use-package clojure-mode-extra-font-locking
