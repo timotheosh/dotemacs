@@ -102,8 +102,12 @@
     (add-hook 'rtags-mode-hook 'my-flycheck-rtags-setup))
 
   ;; flycheck-irony
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  (use-package flycheck-irony
+    :ensure t
+    :after irony
+    :config
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
   ;; flycheck-clang-analyzer
   (use-package flycheck-clang-analyzer
@@ -112,8 +116,12 @@
     :config (flycheck-clang-analyzer-setup))
 
   ;; clang-tidy
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup))
+  (use-package flycheck-clang-tidy
+    :ensure t
+    :after flycheck
+    :config
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-clang-tidy-setup)))
 
   ;; clangCheck
   (use-package flycheck-clangcheck
