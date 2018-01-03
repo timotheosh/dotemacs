@@ -138,7 +138,7 @@
   (defun my-select-clangcheck-for-checker ()
     "Select clang-check for flycheck's checker."
     (flycheck-set-checker-executable 'c/c++-clangcheck
-                                     "/path/to/clang-check")
+                                     "/usr/bin/clang-check")
     (flycheck-select-checker 'c/c++-clangcheck))
 
   (add-hook 'c-mode-hook #'my-select-clangcheck-for-checker)
@@ -177,9 +177,8 @@
     (rtags-start-process-unless-running)
     (my-programming-hooks)
     (my/company-c-header-init)
+    (smartparens-strict-mode 1)
     (irony-mode)
-    (google-set-c-style)
-    (google-make-newline-indent)
     (flycheck-mode)
     (rtags-start-process-unless-running))
 
