@@ -74,12 +74,16 @@
     :config
     (add-to-list 'company-backends 'company-irony))
 
+  (use-package irony-eldoc
+    :ensure t
+    :config
+    (add-hook 'irony-mode-hook 'irony-eldoc))
+
   (add-hook 'irony-mode-hook
             '(lambda ()
                (my-irony-mode-hook)
                (irony-cdb-autosetup-compile-options)
-               (company-mode)
-               (irony-eldoc)))
+               (company-mode)))
 
   ;; Set up rtags
   ;; I am using a later version of rtags because the rdm daemon has
