@@ -39,8 +39,8 @@
 (set-cursor-color "#98fb98")
 ;; Hide tool bar
 (tool-bar-mode -1)
-;; Hide menu bar
-(menu-bar-mode -1)
+;; Uncomment to hide menu bar
+;;(menu-bar-mode -1)
 
 ;; Default buffer to open
 (setq initial-buffer-choice
