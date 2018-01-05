@@ -158,6 +158,7 @@
     :ensure t
     :init
     (cmake-ide-setup)
+    (setq cmake-ide-build-dir "build")
     (defun proper-cmake-compile ()
       (interactive)
       (cmake-ide-run-cmake)
