@@ -64,24 +64,26 @@
            "")))
 
   (setq org-log-done t)
-  (setq org-agenda-files (file-expand-wildcards "~/org/GTD/*.org"))
+  (if (string= system-name "scotus")
+      (setq org-agenda-files (file-expand-wildcards "~/org/GTD/work/*.org"))
+    (setq org-agenda-files (file-expand-wildcards "~/org/GTD/home/*.org")))
 
   (setq org-capture-templates
         `(("h" "Home Templates")
-          ("ht" "Todo" entry (file+datetree "~/org/GTD/home-gtd.org" "Tasks")
+          ("ht" "Todo" entry (file+datetree "~/org/GTD/home/home-gtd.org" "Tasks")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("hj" "Journal" entry (file+datetree "~/org/journal.org")
+          ("hj" "Journal" entry (file+datetree "~/org/home/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")
           ("w" "Work Templates")
-          ("wt" "Todo" entry (file+datetree "~/org/GTD/work-gtd.org" "Tasks")
+          ("wt" "Todo" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Tasks")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wT" "Training" entry (file+datetree "~/org/GTD/work-gtd.org" "Training")
+          ("wT" "Training" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Training")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wk" "Kafka" entry (file+datetree "~/org/GTD/work-gtd.org" "Kafka")
+          ("wk" "Kafka" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Kafka")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wz" "Zookeeper" entry (file+datetree "~/org/GTD/work-gtd.org" "Zookeeper")
+          ("wz" "Zookeeper" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Zookeeper")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wm" "Tokumx" entry (file+datetree "~/org/GTD/work-gtd.org" "Tokumx")
+          ("wm" "Tokumx" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Tokumx")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
 
           ))
@@ -98,8 +100,11 @@
     :ensure t
     :config
     (progn
-      (setq org-projectile-projects-file
-            "~/org/GTD/code-projects.org")
+      (if (string= system-name "scotus")
+          (setq org-projectile-projects-file
+                "~/org/GTD/work/code-projects.org")
+        (setq org-projectile-projects-file
+              "~/org/GTD/home/code-projects.org"))
       (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
       (push (org-projectile-project-todo-entry) org-capture-templates))
     :ensure t))
