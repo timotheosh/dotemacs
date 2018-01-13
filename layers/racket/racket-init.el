@@ -10,10 +10,13 @@
     :ensure t
     :config
     (add-hook 'scheme-mode-hook 'flymake-racket-load))
+
   (use-package dr-racket-like-unicode
     :ensure dr-racket-like-unicode)
+
   (use-package quack
     :ensure t)
+
   (require 'programming-init)
   (add-hook 'racket-mode-hook 'smartparens-strict-mode)
 
@@ -28,6 +31,7 @@
               (define-key racket-mode-map
                 (kbd "C-c C-c") 'racket-run-and-switch-to-repl)))
   (add-hook 'racket-repl-mode-hook 'dr-racket-like-unicode-mode)
+
   (use-package aggressive-indent
     :ensure t
     :init

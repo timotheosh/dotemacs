@@ -129,6 +129,7 @@
 (require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
 (require 'lisp-init)       ;; Common Lisp
+(require 'geiser-init)     ;; repl for scheme/racket
 (require 'chicken-init)    ;; Chicken Scheme
 (require 'racket-init)     ;; Racket/Scheme
 (require 'python-init)     ;; Python

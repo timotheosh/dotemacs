@@ -6,7 +6,6 @@
          ("C-c C-q t" . quack-tidy-buffer))
   :config
   (add-to-list 'ac-modes 'scheme-mode)
-  (add-to-list 'ac-modes 'geiser-mode)
   (use-package flymake-racket
     :ensure t
     :config
@@ -41,10 +40,8 @@
           (message "\"%s\" compiled and loaded." file-name))))
     (require 'programming-init)
     (add-hook 'scheme-mode-hook 'smartparens-strict-mode)
-    (require 'geiser-init)
     (use-package cmuscheme
       :ensure t)
-    (setq geiser-active-implementations '(chicken))
     (setq geiser-chicken-compile-geiser-p nil)
     ;;(setq geiser-mode-start-repl-p t)
     (define-key scheme-mode-map
