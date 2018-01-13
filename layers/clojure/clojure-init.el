@@ -9,6 +9,14 @@
     (require 'smartparens))
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
+  (use-package clj-refactor
+    :ensure t)
+
+  (defun my/clojure-hook ()
+    (clj-refactor-mode 1)
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+  (add-hook 'clojure-mode-hook #'my/clojure-hook)
+
   ;; This keeps throwing errors.
   ;;(use-package cljdoc
   ;;  :ensure t)
@@ -67,9 +75,11 @@
   ;; tab-always-indent 'complete):
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode))
 
-  (use-package flycheck-clojure
-    :ensure t)
-  (add-hook 'clojure-mode-hook 'flycheck-mode)
+(use-package flycheck-clojure
+  :ensure t)
+(add-hook 'clojure-mode-hook 'flycheck-mode)
+
+
 
 (use-package 4clojure
   :ensure t
