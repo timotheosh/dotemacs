@@ -82,7 +82,11 @@
   (add-hook 'clojure-repl-mode-hook 'aggressive-indent-mode))
 
 (use-package flycheck-clojure
-  :ensure t)
+  :ensure t
+  :config
+  ;; Disable core.typed checker, as it is not yet working. Try again after a
+  ;; later update.
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc clojure-cider-typed)))
 (add-hook 'clojure-mode-hook 'flycheck-mode)
 
 
