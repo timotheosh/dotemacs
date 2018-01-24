@@ -15,7 +15,11 @@
   (use-package column-enforce-mode
     :ensure t
     :config
-    (column-enforce-mode 1)))
+    (column-enforce-mode 1))
+  (use-package aggressive-indent
+    :ensure t
+    :init
+    (global-aggressive-indent-mode 1)))
 
 ;; Key for jumping from begining to end parens and brackets.
 ;; <backtab> is Shift-tab

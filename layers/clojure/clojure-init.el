@@ -75,12 +75,6 @@
   ;; tab-always-indent 'complete):
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode))
 
-(use-package aggressive-indent
-  :ensure t
-  :init
-  (add-hook 'clojure-mode-hook 'aggressive-indent-mode)
-  (add-hook 'clojure-repl-mode-hook 'aggressive-indent-mode))
-
 (use-package flycheck-clojure
   :ensure t
   :config
