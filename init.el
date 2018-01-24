@@ -139,7 +139,9 @@
 (require 'perl-init)       ;; Perl
 (require 'haskell-init)    ;; Haskell
 (require 'ruby-init)       ;; Ruby
+(require 'javascript-init) ;; Javascript
 (require 'clojure-init)    ;; Clojure
+;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
 (require 'rust-init)
 
 ;; File Formats
