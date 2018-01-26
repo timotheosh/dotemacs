@@ -42,6 +42,16 @@
 ;; Uncomment to hide menu bar
 ;;(menu-bar-mode -1)
 
+;; Set up for backup files
+(setq
+ backup-by-copying t  ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.emacs.d/saves"))  ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t) ; use versioned backups
+
 ;; Default buffer to open
 (setq initial-buffer-choice
       '(lambda ()
