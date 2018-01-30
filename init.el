@@ -116,7 +116,6 @@
 ;; General Utilities
 (require 'flyspell-init)
 (require 'flycheck-init)
-(require 'ido-init)
 (require 'helm-init)
 (require 'my-funcs)
 (require 'unbound)
