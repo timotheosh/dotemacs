@@ -44,9 +44,10 @@
 
   (with-eval-after-load 'python (progn
                                   (elpy-enable) ;; Our main python module
-                                  (elpy-use-ipython)
-                                  (setq elpy-dedicated-shells t)
-                                  (setq jedi:complete-on-dot t)))
+                                  (setq python-shell-interpreter "ipython"
+                                        python-shell-interpreter-args "-i"
+                                        elpy-dedicated-shells t
+                                        jedi:complete-on-dot t)))
   (dolist (func '(my-python-hooks
                   flycheck-mode
                   semantic-mode
