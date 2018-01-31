@@ -42,6 +42,10 @@
 ;; Uncomment to hide menu bar
 ;;(menu-bar-mode -1)
 
+;; Use utf-8 by default
+(setq coding-system-for-read 'utf-8
+      coding-system-for-write 'utf-8 )
+
 ;; Set up for backup files
 (setq
  backup-by-copying t  ; don't clobber symlinks
@@ -117,6 +121,7 @@
 (require 'flyspell-init)
 (require 'flycheck-init)
 (require 'helm-init)
+(require 'ivy-init)
 (require 'my-funcs)
 (require 'unbound)
 (require 'multi-term-init)

@@ -7,9 +7,30 @@
   (switch-to-buffer (get-buffer-create "*text-scratch*"))
   (text-mode))
 
+;; isearch replacement
+(use-package swiper
+  :ensure t)
+
+;; Useful for showing recent choices.
+(use-package smex
+  :ensure t
+  :init
+  (smex-initialize))
+
+;; Useful for showing key options.
+(use-package which-key
+  :ensure t
+  :diminish (which-key-mode . "")
+  :init (which-key-mode 1))
+
+(use-package general
+  :ensure t
+  :config
+  (general-define-key "C-s" 'swiper))
+
 (global-set-key [f1] 'dired)
 (global-set-key [f3] 'shell)
-(global-set-key [f4] 'helm-find-files)
+(global-set-key [f4] 'find-file)
 (global-set-key [f5] 'create-text-scratch-buffer)
 (global-set-key [f9] 'menu-bar-mode)
 
