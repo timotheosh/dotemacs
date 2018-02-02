@@ -4,8 +4,12 @@
 
 (use-package inf-clojure
   :ensure t
-  :defer t
   :config
-  (cider-mode -1)
-  (setq inf-clojure-generic-cmd "lumo -d"))
+  (defun my/lumo ()
+    (when (bound-and-true-p cider-mode)
+      (cider-mode -1))
+    (setq inf-clojure-program     "lumo -d"
+          inf-clojure-generic-cmd "lumo -d"
+          inf-clojure-lein-cmd    "lumo -d"))
+  (add-hook 'inf-clojure-mode-hook 'my/lumo))
 (provide 'inf-clojure-init)
