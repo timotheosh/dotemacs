@@ -150,4 +150,6 @@
   :ensure t)
 (use-package wgrep-ag
   :ensure t)
+(use-package iedit
+  :ensure t)
 (provide 'programming-init)
