@@ -145,4 +145,9 @@
     :fringe-bitmap 'flycheck-fringe-bitmap-ball
     :fringe-face 'flycheck-fringe-error
     :error-list-face 'flycheck-error-list-error))
+
+(use-package wgrep
+  :ensure t)
+(use-package wgrep-ag
+  :ensure t)
 (provide 'programming-init)
