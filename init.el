@@ -207,3 +207,4 @@
                     :weight 'bold
                     :height 151
                     :width 'normal)
+(put 'dired-find-alternate-file 'disabled nil)
