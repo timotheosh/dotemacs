@@ -6,6 +6,10 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Break-glass setting when you see 'bad-signature "archive-contents.sig"'
+;;  on start up, after a package upgrade.
+;;(setq package-check-signature nil)
+
 ;; Libraries. Packages that get used more than one place. WARNING: No
 ;; consistent use, yet.
 (let ((default-directory  "~/.emacs.d/libraries/"))

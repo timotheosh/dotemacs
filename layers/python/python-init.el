@@ -15,8 +15,7 @@
     :load-path "programs/Pymacs"
     :diminish ropemacs-mode
     :config (pymacs-load "ropemacs" "rope-")
-    :bind (("C-<tab>" . rope-lucky-assist)
-           ("M-." . rope-goto-definition)))
+    :bind ( ("M-." . rope-goto-definition)))
   (use-package python
     :ensure t)
   (use-package virtualenvwrapper

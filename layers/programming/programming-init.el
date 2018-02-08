@@ -19,7 +19,12 @@
   (use-package aggressive-indent
     :ensure t
     :init
-    (global-aggressive-indent-mode 1)))
+    (global-aggressive-indent-mode 1))
+  (use-package origami
+    :ensure t
+    :bind ("C-<tab>" . origami-recursively-toggle-node)
+    :init
+    (global-origami-mode 1)))
 
 ;; Key for jumping from begining to end parens and brackets.
 ;; <backtab> is Shift-tab
