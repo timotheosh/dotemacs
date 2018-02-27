@@ -20,7 +20,13 @@
  '(powerline-default-separator (quote contour))
  '(powerline-height 18)
  '(quack-default-program "racket")
- '(safe-local-variable-values (quote ((eval ansible 1))))
+ '(safe-local-variable-values
+   (quote
+    ((Lowercase . Yes)
+     (Base . 10)
+     (Package . CLIM-DEMO)
+     (Syntax . ANSI-Common-Lisp)
+     (eval ansible 1))))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
