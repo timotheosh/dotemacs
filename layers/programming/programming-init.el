@@ -22,7 +22,8 @@
     (global-aggressive-indent-mode 1))
   (use-package origami
     :ensure t
-    :bind ("C-<tab>" . origami-recursively-toggle-node)
+    :bind (("C-<tab>" . origami-recursively-toggle-node)
+           ("C-<iso-lefttab>" . origami-toggle-all-nodes))
     :init
     (global-origami-mode 1)))
 
