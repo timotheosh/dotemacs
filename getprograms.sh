@@ -33,6 +33,20 @@ java_repos_maven=" \
 https://github.com/jdee-emacs/jdee-server.git \
 "
 
+function get_shampoo_gst {
+  PACKAGE=shampoo-gst-0.0.1
+  DIRECTORY=programs/shampoo
+  if [[ ! -e $DIRECTORY ]];then
+    pushd programs
+    wget -c http://dmitrymatveev.co.uk/shampoo/files/${PACKAGE}.tgz
+    tar xvzf ${PACKAGE}.tgz
+    rm -f ${PACKAGE}.tgz
+    cd shampoo
+    gst-package -t ~/.st package.xml
+    popd
+  fi
+}
+
 function get_cedet {
   DIRECTORY=programs/cedet
   if [[ ! -e $DIRECTORY ]];then
@@ -139,6 +153,8 @@ for x in $java_repos_maven;do
     mvn clean package
   fi
 done
+
+get_shampoo_gst
 
 echo "Repos retrieved and ready."
 exit 0
