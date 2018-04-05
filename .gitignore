@@ -12,6 +12,9 @@ elpa/
 # Vi artifacts
 *.swp
 
+# Smalltalk artifacts
+*.im
+
 # Not wanted in repo
 server/server
 auto-save-list/
