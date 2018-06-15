@@ -15,11 +15,12 @@
            ;; "#cplusplus.com"
            "#emacs"
            "#emacs-beginners"
-           "#lisp"
-           "#osv"
+           ;; "#lisp"
+           ;; "#osv"
            ;; "#llvm"
            "#racket"
-           "#scheme"
-           ;; "#sword"
-           "#ubuntu"))))
+           ;; "#scheme"
+           "#sword"
+           ;; "#ubuntu"
+           ))))
 (provide 'erc-init)
