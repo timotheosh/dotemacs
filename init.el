@@ -8,7 +8,7 @@
 
 ;; Break-glass setting when you see 'bad-signature "archive-contents.sig"'
 ;;  on start up, after a package upgrade.
-;;(setq package-check-signature nil)
+;; (setq package-check-signature nil)
 
 ;; Libraries. Packages that get used more than one place. WARNING: No
 ;; consistent use, yet.
@@ -51,10 +51,14 @@
       coding-system-for-write 'utf-8 )
 
 ;; Set up for backup files
+(defconst my-auto-save-folder "~/Dropbox/Emacs/recover-files/")
+(defconst my-save-folder "~/Dropbox/Emacs/saved-files")
 (setq
  backup-by-copying t  ; don't clobber symlinks
  backup-directory-alist
- '(("." . "~/.emacs.d/saves"))  ; don't litter my fs tree
+ '(("." . my-save-folder))  ; don't litter my fs tree
+ auto-save-file-name-transforms
+ `((".*" ,my-auto-save-folder t))  ; No, I mean, REALLY don't litter my fs tree
  delete-old-versions t
  kept-new-versions 6
  kept-old-versions 2
@@ -169,7 +173,7 @@
 (require 'yaml-init)
 
 ;; AWS Mode
-(require 'aws-el-init)
+;;(require 'aws-el-init)
 
 ;; Reading
 (require 'kindly-init)
@@ -179,22 +183,45 @@
 ;; End Add packages
 
 ;; Themes
+;; We want themes only if we are in gui. We need to create a hook
+;; as the themes will need to be activated on a per-case basis, while
+;; running emacs in server mode.
+;; This solves the problem of the theme not getting loaded properly in
+;; daemon mode. Found here: https://stackoverflow.com/questions/18904529/after-emacs-deamon-i-can-not-see-new-theme-in-emacsclient-frame-it-works-fr
 (use-package darktooth-theme
   :ensure t
   :defer t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; We want themes only if we are in gui. We need to create a hook
-;; as the themes will need to be activated on a per-case basis, while
-;; running emacs in server mode.
-(defun on-frame-open (frame)
-  (if (not (display-graphic-p frame))
+
+(defvar my:theme 'darktooth)
+(defvar my:terminal-theme)
+(defvar my:theme-window-loaded nil)
+(defvar my:theme-terminal-loaded nil)
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (select-frame frame)
+                (if (window-system frame)
+                    (unless my:theme-window-loaded
+                      (if my:theme-terminal-loaded
+                          (enable-theme my:theme)
+                        (load-theme my:theme t))
+                      (setq my:theme-window-loaded t))
+                  (unless my:theme-terminal-loaded
+                    (if my:theme-window-loaded
+                        (enable-theme my:theme)
+                      (load-theme my:theme t))
+                    (setq my:theme-terminal-loaded t)))))
+  (progn
+    (load-theme my:theme t)
+    (if (display-graphic-p)
+        (progn
+          (load-theme 'org-beautify t)
+          (setq my:theme-window-loaded t))
       (progn
-          (set-face-background 'default "unspecified-bg" frame))
-    (progn
-        (load-theme 'darktooth t)
-        (load-theme 'org-beautify t))))
-(on-frame-open (selected-frame))
-(add-hook 'after-make-frame-functions 'on-frame-open)
+        (setq my:theme-terminal-loaded t)
+        (set-face-background 'default "unspecified-bg" frame)))))
 
 (require 'transparent-window)
 (load custom-file)
