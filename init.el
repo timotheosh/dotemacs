@@ -52,11 +52,11 @@
 
 ;; Set up for backup files
 (defconst my-auto-save-folder "~/Dropbox/Emacs/recover-files/")
-(defconst my-save-folder "~/Dropbox/Emacs/saved-files")
+(defconst my-save-folder "~/Dropbox/Emacs/saved-files/")
 (setq
  backup-by-copying t  ; don't clobber symlinks
  backup-directory-alist
- '(("." . my-save-folder))  ; don't litter my fs tree
+ `((".*" . ,my-save-folder))  ; don't litter my fs tree
  auto-save-file-name-transforms
  `((".*" ,my-auto-save-folder t))  ; No, I mean, REALLY don't litter my fs tree
  delete-old-versions t
@@ -82,7 +82,7 @@
 (require 'paradox-init)
 (require 'cedet-init)
 (require 'tramp-init)
-(require 'sr-speedbar-init)
+(require 'neotree-init)
 (require 'yasnippet-init)
 
 ;; Customizations
