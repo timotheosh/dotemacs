@@ -15,7 +15,7 @@
  '(ido-enable-tramp-completion nil)
  '(package-selected-packages
    (quote
-    (neotree shampoo origami smex general avy which-key counsel swiper projectile-speedbar indium company-tern xref-js2 js2-refactor js2-mode inf-clojure cljr-helm clj-refactor cljdoc docker-compose-mode dockerfile-mode flycheck-clangcheck flycheck-clang-tidy flycheck-clang-analyzer irony-eldoc flycheck-irony isortify flycheck-pycheck flycheck-pycheckers kanban epresent javadoc-lookup java-imports ein jdee ob-sagemath company-ansible ido-completing-read+ org-jira cyphon-mode flycheck-cython cython-mode aggressive-indent org-projectile elnode quack yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org-plus-contrib darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
+    (groovy-mode neotree shampoo origami smex general avy which-key counsel swiper projectile-speedbar indium company-tern xref-js2 js2-refactor js2-mode inf-clojure cljr-helm clj-refactor cljdoc docker-compose-mode dockerfile-mode flycheck-clangcheck flycheck-clang-tidy flycheck-clang-analyzer irony-eldoc flycheck-irony isortify flycheck-pycheck flycheck-pycheckers kanban epresent javadoc-lookup java-imports ein jdee ob-sagemath company-ansible ido-completing-read+ org-jira cyphon-mode flycheck-cython cython-mode aggressive-indent org-projectile elnode quack yaml-mode impatient-mode dr-racket-like-unicode flymake-racket epc jedi virtualenvwrapper elpy org-plus-contrib darktooth-theme pymacs flymake-google-cpplint company-c-headers column-enforce-mode column-marker paradox use-package)))
  '(paradox-github-token t)
  '(powerline-default-separator (quote contour))
  '(powerline-height 18)
