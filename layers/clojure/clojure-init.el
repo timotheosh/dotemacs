@@ -10,7 +10,9 @@
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
   (use-package clj-refactor
-    :ensure t)
+    ;;  :ensure t  ;; load-path is needed until clj-refactor is updated on melpa-stable
+    :load-path "~/.emacs.d/programs/clj-refactor.el/"
+    )
 
   (defun my/clojure-hook ()
     (clj-refactor-mode 1)
