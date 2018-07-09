@@ -1,6 +1,7 @@
 (use-package web-mode
   :ensure t
-  :mode ("\\.html\\'" . web-mode)
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.tmpl\\'" . web-mode))
   :bind (("RET" . newline-and-indent))
   :config
   (require 'programming-init)
@@ -34,4 +35,4 @@
     (add-hook 'web-mode-hook
               '(lambda ()
                  (local-set-key [f5] #'start-impatient)))))
-(provide 'html-init)
+(provide 'web-init)

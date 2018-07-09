@@ -146,7 +146,7 @@
 (require 'docker-init)
 
 ;; Language modes
-(require 'html-init)       ;; Editing html files
+(require 'web-init)        ;; web-mode for html/css, templates, etc.
 (require 'elisp-init)      ;; Emacs Lisp
 (require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
