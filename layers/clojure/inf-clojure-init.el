@@ -11,5 +11,6 @@
     (setq inf-clojure-program     "lumo -d"
           inf-clojure-generic-cmd "lumo -d"
           inf-clojure-lein-cmd    "lumo -d"))
-  (add-hook 'inf-clojure-mode-hook 'my/lumo))
+  (add-hook 'inf-clojure-mode-hook 'my/lumo)
+  (add-hook 'inf-clojure-minor-mode-hook 'my/lumo))
 (provide 'inf-clojure-init)
