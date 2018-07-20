@@ -19,5 +19,7 @@
     :ensure t
     :init
     (add-hook 'hy-mode-hook 'aggressive-indent-mode)
-    (add-hook 'inferior-lisp-mode-hook 'aggressive-indent-mode)))
+    (add-hook 'inferior-lisp-mode-hook 'aggressive-indent-mode))
+  (define-key hy-mode-map "\C-x\C-e" 'hy-shell-eval-last-sexp)
+  (define-key hy-mode-map "\C-c\C-c" 'hy-shell-eval-buffer))
 (provide 'hy-init)
