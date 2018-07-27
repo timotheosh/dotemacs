@@ -9,7 +9,6 @@
   :config
   (require 'programming-init)
   (setq hy-mode-inferior-lisp-command "hy")
-  :init
   ;; Add smartparens-strict-mode
   (dolist (func '(my-programming-hooks
                   smartparens-strict-mode
