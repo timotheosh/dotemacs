@@ -5,12 +5,13 @@
 (use-package inf-clojure
   :ensure t
   :config
-  (defun my/lumo ()
+  (defun my/planck ()
     (when (bound-and-true-p cider-mode)
       (cider-mode -1))
-    (setq inf-clojure-program     "lumo -d"
-          inf-clojure-generic-cmd "lumo -d"
-          inf-clojure-lein-cmd    "lumo -d"))
-  (add-hook 'inf-clojure-mode-hook 'my/lumo)
-  (add-hook 'inf-clojure-minor-mode-hook 'my/lumo))
+    (setq inf-clojure-program     "planck -d"
+          inf-clojure-generic-cmd "planck -d"
+          inf-clojure-lein-cmd    "planck -d"
+          inf-clojure-boot-cmd    "planck -d"))
+  (add-hook 'inf-clojure-mode-hook 'my/planck)
+  (add-hook 'inf-clojure-minor-mode-hook 'my/planck))
 (provide 'inf-clojure-init)
