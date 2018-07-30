@@ -89,8 +89,8 @@
           ))
 
   (dolist (func '((lambda ()
-                    (set-fill-column 80)
-                    (turn-on-auto-fill))
+                    (visual-line-mode)
+                    (org-indent-mode))
                   org-bullets-mode))
     (add-hook 'org-mode-hook func))
 
