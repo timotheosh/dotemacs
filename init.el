@@ -167,6 +167,7 @@
 ;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
 (require 'rust-init)
 (require 'smalltalk-mode-init)
+(require 'basic-init)      ;; BASIC Mode
 
 ;; File Formats
 (require 'edi-init)
