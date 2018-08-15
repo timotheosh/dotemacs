@@ -64,7 +64,7 @@
            "")))
 
   (setq org-log-done t)
-  (if (string= system-name "scotus")
+  (if (string= system-name "dunscotus")
       (setq org-agenda-files (file-expand-wildcards "~/org/GTD/work/*.org"))
     (setq org-agenda-files (file-expand-wildcards "~/org/GTD/home/*.org")))
 
@@ -100,7 +100,7 @@
     :ensure t
     :config
     (progn
-      (if (string= system-name "scotus")
+      (if (string= system-name "dunscotus")
           (setq org-projectile-projects-file
                 "~/org/GTD/work/code-projects.org")
         (setq org-projectile-projects-file

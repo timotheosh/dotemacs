@@ -96,7 +96,7 @@
 
 (setq user-full-name "Tim Hawes")
 ;; Mu4e Email
-(if (string= system-name "scotus")
+(if (string= system-name "dunscotus")
     (progn
       ;; Email and user's name.
       (setq user-mail-address "Tim.Hawes@inin.com")
