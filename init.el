@@ -51,8 +51,8 @@
       coding-system-for-write 'utf-8 )
 
 ;; Set up for backup files
-(defconst my-auto-save-folder "~/Dropbox/Emacs/recover-files/")
-(defconst my-save-folder "~/Dropbox/Emacs/saved-files/")
+(defconst my-auto-save-folder "~/.emacs.d/recover-files/")
+(defconst my-save-folder "~/.emacs.d/saved-files/")
 (setq
  backup-by-copying t  ; don't clobber symlinks
  backup-directory-alist
