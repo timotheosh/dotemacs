@@ -10,9 +10,7 @@
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
   (use-package clj-refactor
-    :ensure t
-    :pin melpa
-    )
+    :ensure t)
 
   (defun my/clojure-hook ()
     (clj-refactor-mode 1)
