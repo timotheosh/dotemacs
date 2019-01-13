@@ -38,7 +38,8 @@ function get_shampoo_gst {
   DIRECTORY=programs/shampoo
   if [[ ! -e $DIRECTORY ]];then
     pushd programs
-    wget -c http://dmitrymatveev.co.uk/shampoo/files/${PACKAGE}.tgz
+    #wget -c http://dmitrymatveev.co.uk/shampoo/files/${PACKAGE}.tgz
+    wget -c https://github.com/dmatveev/shampoo-homepage/raw/master/files/${PACKAGE}.tgz
     tar xvzf ${PACKAGE}.tgz
     rm -f ${PACKAGE}.tgz
     cd shampoo
