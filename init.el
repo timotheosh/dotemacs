@@ -173,7 +173,7 @@
 (require 'edi-init)
 (require 'json-init)
 (require 'yaml-init)
-(require 'markdown-mode)
+(require 'markdown-init)
 
 ;; AWS Mode
 (require 'aws-el-init)
