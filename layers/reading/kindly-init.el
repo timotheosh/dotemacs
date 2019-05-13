@@ -36,7 +36,6 @@
 
 (use-package kindly-mode
   :load-path "~/.emacs.d/programs/kindly-mode/"
-  :bind ("C-c C-k" . kindly-mode)
   :init
   (require 'kindly-mode))
 
