@@ -80,7 +80,6 @@
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
-(require 'cedet-init)
 (require 'tramp-init)
 (require 'neotree-init)
 (require 'yasnippet-init)

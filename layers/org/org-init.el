@@ -39,7 +39,6 @@
    'org-babel-load-languages
    '((python . t)
      (ruby . t)
-     (scala . t)
      (lisp . t)
      (clojure . t)
      (emacs-lisp . t)

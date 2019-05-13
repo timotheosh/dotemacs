@@ -110,7 +110,7 @@ function directoryname {
 }
 
 # Install cedet
-get_cedet
+#get_cedet
 
 # Install powerline patch fonts
 install_powerline_fonts
