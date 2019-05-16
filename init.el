@@ -80,6 +80,7 @@
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
+(require 'ssh-init)
 (require 'tramp-init)
 (require 'neotree-init)
 (require 'yasnippet-init)
