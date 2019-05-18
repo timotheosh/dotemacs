@@ -28,7 +28,8 @@ helm-adaptive-history
 recentf
 ac-comphist.dat
 tramp
-eshell/
+eshell/history
+eshell/lastdir
 url/
 .python-environments
 ido.last

@@ -1,0 +1,2 @@
+alias update-token devops_utils token -e $1
+alias e find-file $1
