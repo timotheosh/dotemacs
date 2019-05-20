@@ -1,5 +1,4 @@
 (use-package org
-  :ensure org-plus-contrib
   :pin org
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
@@ -16,7 +15,6 @@
     :ensure t)
   ;; Convert org to OpenOffice. Comes with org
   (require 'ox-odt)
-  (require 'ox-confluence)
   ;; getprograms retrieves this from git
   (use-package ob-racket
     :load-path "programs/ob-racket")
