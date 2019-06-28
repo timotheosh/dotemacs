@@ -37,16 +37,10 @@
     :ensure t
     :commands elpy-enable)
 
-  (use-package flycheck-pycheckers
-    :ensure t)
-
   (defun my-python-hooks ()
     (linum-mode 1)
     (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
     (setq tab-width (default-value 'tab-width)))
-
-  (with-eval-after-load 'flycheck
-    (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 
   (with-eval-after-load 'python (progn
                                   (elpy-enable) ;; Our main python module
