@@ -9,11 +9,12 @@
     (require 'smartparens))
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
-  (use-package clj-refactor
-    :ensure t)
+  ;; Dependency on paredit, now
+  ;;(use-package clj-refactor
+  ;;  :ensure t)
 
   (defun my/clojure-hook ()
-    (clj-refactor-mode 1)
+    ;;(clj-refactor-mode 1)
     (cljr-add-keybindings-with-prefix "C-c C-m"))
   (add-hook 'clojure-mode-hook #'my/clojure-hook)
 

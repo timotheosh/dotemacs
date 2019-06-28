@@ -4,6 +4,7 @@
 ;; Ad this hook for all programming languages.
 (defun my-programming-hooks ()
   (linum-mode 1)
+  (hl-line-mode 1)
   (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
   (setq tab-width (default-value 'tab-width))
   (when (derived-mode-p 'java)
