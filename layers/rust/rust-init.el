@@ -39,6 +39,13 @@
   :mode (("\\.rs\\'" . rust-mode)
          ("\\.toml\\'" . rust-mode))
   :init
+  (use-package programming-init
+    :init
+    (add-hook 'rust-mode-hook
+              (lambda ()
+                (setq comment-prefix-start "///")
+                (setq comment-prefix-continue "/// ")
+                (local-set-key (kbd "C-m") 'my/return-key))))
   (use-package cargo
     :ensure t)
   (use-package flycheck-rust

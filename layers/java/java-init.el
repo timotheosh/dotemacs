@@ -26,5 +26,6 @@
   (add-hook 'jdee-mode-hook 'my-programming-mode)
   (add-hook 'jdee-mode-hook 'linum-mode)
   (add-hook 'jdee-mode-hook 'smartparens-mode)
-  (add-hook 'jdee-mode-hook 'java-imports-scan-file))
+  (add-hook 'jdee-mode-hook 'java-imports-scan-file)
+  (add-hook 'jdee-mode-hook 'ggtags-mode))
 (provide 'java-init)

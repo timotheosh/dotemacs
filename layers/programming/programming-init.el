@@ -7,8 +7,6 @@
   (hl-line-mode 1)
   (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
   (setq tab-width (default-value 'tab-width))
-  (when (derived-mode-p 'java)
-    (ggtags-mode 1))
   (use-package column-enforce-mode
     :ensure t
     :config
@@ -26,7 +24,22 @@
 
 ;; Key for jumping from begining to end parens and brackets.
 ;; <backtab> is Shift-tab
-(global-set-key (kbd "<backtab>") 'match-paren)
+(add-hook 'prog-mode-hook (lambda ()
+                            (local-set-key (kbd "<backtab>") 'match-paren)))
+
+(defun my/return-key ()
+  "Return as usual, and then insert the comment-prefix."
+  (interactive)
+  (newline)
+  (let (curpos (incomment nil))
+    (save-excursion
+      (forward-line -1)
+      (goto-char (line-beginning-position))
+      (if (or (looking-at comment-prefix-start)
+              (looking-at comment-prefix-continue))
+          (setq incomment t)))
+    (if incomment
+        (insert comment-prefix-continue))))
 
 (defun my/create-newline-format (&rest _ignored)
   ;; Usage: (sp-local-pair '(c-mode)
