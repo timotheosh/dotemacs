@@ -45,7 +45,8 @@
               (lambda ()
                 (setq comment-prefix-start "///")
                 (setq comment-prefix-continue "/// ")
-                (local-set-key (kbd "C-m") 'my/return-key))))
+                (local-set-key (kbd "C-m") 'my/return-key)))
+    (add-hook 'rust-mode-hook 'my-programming-hooks))
   (use-package cargo
     :ensure t)
   (use-package flycheck-rust

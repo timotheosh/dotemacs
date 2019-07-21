@@ -1,15 +1,15 @@
 (require 'package)
 (setq package-archives
       '(("org" .
-         "http://orgmode.org/elpa/")
+         "https://orgmode.org/elpa/")
         ("melpa-stable" .
          "https://stable.melpa.org/packages/")
         ("marmalade" .
-         "http://marmalade-repo.org/packages/")
+         "https://marmalade-repo.org/packages/")
         ("gnu" .
-         "http://elpa.gnu.org/packages/")
+         "https://elpa.gnu.org/packages/")
         ("melpa" .
-         "http://melpa.milkbox.net/packages/"))
+         "https://melpa.milkbox.net/packages/"))
       package-archive-priorities
       '(("org"          . 40)
         ("melpa-stable" . 30)
