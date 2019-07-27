@@ -1,5 +1,10 @@
 ;; dotemacs
 
+(setq gc-cons-threshold 64000000)
+(add-hook 'after-init-hook #'(lambda ()
+                               ;; restore after startup
+                               (setq gc-cons-threshold 800000)))
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -141,6 +146,7 @@
 (require 'ggtags-init)
 (require 'projectile-init)
 (require 'auto-complete-init)
+(require 'company-init)
 (require 'magit-init)
 (require 'ansible-init)
 (require 'docker-init)
