@@ -61,7 +61,7 @@
            "")))
 
   (setq org-log-done t)
-  (if (string= system-name "dunscotus")
+  (if (string= system-name "scholasticus")
       (setq org-agenda-files (file-expand-wildcards "~/org/GTD/work/*.org"))
     (setq org-agenda-files (file-expand-wildcards "~/org/GTD/home/*.org")))
 
@@ -76,11 +76,11 @@
            "* TODO %?\nEntered on %U\n  %i\n  %a")
           ("wT" "Training" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Training")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wk" "Kafka" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Kafka")
+          ("wk" "Keymaster" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Keymaster")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wz" "Zookeeper" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Zookeeper")
+          ("wz" "Jenkins" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Jenkins")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
-          ("wm" "Tokumx" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Tokumx")
+          ("wm" "Softether" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Softether")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
 
           ))
@@ -97,7 +97,7 @@
     :ensure t
     :config
     (progn
-      (if (string= system-name "dunscotus")
+      (if (string= system-name "scholasticus")
           (setq org-projectile-projects-file
                 "~/org/GTD/work/code-projects.org")
         (setq org-projectile-projects-file
