@@ -49,7 +49,7 @@
 ;; Hide tool bar
 (tool-bar-mode -1)
 ;; Uncomment to hide menu bar
-;;(menu-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Use utf-8 by default
 (setq coding-system-for-read 'utf-8
@@ -87,6 +87,7 @@
 (require 'paradox-init)
 (require 'ssh-init)
 (require 'tramp-init)
+(require 'eshell-init)
 (require 'neotree-init)
 (require 'yasnippet-init)
 

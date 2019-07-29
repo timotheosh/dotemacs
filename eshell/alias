@@ -1,2 +1,3 @@
-alias update-token /home/thawes/.virtualenvs/devops_utils/bin/devops_utils -e $1
+alias git git --no-pager $*
 alias e find-file $1
+alias update-token /home/thawes/.virtualenvs/devops_utils/bin/devops_utils -e $1
