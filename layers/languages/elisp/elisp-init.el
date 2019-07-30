@@ -2,7 +2,8 @@
   :mode ("\\.el\\'" . emacs-lisp-mode)
   :init
   (require 'programming-init)
-  (add-hook 'emacs-lisp-mode-hook 'auto-complete-mode)
+  (add-to-list 'company-backends 'company-elisp)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
   (use-package aggressive-indent
     :ensure t)
   (dolist (func '(my-programming-hooks

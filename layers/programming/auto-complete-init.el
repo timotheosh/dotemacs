@@ -14,5 +14,5 @@
                                "~/.emacs.d/ac-dict"))
   (setq ac-comphist-file (expand-file-name
                           "~/.emacs.d/ac-comphist.dat")))
-  (global-auto-complete-mode t)
+(global-auto-complete-mode t)
 (provide 'auto-complete-init)
