@@ -125,15 +125,21 @@
 (require 'docker-init)
 
 ;; Language modes
-(require 'web-init)        ;; web-mode for html/css, templates, etc.
+;; Most impotant
 (require 'elisp-init)      ;; Emacs Lisp
+(require 'lisp-init)       ;; Common Lisp
+(require 'rust-init)       ;; Rust-lang
+(require 'clojure-init)    ;; Clojure
+;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
+(require 'python-init)     ;; Python
+
+;; Meh
+(require 'web-init)        ;; web-mode for html/css, templates, etc.
 (require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
-(require 'lisp-init)       ;; Common Lisp
 (require 'geiser-init)     ;; repl for scheme/racket
 (require 'chicken-init)    ;; Chicken Scheme
 (require 'racket-init)     ;; Racket/Scheme
-(require 'python-init)     ;; Python
 (require 'cython-init)     ;; Cython
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
 (require 'java-init)       ;; Java ; Broken package
@@ -142,9 +148,6 @@
 (require 'haskell-init)    ;; Haskell
 (require 'ruby-init)       ;; Ruby
 (require 'javascript-init) ;; Javascript
-(require 'clojure-init)    ;; Clojure
-;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
-(require 'rust-init)
 (require 'smalltalk-mode-init)
 (require 'basic-init)      ;; BASIC Mode
 

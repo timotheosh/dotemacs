@@ -9,9 +9,8 @@
     (require 'smartparens))
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
-  ;; Dependency on paredit, now
-  ;;(use-package clj-refactor
-  ;;  :ensure t)
+  (use-package clj-refactor
+    :ensure t)
 
   (defun my/clojure-hook ()
     ;;(clj-refactor-mode 1)
@@ -78,10 +77,15 @@
 
 (use-package flycheck-clojure
   :ensure t
+  :pin melpa
   :config
   ;; Disable core.typed checker, as it is not yet working. Try again after a
   ;; later update.
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc clojure-cider-typed)))
+  (eval-after-load 'flycheck '(flycheck-clojure-setup))
+  (use-package flycheck-pos-tip
+    :ensure t)
+  ;;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc clojure-cider-typed))
+  )
 (add-hook 'clojure-mode-hook 'flycheck-mode)
 
 
