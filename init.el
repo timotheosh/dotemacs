@@ -123,6 +123,7 @@
 (require 'magit-init)
 (require 'ansible-init)
 (require 'docker-init)
+(require 'restclient-init)
 
 ;; Language modes
 ;; Most impotant
