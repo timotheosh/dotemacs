@@ -130,8 +130,9 @@
 (require 'lisp-init)       ;; Common Lisp
 (require 'rust-init)       ;; Rust-lang
 (require 'clojure-init)    ;; Clojure
-;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
 (require 'python-init)     ;; Python
+;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
+(require 'racket-init)     ;; Racket/Scheme
 
 ;; Meh
 (require 'web-init)        ;; web-mode for html/css, templates, etc.
@@ -139,7 +140,6 @@
 (require 'php-init)        ;; PHP
 (require 'geiser-init)     ;; repl for scheme/racket
 (require 'chicken-init)    ;; Chicken Scheme
-(require 'racket-init)     ;; Racket/Scheme
 (require 'cython-init)     ;; Cython
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
 (require 'java-init)       ;; Java ; Broken package

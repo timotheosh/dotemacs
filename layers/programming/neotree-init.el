@@ -14,5 +14,6 @@
                 (neotree-dir project-dir)
                 (neotree-find file-name)))
         (message "Could not find git project root."))))
-  (global-set-key [f10] 'neotree-project-dir))
+  (global-set-key [f10] 'neotree-project-dir)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 (provide 'neotree-init)

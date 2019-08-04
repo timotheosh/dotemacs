@@ -41,19 +41,8 @@
        (format "dlocate %s" where))))
     t)))
 
-(setq eshell-history-size 1024)
-(setq eshell-prompt-regexp "^[^λ]*[λ] ")
-
-(load "em-hist")           ; So the history vars are defined
-(if (boundp 'eshell-save-history-on-exit)
-    (setq eshell-save-history-on-exit t)) ; Don't ask, just save
-                                        ;(message "eshell-ask-to-save-history is %s" eshell-ask-to-save-history)
-(if (boundp 'eshell-ask-to-save-history)
-    (setq eshell-ask-to-save-history 'always)) ; For older(?) version
-                                        ;(message "eshell-ask-to-save-history is %s" eshell-ask-to-save-history)
-
-(defun eshell/ef (fname-regexp &rest dir) (ef fname-regexp default-directory))
-
+(defun eshell/ef (fname-regexp &rest dir)
+  (ef fname-regexp default-directory))
 
 ;;; ---- path manipulation
 
@@ -103,5 +92,25 @@ PWD is not in a git repo (or the git command is not found)."
          (propertize "λ " 'face 'default))))
 
 (setq eshell-highlight-prompt nil)
+
+(setq eshell-history-size 1024)
+(setq eshell-prompt-regexp "^[^λ]*[λ] ")
+
+(load "em-hist")           ; So the history vars are defined
+(if (boundp 'eshell-save-history-on-exit)
+    (setq eshell-save-history-on-exit t)) ; Don't ask, just save
+                                        ;(message "eshell-ask-to-save-history is %s" eshell-ask-to-save-history)
+(if (boundp 'eshell-ask-to-save-history)
+    (setq eshell-ask-to-save-history 'always)) ; For older(?) version
+                                        ;(message "eshell-ask-to-save-history is %s" eshell-ask-to-save-history)
+
+(require 'esh-module) ;; load tramp functions into eshell
+(add-to-list 'eshell-modules-list 'eshell-tramp)
+(setq eshell-prefer-lisp-functions t)
+(setq eshell-prefer-lisp-variables t)
+
+(setq password-cache t) ; enable password caching
+(setq password-cache-expiry 180) ; for 3 minutes (time in secs)
+
 
 (provide 'eshell-init)
