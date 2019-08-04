@@ -4,8 +4,7 @@
 
 ;; I use mu from nix packages.
 (use-package mu4e
-  :load-path "~/.nix-profile/share/emacs/site-lisp/mu4e"
-  :bind  ("<f2>" . mu4e)
+  :load-path "/usr/share/emacs/site-lisp/mu4e"
   :config
   (use-package org-mu4e)
 

@@ -12,6 +12,7 @@
       :init
       (define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)))
   :init
+  (setq projectile-completion-system 'ivy)
   (projectile-global-mode)
   (setq projectile-enable-caching t))
 (provide 'projectile-init)

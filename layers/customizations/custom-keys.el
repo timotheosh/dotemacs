@@ -28,10 +28,9 @@
   :config
   (general-define-key "C-s" 'swiper))
 
-(global-set-key [f1] 'dired)
-(global-set-key [f3] 'shell)
+(global-set-key [f1] 'projectile-switch-project)
+(global-set-key [f2] 'projectile-switch-open-project)
 (global-set-key [f4] 'find-file)
-(global-set-key [f5] 'create-text-scratch-buffer)
 (global-set-key [f9] 'menu-bar-mode)
 
 (provide 'custom-keys)

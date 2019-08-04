@@ -92,7 +92,6 @@
 (require 'yasnippet-init)
 
 ;; Customizations
-(require 'custom-keys)
 (require 'environment-init)
 (require 'powerline-init)
 
@@ -223,3 +222,4 @@
                     :height 151
                     :width 'normal)
 (put 'dired-find-alternate-file 'disabled nil)
+(require 'custom-keys)
