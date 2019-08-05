@@ -75,4 +75,10 @@
 (setq password-cache t) ; enable password caching
 (setq password-cache-expiry 180) ; for 3 minutes (time in secs)
 
+;; Uses the default Emacs completion package for tab-complete in eshell.
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-key eshell-mode-map (kbd "<tab>")
+              (lambda () (interactive) (pcomplete-std-complete)))))
+
 (provide 'eshell-init)
