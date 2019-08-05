@@ -44,57 +44,7 @@
 (defun eshell/ef (fname-regexp &rest dir)
   (ef fname-regexp default-directory))
 
-;;; ---- path manipulation
-
-(defun pwd-repl-home (pwd)
-  (interactive)
-  (let* ((home (expand-file-name (getenv "HOME")))
-         (home-len (length home)))
-    (if (and
-         (>= (length pwd) home-len)
-         (equal home (substring pwd 0 home-len)))
-        (concat "~" (substring pwd home-len))
-      pwd)))
-
-(defun curr-dir-git-branch-string (pwd)
-  "Returns current git branch as a string, or the empty string if
-PWD is not in a git repo (or the git command is not found)."
-  (interactive)
-  (when (and (eshell-search-path "git")
-             (locate-dominating-file pwd ".git"))
-    (let ((git-output (shell-command-to-string (concat "cd " pwd " && git branch | grep '\\*' | sed -e 's/^\\* //'"))))
-      (propertize (concat "["
-                          (if (> (length git-output) 0)
-                              (substring git-output 0 -1)
-                            "(no branch)")
-                          "]") 'face `(:foreground "green"))
-      )))
-
-(setq eshell-prompt-function
-      (lambda ()
-        (concat
-         (propertize ((lambda (p-lst)
-                        (if (> (length p-lst) 3)
-                            (concat
-                             (mapconcat (lambda (elm) (if (zerop (length elm)) ""
-                                                        (substring elm 0 1)))
-                                        (butlast p-lst 3)
-                                        "/")
-                             "/"
-                             (mapconcat (lambda (elm) elm)
-                                        (last p-lst 3)
-                                        "/"))
-                          (mapconcat (lambda (elm) elm)
-                                     p-lst
-                                     "/")))
-                      (split-string (pwd-repl-home (eshell/pwd)) "/")) 'face `(:foreground "yellow"))
-         (or (curr-dir-git-branch-string (eshell/pwd)))
-         (propertize "λ " 'face 'default))))
-
-(setq eshell-highlight-prompt nil)
-
 (setq eshell-history-size 1024)
-(setq eshell-prompt-regexp "^[^λ]*[λ] ")
 
 (load "em-hist")           ; So the history vars are defined
 (if (boundp 'eshell-save-history-on-exit)
@@ -105,12 +55,24 @@ PWD is not in a git repo (or the git command is not found)."
                                         ;(message "eshell-ask-to-save-history is %s" eshell-ask-to-save-history)
 
 (require 'esh-module) ;; load tramp functions into eshell
-(add-to-list 'eshell-modules-list 'eshell-tramp)
+
+(use-package eshell-prompt-extras
+  :ensure t
+  :pin melpa
+  :config
+  ;; for virtualenvwrapper stuff
+  (with-eval-after-load "esh-opt"
+    (autoload 'epe-theme-lambda "eshell-prompt-extras")
+    (setq eshell-highlight-prompt nil
+          eshell-prompt-function 'epe-theme-lambda
+          epe-show-python-info t
+          epe-path-style 'single)))
+
+(add-to-list 'eshell-modules-list 'eshell-tramp 'esh-opt)
 (setq eshell-prefer-lisp-functions t)
 (setq eshell-prefer-lisp-variables t)
 
 (setq password-cache t) ; enable password caching
 (setq password-cache-expiry 180) ; for 3 minutes (time in secs)
-
 
 (provide 'eshell-init)
