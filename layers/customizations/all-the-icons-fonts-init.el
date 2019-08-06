@@ -9,4 +9,9 @@
 
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
+(use-package all-the-icons-ivy
+  :ensure t
+  :config
+  (all-the-icons-ivy-setup))
+
 (provide 'all-the-icons-fonts-init)
