@@ -78,6 +78,12 @@
 (setq password-cache t) ; enable password caching
 (setq password-cache-expiry 180) ; for 3 minutes (time in secs)
 
+;; Visual commands
+;; defaults are ("vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")
+(setq eshell-visual-commands '("vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm"))
+(dolist (cmd '("tmux" "aws-shell"))
+  (add-to-list 'eshell-visual-commands cmd))
+
 ;; Uses the default Emacs completion package for tab-complete in eshell.
 (add-hook 'eshell-mode-hook
           (lambda ()
