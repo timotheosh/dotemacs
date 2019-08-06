@@ -21,6 +21,7 @@
 
   (use-package org-jira
     :ensure t
+    :pin melpa
     :config
     (setq jiralib-url "https://inindca.atlassian.net"))
 

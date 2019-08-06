@@ -50,6 +50,7 @@
 
   (use-package cider
     :ensure t
+    :pin melpa-stable
     :config
     ;; Path to lein for Cider-mode
     (setq cider-lein-command (format "%s/bin/lein" (getenv "HOME")))
