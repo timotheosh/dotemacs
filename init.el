@@ -85,6 +85,7 @@
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
+(require 'dired-init)
 (require 'ssh-init)
 (require 'tramp-init)
 (require 'eshell-init)
@@ -223,3 +224,4 @@
                     :width 'normal)
 (put 'dired-find-alternate-file 'disabled nil)
 (require 'custom-keys)
+(require 'all-the-icons-fonts-init)
