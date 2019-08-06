@@ -1,3 +1,9 @@
+;; Eshell help
+(use-package esh-help
+  :ensure t
+  :init
+  (setup-esh-help-eldoc))
+
 ;; Custom functions for use in eshell
 (defun eshell/mgit (&rest args)
   (eshell-eval-using-options
