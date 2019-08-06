@@ -28,9 +28,17 @@
   :config
   (general-define-key "C-s" 'swiper))
 
+(defun eshell-new ()
+  (interactive)
+  (eshell 'N))
+
 (global-set-key [f1] 'projectile-switch-project)
 (global-set-key [f2] 'projectile-switch-open-project)
+(global-set-key [f3] 'eshell-new)
 (global-set-key [f4] 'find-file)
 (global-set-key [f9] 'menu-bar-mode)
+
+(global-set-key (kbd "C-s-<right>") 'next-buffer)
+(global-set-key (kbd "C-s-<left>") 'previous-buffer)
 
 (provide 'custom-keys)

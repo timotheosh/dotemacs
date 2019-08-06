@@ -1,3 +1,4 @@
+alias proc ps aux|grep $1|grep -v grep
 alias sudo /usr/bin/sudo $*
 alias git git --no-pager $*
 alias e find-file $1

@@ -85,6 +85,7 @@
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
+(require 'dired-init)
 (require 'ssh-init)
 (require 'tramp-init)
 (require 'eshell-init)
@@ -170,12 +171,12 @@
 ;; running emacs in server mode.
 ;; This solves the problem of the theme not getting loaded properly in
 ;; daemon mode. Found here: https://stackoverflow.com/questions/18904529/after-emacs-deamon-i-can-not-see-new-theme-in-emacsclient-frame-it-works-fr
-(use-package darktooth-theme
+(use-package zenburn-theme
   :ensure t
   :defer t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-(defvar my:theme 'darktooth)
+(defvar my:theme 'zenburn)
 (defvar my:terminal-theme)
 (defvar my:theme-window-loaded nil)
 (defvar my:theme-terminal-loaded nil)
@@ -223,3 +224,4 @@
                     :width 'normal)
 (put 'dired-find-alternate-file 'disabled nil)
 (require 'custom-keys)
+(require 'all-the-icons-fonts-init)
