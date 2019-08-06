@@ -38,4 +38,7 @@
 (global-set-key [f4] 'find-file)
 (global-set-key [f9] 'menu-bar-mode)
 
+(global-set-key (kbd "C-s-<right>") 'next-buffer)
+(global-set-key (kbd "C-s-<left>") 'previous-buffer)
+
 (provide 'custom-keys)
