@@ -7,7 +7,7 @@
   :load-path "programs/all-the-icons-dired")
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(setq neo-theme 'icons)
 
 (use-package all-the-icons-ivy
   :ensure t
