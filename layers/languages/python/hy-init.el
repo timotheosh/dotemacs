@@ -10,8 +10,7 @@
   (require 'programming-init)
   (setq hy-mode-inferior-lisp-command "hy")
   ;; Add smartparens-strict-mode
-  (dolist (func '(my-programming-hooks
-                  smartparens-strict-mode
+  (dolist (func '(smartparens-strict-mode
                   rainbow-delimiters-mode))
     (add-hook 'hy-mode-hook func))
   (use-package aggressive-indent

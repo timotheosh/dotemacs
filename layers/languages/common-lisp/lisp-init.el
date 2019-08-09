@@ -21,7 +21,6 @@
           (ecl ("~/programs/bin/ros" "-L" "ecl" "-Q" "run") :coding-system utf-8-unix)
           (abcl ("~/programs/bin/ros" "-L" "abcl-bin" "-Q" "run"))))
 
-  (require 'programming-init)
   (use-package ac-slime
     :ensure t
     :init
@@ -35,7 +34,6 @@
   (add-hook 'slime-mode-hook 'set-up-slime-ac)
   (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
   (add-hook 'slime-repl-mode-hook 'auto-complete-mode)
-  (add-hook 'lisp-mode-hook 'my-programming-hooks)
   (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
   (add-hook 'lisp-mode-hook 'auto-complete-mode)
 

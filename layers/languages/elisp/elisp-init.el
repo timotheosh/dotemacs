@@ -6,8 +6,7 @@
   (add-hook 'emacs-lisp-mode-hook 'company-mode)
   (use-package aggressive-indent
     :ensure t)
-  (dolist (func '(my-programming-hooks
-                  eldoc-mode
+  (dolist (func '(eldoc-mode
                   flyspell-prog-mode
                   smartparens-strict-mode
                   aggressive-indent-mode))

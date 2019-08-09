@@ -1,31 +1,49 @@
 ;; Add hooks to the major-mode this is called from.
 ;; Should be just major-modes for programming.
 
-;; Ad this hook for all programming languages.
-(defun my-programming-hooks ()
-  (linum-mode 1)
-  (hl-line-mode 1)
-  (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
-  (setq tab-width (default-value 'tab-width))
-  (use-package column-enforce-mode
-    :ensure t
-    :config
-    (column-enforce-mode 1))
-  (use-package aggressive-indent
-    :ensure t
-    :init
-    (global-aggressive-indent-mode 1))
-  (use-package origami
-    :ensure t
-    :bind (("C-<tab>" . origami-recursively-toggle-node)
-           ("C-<iso-lefttab>" . origami-toggle-all-nodes))
-    :init
-    (global-origami-mode 1)))
+(defun my/match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert normally."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
 
-;; Key for jumping from begining to end parens and brackets.
-;; <backtab> is Shift-tab
-(add-hook 'prog-mode-hook (lambda ()
-                            (local-set-key (kbd "<backtab>") 'match-paren)))
+(defun my/programming-hooks ()
+  "Hook for all programming modes."
+
+  ;; Line numbers
+  (linum-mode 1)
+
+  ;; Highlight active line
+  (hl-line-mode 1)
+
+  ;; Spaces and tabs. Spaces by default.
+  (setq-default indent-tabs-mode nil)
+  (setq tab-width (default-value 'tab-width))
+
+  ;; Key for jumping from begining to end parens and brackets.
+  ;; <backtab> is Shift-tab
+  (local-set-key (kbd "<backtab>") 'my/match-paren))
+
+(add-hook 'prog-mode-hook 'my/programming-hooks)
+
+;; Enforce column length.
+;; https://github.com/jordonbiondo/column-enforce-mode/
+(use-package column-enforce-mode
+  :ensure t
+  :hook prog-mode)
+(use-package aggressive-indent
+  :ensure t
+  :hook prog-mode)
+(use-package origami
+  :ensure t
+  :bind (("C-<tab>" . origami-recursively-toggle-node)
+         ("C-<iso-lefttab>" . origami-toggle-all-nodes))
+  :hook prog-mode)
+
+(defun my/tabs-matter ()
+  "Allows tabs for modes that need them."
+  (setq-default indent-tabs-mode nil))
 
 (defun my/return-key ()
   "Return as usual, and then insert the comment-prefix."
@@ -52,15 +70,10 @@
     (previous-line)
     (indent-according-to-mode)))
 
-(defun match-paren (arg)
-  "Go to the matching paren if on a paren; otherwise insert normally."
-  (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-        (t (self-insert-command (or arg 1)))))
 
 (use-package smartparens-config
   :ensure smartparens
+  :hook prog-mode
   :bind (:map smartparens-mode-map
               ("C-M-a" . sp-beginning-of-sexp)
               ("C-M-e" . sp-end-of-sexp)
@@ -123,18 +136,29 @@
                       ((equal ms "'")
                        (or (sp--org-skip-markup ms mb me)
                            (not (sp-point-in-string-or-comment))))
-                      (t (not (sp-point-in-string-or-comment)))))))
-  ;; emr package is broken in melpa
-  ;;(use-package emr
-  ;;  ;; emr is for refactoring lisp, elisp, scheme, ruby, javascript, and c
-  ;;  :ensure t
-  ;;  :config
-  ;;  (autoload 'emr-show-refactor-menu "emr")
-  ;;  (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
-  ;;  (eval-after-load "emr" '(emr-initialize)))
-  )
+                      (t (not (sp-point-in-string-or-comment))))))))
+
+;; emacs-refactor
+;; emr is for refactoring lisp, elisp, scheme, ruby, javascript, and c
+;; https://github.com/emacsmirror/emr
+;; emr package is broken in melpa-stable
+(use-package emr
+  :ensure t
+  :pin melpa
+  :hook ((emr-mode . lisp-mode)
+         (emr-mode . scheme-mode)
+         (emr-mode . elisp-mode)
+         (emr-mode . ruby-mode)
+         (emr-mode . javascript-mode)
+         (emr-mode . c-mode))
+  :config
+  (autoload 'emr-show-refactor-menu "emr")
+  (define-key prog-mode-map (kbd "M-RET") 'emr-show-refactor-menu)
+  (eval-after-load "emr" '(emr-initialize)))
+
 (use-package flycheck
   :ensure t
+  :hook prog-mode
   :config
   (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
     (vector #b00000000
@@ -162,10 +186,19 @@
     :fringe-face 'flycheck-fringe-error
     :error-list-face 'flycheck-error-list-error))
 
+;; wgrep allows you to edit a grep buffer and apply those changes to
+;; the file buffer.
+;; https://github.com/mhayashi1120/Emacs-wgrep
 (use-package wgrep
-  :ensure t)
-(use-package wgrep-ag
-  :ensure t)
+  :ensure t
+  :hook prog-mode
+  :init
+  (autoload 'wgrep-ag-setup "wgrep-ag")
+  (add-hook 'ag-mode-hook 'wgrep-ag-setup))
+
+;; iedit Edit multiple regions in the same way.
+;; https://github.com/victorhge/iedit
 (use-package iedit
-  :ensure t)
+  :ensure t
+  :bind (("C-;" . iedit-mode)))
 (provide 'programming-init)

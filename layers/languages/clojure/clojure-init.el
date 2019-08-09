@@ -7,7 +7,6 @@
   (use-package programming-init
     :init
     (require 'smartparens))
-  (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
   (use-package clj-refactor
     :ensure t)

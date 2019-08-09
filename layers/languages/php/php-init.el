@@ -69,8 +69,7 @@
        (concat "XDEBUG_CONFIG='idekey=my-php-53' /usr/bin/php "
                (buffer-file-name) " &"))))
 
-  (dolist (func '(my-programming-hooks
-                  pear/php-mode-init
+  (dolist (func '(pear/php-mode-init
 		  my-php-hook-function
 		  (lambda ()
 		    "Debugger key binding"

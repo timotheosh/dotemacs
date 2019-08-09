@@ -23,7 +23,6 @@
   (add-to-list 'ac-modes 'racket-mode)
   (add-hook 'racket-mode-hook 'auto-complete-mode)
   (add-hook 'racket-mode-hook 'flymake-racket-load)
-  (add-hook 'racket-mode-hook 'my-programming-hooks)
   (add-hook 'racket-mode-hook
             (lambda ()
               (define-key racket-mode-map

@@ -176,7 +176,6 @@
     (local-set-key [67108908] ;; Bind key C-,
                    (quote helm-gtags-find-rtag))
     (rtags-start-process-unless-running)
-    (my-programming-hooks)
     (my/company-c-header-init)
     (smartparens-strict-mode 1)
     (irony-mode)

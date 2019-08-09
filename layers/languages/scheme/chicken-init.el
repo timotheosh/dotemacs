@@ -50,7 +50,6 @@
       (kbd "C-c C-l") 'scheme-load-current-file)
     (define-key scheme-mode-map
       (kbd "C-c C-k") 'scheme-compile-current-file)
-    (add-hook 'scheme-mode-hook 'my-programming-hooks)
     (add-hook 'scheme-mode-hook 'geiser-mode)
     (use-package aggressive-indent
       :ensure t

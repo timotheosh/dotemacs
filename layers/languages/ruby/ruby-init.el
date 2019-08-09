@@ -18,7 +18,6 @@
     :config
     (add-to-list 'ac-modes 'ruby-mode))
   :init
-  (dolist (func '(my-programming-hooks
-                  inf-ruby-minor-mode)
-    (add-hook 'ruby-mode-hook func))))
+  (dolist (func '(inf-ruby-minor-mode)
+                (add-hook 'ruby-mode-hook func))))
 (provide 'ruby-init)
