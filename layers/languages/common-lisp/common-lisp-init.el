@@ -45,4 +45,4 @@
   ;; Then follow instructions.
   ;; C-c C-d h on common lisp directive, and it should open the definition in the default web browser.
   (load "/home/thawes/.roswell/lisp/quicklisp/clhs-use-local.el" t))
-(provide 'lisp-init)
+(provide 'common-lisp-init)
