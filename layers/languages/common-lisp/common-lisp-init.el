@@ -6,9 +6,6 @@
   :config
   (add-hook 'lisp-mode-hook 'smartparens-strict-mode)
 
-  ;; Load roswell
-  (load (expand-file-name "~/.roswell/helper.el"))
-
   (setq slime-contribs '(slime-fancy slime-banner))
   (setq inferior-lisp-program "~/programs/bin/ros -Q run")
   (setq slime-startup-animation t)
@@ -36,6 +33,9 @@
   (add-hook 'slime-repl-mode-hook 'auto-complete-mode)
   (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
   (add-hook 'lisp-mode-hook 'auto-complete-mode)
+
+  ;; Load roswell
+  (load (expand-file-name "~/.roswell/helper.el"))
 
   (use-package lisp-extra-font-lock
     :ensure t)
