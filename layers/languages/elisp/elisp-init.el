@@ -2,6 +2,7 @@
   :mode ("\\.el\\'" . emacs-lisp-mode)
   :hook my/lisp-hook
   :init
+  (my/lisp-init)
   (add-to-list 'company-backends 'company-elisp)
   (add-hook 'emacs-lisp-mode-hook 'company-mode)
   (use-package aggressive-indent

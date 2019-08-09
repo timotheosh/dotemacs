@@ -4,6 +4,7 @@
   :bind (("C-c C-q m" . quack-view-manual)
          ("C-c C-q s" . quack-view-srfi)
          ("C-c C-q t" . quack-tidy-buffer))
+  :hook my/lisp-hook
   :config
   (add-to-list 'ac-modes 'scheme-mode)
   (use-package flymake-racket
@@ -11,6 +12,8 @@
     :config
     (add-hook 'scheme-mode-hook 'flymake-racket-load))
   :init
+  (my/lisp-init)
+
   (progn
     (defun scheme-load-current-file (&optional switch)
       (interactive "P")

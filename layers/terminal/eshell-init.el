@@ -7,6 +7,10 @@
 (use-package multi-eshell
   :ensure t)
 
+(defun eshell-new ()
+  (interactive)
+  (eshell 'N))
+
 ;; Custom functions for use in eshell
 (defun eshell/mgit (&rest args)
   (eshell-eval-using-options

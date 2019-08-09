@@ -3,10 +3,9 @@
   :mode (("\\.clj\\'" . clojure-mode)
          ("\\.cljs\\'" . clojurescript-mode)
          ("\\.hl\\'" . clojurescript-mode))
+  :hook my/lisp-hook
   :init
-  (use-package programming-init
-    :init
-    (require 'smartparens))
+  (my/lisp-init)
 
   (use-package clj-refactor
     :ensure t)

@@ -5,7 +5,10 @@
          ("C-c C-q k" . quack-view-keyword-docs)
          ("C-c C-q s" . quack-view-srfi)
          ("C-c C-q t" . quack-tidy-buffer))
+  :hook my/lisp-hook
   :init
+  (my/lisp-init)
+
   (use-package flymake-racket
     :ensure t
     :config

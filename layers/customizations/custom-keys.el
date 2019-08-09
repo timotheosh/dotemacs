@@ -1,12 +1,6 @@
 ; Keep the second mouse button from moving the cursor while pasting.
 (global-set-key [mouse-2] 'yank)
 
-(defun create-text-scratch-buffer nil
-  "create a text scratch buffer"
-  (interactive)
-  (switch-to-buffer (get-buffer-create "*text-scratch*"))
-  (text-mode))
-
 ;; isearch replacement
 (use-package swiper
   :ensure t)
@@ -27,10 +21,6 @@
   :ensure t
   :config
   (general-define-key "C-s" 'swiper))
-
-(defun eshell-new ()
-  (interactive)
-  (eshell 'N))
 
 (global-set-key [f1] 'projectile-switch-project)
 (global-set-key [f2] 'projectile-switch-open-project)

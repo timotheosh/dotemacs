@@ -3,6 +3,7 @@
   :mode (("\\.lisp\\'" . lisp-mode)
          ("\\.ros\\'" . lisp-mode)
          ("\\.lsp\\'" . lisp-mode))
+  :hook my/lisp-hook
   :config
   (add-hook 'lisp-mode-hook 'smartparens-strict-mode)
 
@@ -44,5 +45,8 @@
   ;; open CL REPL and execute: (ql:quickload "clhs")
   ;; Then follow instructions.
   ;; C-c C-d h on common lisp directive, and it should open the definition in the default web browser.
-  (load "/home/thawes/.roswell/lisp/quicklisp/clhs-use-local.el" t))
+  (load "/home/thawes/.roswell/lisp/quicklisp/clhs-use-local.el" t)
+
+  :init
+  (my/lisp-init))
 (provide 'common-lisp-init)

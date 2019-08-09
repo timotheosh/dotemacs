@@ -6,6 +6,7 @@
 (use-package hy-mode
   :ensure t
   :mode ("\\.hy\\'" . hy-mode)
+  :hook my/lisp-hook
   :config
   (require 'programming-init)
   (setq hy-mode-inferior-lisp-command "hy")
@@ -23,5 +24,7 @@
   (use-package python
     :ensure t)
   (use-package virtualenvwrapper
-    :ensure t))
+    :ensure t)
+  :init
+  (my/lisp-init))
 (provide 'hy-init)
