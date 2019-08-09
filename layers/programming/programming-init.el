@@ -23,7 +23,13 @@
 
   ;; Key for jumping from begining to end parens and brackets.
   ;; <backtab> is Shift-tab
-  (local-set-key (kbd "<backtab>") 'my/match-paren))
+  (local-set-key (kbd "<backtab>") 'my/match-paren)
+  (use-package origami
+    :ensure t
+    :bind (("C-<tab>" . origami-recursively-toggle-node)
+           ("C-<iso-lefttab>" . origami-toggle-all-nodes))
+    :init
+    (global-origami-mode 1)))
 
 (add-hook 'prog-mode-hook 'my/programming-hooks)
 
@@ -31,20 +37,6 @@
 ;; https://github.com/jordonbiondo/column-enforce-mode/
 (use-package column-enforce-mode
   :ensure t
-  :hook prog-mode)
-
-;; agressive-indent
-;; https://github.com/Malabarba/aggressive-indent-mode
-(use-package aggressive-indent
-  :ensure t
-  :hook prog-mode)
-
-;; origami for text folding
-;; https://github.com/gregsexton/origami.el
-(use-package origami
-  :ensure t
-  :bind (("C-<tab>" . origami-recursively-toggle-node)
-         ("C-<iso-lefttab>" . origami-toggle-all-nodes))
   :hook prog-mode)
 
 (defun my/tabs-matter ()
@@ -75,9 +67,6 @@
     (indent-according-to-mode)
     (previous-line)
     (indent-according-to-mode)))
-
-(require 'smartparens-lib)
-(require 'flycheck-lib)
 
 ;; emacs-refactor
 ;; emr is for refactoring lisp, elisp, scheme, ruby, javascript, and c
@@ -115,4 +104,14 @@
 (use-package iedit
   :ensure t
   :bind (("C-;" . iedit-mode)))
+
+(defun my/lisp-hook ()
+  (require 'smartparens-lib)
+  (smartparens-mode 1)
+  (smartparens-strict-mode 1)
+
+  (require 'flycheck-lib)
+
+  (require 'aggressive-indent-lib))
+
 (provide 'programming-init)
