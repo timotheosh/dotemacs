@@ -92,7 +92,7 @@
     :load-path "~/.nix-profile/share/emacs/site-lisp/rtags/"
     :config
     ;; Flycheck setup
-    (use-package flycheck-init
+    (use-package flycheck-lib
       :init
       (require 'flycheck-rtags))
     (defun my-flycheck-rtags-setup ()

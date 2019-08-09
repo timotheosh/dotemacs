@@ -18,6 +18,7 @@
 ;; Libraries. Packages that get used more than one place. WARNING: No
 ;; consistent use, yet.
 (let ((default-directory  "~/.emacs.d/libraries/"))
+  (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path))
 ;; Configuration for specific modes
 (let ((default-directory  "~/.emacs.d/layers/"))
@@ -105,7 +106,6 @@
 (require 'mu4e-init)
 ;; General Utilities
 (require 'flyspell-init)
-(require 'flycheck-init)
 (require 'helm-init)
 (require 'ivy-init)
 (require 'my-funcs)
@@ -119,7 +119,7 @@
 ;; Programming Utilities
 ;;(require 'minimap-init) ;; Minimap is too annoying. Can't get rid of once
 ;; enabled. No other options work.
-(require 'ggtags-init)
+(require 'ggtags-lib)
 (require 'projectile-init)
 (require 'auto-complete-init)
 (require 'company-init)
