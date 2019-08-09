@@ -32,9 +32,15 @@
 (use-package column-enforce-mode
   :ensure t
   :hook prog-mode)
+
+;; agressive-indent
+;; https://github.com/Malabarba/aggressive-indent-mode
 (use-package aggressive-indent
   :ensure t
   :hook prog-mode)
+
+;; origami for text folding
+;; https://github.com/gregsexton/origami.el
 (use-package origami
   :ensure t
   :bind (("C-<tab>" . origami-recursively-toggle-node)
