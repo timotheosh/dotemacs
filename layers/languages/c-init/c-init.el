@@ -13,6 +13,7 @@
 	 ("\\.hxx\\'" . c++-mode)
 	 ("\\.objc\\'" . objc-mode)
 	 ("\\.m\\'" . objc-mode))
+  :requires helm-init
   :init
   (use-package programming-init
     :init

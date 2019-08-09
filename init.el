@@ -1,9 +1,11 @@
 ;; dotemacs
-
+;; Defer garbage collection until we have started up.
 (setq gc-cons-threshold 64000000)
 (add-hook 'after-init-hook #'(lambda ()
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
+
+(setq user-full-name "Tim Hawes")
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -83,6 +85,10 @@
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 
 (require 'packages-init)
+
+;; Completion library
+(require 'completion-lib)
+
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
@@ -101,13 +107,10 @@
 (require 'org-init)
 (require 'cbible-init)
 
-(setq user-full-name "Tim Hawes")
-
+;; Email
 (require 'mu4e-init)
 ;; General Utilities
 (require 'flyspell-init)
-(require 'helm-init)
-(require 'ivy-init)
 (require 'my-funcs)
 (require 'unbound)
 (require 'multi-term-init)

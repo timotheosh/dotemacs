@@ -28,4 +28,4 @@
   (setq projectile-keymap-prefix (kbd "C-c C-p")) ; temp bug fix
   (counsel-projectile-mode 1))
 
-(provide 'ivy-init)
+(provide 'completion-lib)
