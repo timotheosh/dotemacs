@@ -113,6 +113,9 @@
 (require 'multi-term-init)
 (require 'erc-init)
 
+;; Programming mode
+(require 'programming-init)
+
 ;; Programming Utilities
 ;;(require 'minimap-init) ;; Minimap is too annoying. Can't get rid of once
 ;; enabled. No other options work.
@@ -127,30 +130,30 @@
 
 ;; Language modes
 ;; Most impotant
-(require 'elisp-init)      ;; Emacs Lisp
-(require 'lisp-init)       ;; Common Lisp
-(require 'rust-init)       ;; Rust-lang
-(require 'clojure-init)    ;; Clojure
-(require 'python-init)     ;; Python
+(require 'elisp-init)        ;; Emacs Lisp
+(require 'common-lisp-init)  ;; Common Lisp
+(require 'rust-init)         ;; Rust-lang
+(require 'clojure-init)      ;; Clojure
+(require 'python-init)       ;; Python
 ;; (require 'inf-clojure-init) ;; For use of NodeJs Clojurescript implementation/compiler, Lumo
-(require 'racket-init)     ;; Racket/Scheme
+(require 'racket-init)       ;; Racket/Scheme
 
 ;; Meh
-(require 'web-init)        ;; web-mode for html/css, templates, etc.
-(require 'c-init)          ;; C/C++ and ObjC
-(require 'php-init)        ;; PHP
-(require 'geiser-init)     ;; repl for scheme/racket
-(require 'chicken-init)    ;; Chicken Scheme
-(require 'cython-init)     ;; Cython
-(require 'hy-init)         ;; Hy-mode (Lisp for Python)
-(require 'java-init)       ;; Java ; Broken package
-(require 'groovy-init)     ;; Groovy
-(require 'perl-init)       ;; Perl
-(require 'haskell-init)    ;; Haskell
-(require 'ruby-init)       ;; Ruby
-(require 'javascript-init) ;; Javascript
+(require 'web-init)          ;; web-mode for html/css, templates, etc.
+(require 'c-init)            ;; C/C++ and ObjC
+(require 'php-init)          ;; PHP
+(require 'geiser-init)       ;; repl for scheme/racket
+(require 'chicken-init)      ;; Chicken Scheme
+(require 'cython-init)       ;; Cython
+(require 'hy-init)           ;; Hy-mode (Lisp for Python)
+(require 'java-init)         ;; Java ; Broken package
+(require 'groovy-init)       ;; Groovy
+(require 'perl-init)         ;; Perl
+(require 'haskell-init)      ;; Haskell
+(require 'ruby-init)         ;; Ruby
+(require 'javascript-init)   ;; Javascript
 (require 'smalltalk-mode-init)
-(require 'basic-init)      ;; BASIC Mode
+(require 'basic-init)        ;; BASIC Mode
 
 ;; File Formats
 (require 'edi-init)

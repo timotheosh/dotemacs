@@ -197,10 +197,13 @@
 ;; https://github.com/mhayashi1120/Emacs-wgrep
 (use-package wgrep
   :ensure t
-  :hook prog-mode
-  :init
-  (autoload 'wgrep-ag-setup "wgrep-ag")
-  (add-hook 'ag-mode-hook 'wgrep-ag-setup))
+  :config
+  (use-package wgrep-ag
+    :ensure t
+    :hook wgrep-mode
+    :config
+    (autoload 'wgrep-ag-setup "wgrep-ag")
+    (add-hook 'ag-mode-hook 'wgrep-ag-setup)))
 
 ;; iedit Edit multiple regions in the same way.
 ;; https://github.com/victorhge/iedit

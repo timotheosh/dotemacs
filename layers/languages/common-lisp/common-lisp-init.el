@@ -3,8 +3,7 @@
   :mode (("\\.lisp\\'" . lisp-mode)
          ("\\.ros\\'" . lisp-mode)
          ("\\.lsp\\'" . lisp-mode))
-  :init
-  (require 'programming-init)
+  :config
   (add-hook 'lisp-mode-hook 'smartparens-strict-mode)
 
   ;; Load roswell
@@ -25,6 +24,7 @@
     :ensure t
     :init
     (add-to-list 'ac-modes 'slime-repl-mode))
+
   (use-package slime
     :ensure t
     :init
@@ -36,11 +36,6 @@
   (add-hook 'slime-repl-mode-hook 'auto-complete-mode)
   (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
   (add-hook 'lisp-mode-hook 'auto-complete-mode)
-
-  (use-package aggressive-indent
-    :ensure t
-    :init
-    (add-hook 'lisp-mode-hook 'aggressive-indent-mode))
 
   (use-package lisp-extra-font-lock
     :ensure t)
