@@ -27,6 +27,8 @@
 (add-hook 'prog-mode-hook (lambda ()
                             (local-set-key (kbd "<backtab>") 'match-paren)))
 
+(add-hook 'prog-mode-hook 'my-programming-hooks)
+
 (defun my/return-key ()
   "Return as usual, and then insert the comment-prefix."
   (interactive)

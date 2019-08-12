@@ -77,6 +77,8 @@
            "* TODO %?\nEntered on %U\n  %i\n  %a")
           ("wT" "Training" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Training")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
+          ("wb" "Base AMI" entry (file+datetree "~/org/GTD/work/work-gtd.org" "BaseAMI")
+           "* TODO %?\nEntered on %U\n  %i\n  %a")
           ("wk" "Keymaster" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Keymaster")
            "* TODO %?\nEntered on %U\n  %i\n  %a")
           ("wz" "Jenkins" entry (file+datetree "~/org/GTD/work/work-gtd.org" "Jenkins")
