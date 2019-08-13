@@ -9,7 +9,7 @@
   (add-hook 'json-mode-hook
             (lambda ()
               (make-local-variable 'js-indent-level)
-              (setq js-indent-level 2)))
+              (setq js-indent-level 4)))
 
   (defun js-mode-bindings ()
     "Sets a hotkey for using the json-snatcher plugin"
