@@ -7,7 +7,7 @@
         ("marmalade" .
          "https://marmalade-repo.org/packages/")
         ("gnu" .
-         "https://elpa.gnu.org/packages/")
+         "http://elpa.gnu.org/packages/")
         ("melpa" .
          "https://melpa.milkbox.net/packages/"))
       package-archive-priorities
