@@ -1,3 +1,6 @@
+(use-package avy
+  :ensure t)
+
 (use-package ivy
   :ensure t
   :diminish (ivy-mode . "") ; does not display ivy in the modeline
