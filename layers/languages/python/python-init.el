@@ -61,7 +61,6 @@
                   flycheck-mode
                   semantic-mode
                   smartparens-mode
-                  jedi:setup
-                  set-flychecker-executables))          ;; Jedi server for auto-completion
+                  jedi:setup))          ;; Jedi server for auto-completion
     (add-hook 'python-mode-hook func)))
 (provide 'python-init)
