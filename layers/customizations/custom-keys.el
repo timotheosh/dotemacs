@@ -35,7 +35,7 @@
 (global-set-key [f1] 'projectile-switch-project)
 (global-set-key [f2] 'projectile-switch-open-project)
 (global-set-key [f3] 'eshell-new)
-(global-set-key [f4] 'counsel-find-file)
+(global-set-key [f4] 'counsel-projectile-find-file)
 (global-set-key [f9] 'menu-bar-mode)
 
 (global-set-key (kbd "C-s-<right>") 'next-buffer)

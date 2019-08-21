@@ -1,7 +1,8 @@
 (use-package neotree
   :ensure t
+  :config
+  (setq neo-autorefresh nil)
   :init
-
   (defun neotree-project-dir ()
     "Open NeoTree using the git root."
     (interactive)
