@@ -24,7 +24,7 @@
 
 ;;; Commentary:
 
-;;
+;; Install the rust language server: https://github.com/rust-lang/rls
 
 ;; Put this file into your load-path and the following into your ~/.emacs:
 ;;   (require 'rust-init)
