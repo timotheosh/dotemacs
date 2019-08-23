@@ -11,13 +11,6 @@
   (setenv "JUPYTER_CONSOLE_TEST" "1")
   (setenv "PYLINTRC" (concat (getenv "HOME") "/.pylintrc"))
   (require 'programming-init)
-  (use-package pymacs
-    :load-path "programs/Pymacs"
-    :diminish ropemacs-mode
-    :config (pymacs-load "ropemacs" "rope-")
-    :bind ( ("M-." . rope-goto-definition)))
-  (use-package python
-    :ensure t)
   (use-package virtualenvwrapper
     :ensure t
     :config
@@ -27,40 +20,41 @@
     ;; use the default location (`~/.virtualenvs`), or if the
     ;; the environment variable `WORKON_HOME` points to the right place
     (setq venv-location "/home/thawes/.virtualenvs/"))
-  (use-package jedi
+
+  (use-package lsp-mode
     :ensure t
-    :commands jedi:setup)
+    :pin melpa
+    :commands (lsp))
+  ;; optionally
+  (use-package lsp-ui
+    :ensure t)
+  (use-package company-lsp
+    :ensure t
+    :commands company-lsp)
+  (use-package helm-lsp
+    :ensure t
+    :commands helm-lsp-workspace-symbol)
+  (use-package lsp-treemacs
+    :ensure t
+    :commands lsp-treemacs-errors-list)
+  ;; optionally if you want to use debugger
+  (add-to-list 'company-backends 'company-lsp)
+  (use-package dap-mode
+    :ensure t)
+
   :init
-  (use-package elpy
-    ;; NOTE: Elpy makes use of py-flake. You may have to change
-    ;; settings in ~/.config/flake8
-    :ensure t
-    :commands elpy-enable)
+  (linum-mode 1)
+  (setq indent-tabs-mode nil ;; Spaces, not tabs!
+        tab-width (default-value 'tab-width)
+        python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i")
 
-  (defun set-flychecker-executables ()
-    "Configure virtualenv for flake8 and lint."
-    (when (get-current-buffer-flake8)
-      (flycheck-set-checker-executable (quote python-flake8)
-                                       (get-current-buffer-flake8)))
-    (when (get-current-buffer-pylint)
-      (flycheck-set-checker-executable (quote python-pylint)
-                                       (get-current-buffer-pylint))))
-
-  (defun my-python-hooks ()
-    (linum-mode 1)
-    (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
-    (setq tab-width (default-value 'tab-width)))
-
-  (with-eval-after-load 'python (progn
-                                  (elpy-enable) ;; Our main python module
-                                  (setq python-shell-interpreter "ipython"
-                                        python-shell-interpreter-args "-i"
-                                        elpy-dedicated-shells t
-                                        jedi:complete-on-dot t)))
-  (dolist (func '(my-python-hooks
+  (smartparens-mode)
+  (dolist (func '(lsp-mode
+                  lsp-ui-mode
                   flycheck-mode
-                  semantic-mode
-                  smartparens-mode
-                  jedi:setup))          ;; Jedi server for auto-completion
+                  company-mode
+                  smartparens-strict-mode))
     (add-hook 'python-mode-hook func)))
+
 (provide 'python-init)
