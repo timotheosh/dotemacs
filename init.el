@@ -125,6 +125,8 @@
 (require 'docker-init)
 (require 'restclient-init)
 
+;; Language server mode
+(require 'lsp-init)
 ;; Language modes
 ;; Most impotant
 (require 'elisp-init)      ;; Emacs Lisp

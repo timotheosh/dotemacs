@@ -36,24 +36,29 @@
 
 (use-package rust-mode
   :ensure t
+  :requires (programming-init lsp-init)
   :mode (("\\.rs\\'" . rust-mode)
          ("\\.toml\\'" . rust-mode))
   :init
-  (use-package programming-init
-    :init
-    (add-hook 'rust-mode-hook
-              (lambda ()
-                (setq comment-prefix-start "///")
-                (setq comment-prefix-continue "/// ")
-                (local-set-key (kbd "C-m") 'my/return-key)))
-    (add-hook 'rust-mode-hook 'my-programming-hooks))
   (use-package cargo
     :ensure t)
   (use-package flycheck-rust
     :ensure t)
+
+  (add-hook 'rust-mode-hook
+            (lambda ()
+              (setq comment-prefix-start "///")
+              (setq comment-prefix-continue "/// ")
+              (local-set-key (kbd "C-m") 'my/return-key)))
+
   (autoload 'rust-mode "rust-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
+  (dolist (func '(lsp
+                  smartparens-strict-mode
+                  my-programming-hooks
+                  cargo-minor-mode))
+    (add-hook 'rust-mode-hook func)))
 
 (provide 'rust-init)
 ;;; rust-init.el ends here
