@@ -5,7 +5,8 @@
   :commands (lsp))
 ;; optionally
 (use-package lsp-ui
-  :ensure t)
+  :ensure t
+  :pin melpa)
 (use-package company-lsp
   :ensure t
   :commands company-lsp)

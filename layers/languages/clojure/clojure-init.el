@@ -10,7 +10,8 @@
   (add-hook 'clojure-mode-hook 'my-programming-hooks)
 
   (use-package clj-refactor
-    :ensure t)
+    :ensure t
+    :pin melpa)
 
   (defun my/clojure-hook ()
     ;;(clj-refactor-mode 1)
@@ -29,6 +30,16 @@
     :ensure t
     :config
     (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
+
+  ;; lsp-clojure
+  (use-package lsp-clojure
+    :config
+    (add-to-list 'lsp-language-id-configuration '(clojure-mode . "clojure-mode"))
+    :init
+    (setq lsp-enable-indentation nil))
+  (add-hook 'clojure-mode-hook #'lsp)
+  (add-hook 'clojurec-mode-hook #'lsp)
+  (add-hook 'clojurescript-mode-hook #'lsp)
 
   ;; This is useful for working with camel-case tokens, like names of
   ;; Java classes (e.g. JavaClassName)
@@ -53,7 +64,7 @@
     :pin melpa-stable
     :config
     ;; Path to lein for Cider-mode
-    (setq cider-lein-command (format "%s/bin/lein" (getenv "HOME")))
+    (setq cider-lein-command (format "%s/programs/bin/lein" (getenv "HOME")))
     (if (string= system-type "cygwin")
         (setq cider-lein-command "~/bin/lein"))
     (add-hook 'cider-repl-mode-hook #'company-mode)
@@ -75,21 +86,6 @@
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode))
-
-(use-package flycheck-clojure
-  :ensure t
-  :pin melpa
-  :config
-  ;; Disable core.typed checker, as it is not yet working. Try again after a
-  ;; later update.
-  (eval-after-load 'flycheck '(flycheck-clojure-setup))
-  (use-package flycheck-pos-tip
-    :ensure t)
-  ;;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc clojure-cider-typed))
-  )
-(add-hook 'clojure-mode-hook 'flycheck-mode)
-
-
 
 (use-package 4clojure
   :ensure t
