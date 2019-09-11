@@ -173,6 +173,8 @@
 ;; running emacs in server mode.
 ;; This solves the problem of the theme not getting loaded properly in
 ;; daemon mode. Found here: https://stackoverflow.com/questions/18904529/after-emacs-deamon-i-can-not-see-new-theme-in-emacsclient-frame-it-works-fr
+(setq zenburn-override-colors-alist
+      '(("zenburn-bg" . "#363b41")))
 (use-package zenburn-theme
   :ensure t
   :defer t)
