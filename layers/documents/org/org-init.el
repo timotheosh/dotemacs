@@ -94,6 +94,9 @@
                   org-bullets-mode))
     (add-hook 'org-mode-hook func))
 
+  ;; Full screen for agenda and todos
+  (setq org-agenda-window-setup 'only-window)
+
   (use-package org-projectile
     :bind (("C-c n p" . org-projectile-project-todo-completing-read)
            ("C-c c" . org-capture))
