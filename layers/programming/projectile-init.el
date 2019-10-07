@@ -14,5 +14,7 @@
   :init
   (setq projectile-completion-system 'ivy)
   (projectile-global-mode)
-  (setq projectile-enable-caching t))
+  (setq projectile-indexing-method 'alien)
+  (setq projectile-sort-order 'recentf)
+  (setq projectile-enable-caching nil))
 (provide 'projectile-init)

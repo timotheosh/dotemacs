@@ -46,6 +46,6 @@
   (advice-add 'magit-push-popup :around #'magit-push-arguments-maybe-upstream)
 
   ;; NOTE: requires ido-completing-read+
-  (setq magit-completing-read-function #'magit-ido-completing-read))
+  (setq magit-completing-read-function #'ivy-mode))
 (provide 'magit-init)
 ;;; magit-init.el ends here
