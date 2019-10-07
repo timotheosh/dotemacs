@@ -43,9 +43,6 @@
            (if (magit-get-remote) magit-push-arguments
              (cons "--set-upstream" magit-push-arguments))))
       (apply magit-push-popup-fun args)))
-  (advice-add 'magit-push-popup :around #'magit-push-arguments-maybe-upstream)
-
-  ;; NOTE: requires ido-completing-read+
-  (setq magit-completing-read-function #'ivy-mode))
+  (advice-add 'magit-push-popup :around #'magit-push-arguments-maybe-upstream))
 (provide 'magit-init)
 ;;; magit-init.el ends here
