@@ -26,6 +26,8 @@
 ;;      then will prompt you shell name for creating terminal buffer.
 (use-package multi-term
   :ensure t
+  :bind (("C-M-<right>" . multi-term-next)
+         ("C-M-<left>" . multi-term-prev))
   :init
   (setq multi-term-program "/bin/bash"))
 (provide 'multi-term-init)
