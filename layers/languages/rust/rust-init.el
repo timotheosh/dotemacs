@@ -39,6 +39,9 @@
   :requires (programming-init lsp-init)
   :mode (("\\.rs\\'" . rust-mode)
          ("\\.toml\\'" . rust-mode))
+  :bind (("RET"  . newline-and-indent)
+         ("<f4>" . cargo-process-build)
+         ("<f5>" . cargo-process-run))
   :init
   (use-package cargo
     :ensure t)
@@ -48,8 +51,7 @@
   (add-hook 'rust-mode-hook
             (lambda ()
               (setq comment-prefix-start "///")
-              (setq comment-prefix-continue "/// ")
-              (local-set-key (kbd "C-m") 'my/return-key)))
+              (setq comment-prefix-continue "/// ")))
 
   (autoload 'rust-mode "rust-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
