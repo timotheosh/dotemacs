@@ -35,6 +35,7 @@
   (use-package lsp-clojure
     :config
     (add-to-list 'lsp-language-id-configuration '(clojure-mode . "clojure-mode"))
+    (add-to-list 'lsp-language-id-configuration '(clojurescript-mode . "clojure-mode"))
     :init
     (setq lsp-enable-indentation nil))
   (add-hook 'clojure-mode-hook #'lsp)
