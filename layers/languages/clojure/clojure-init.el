@@ -65,7 +65,7 @@
     :pin melpa-stable
     :config
     ;; Path to lein for Cider-mode
-    (setq cider-lein-command (format "%s/programs/bin/lein" (getenv "HOME")))
+    (setq cider-lein-command (format "%s/.emacs.d/programs/bin/lein" (getenv "HOME")))
     (if (string= system-type "cygwin")
         (setq cider-lein-command "~/bin/lein"))
     (add-hook 'cider-repl-mode-hook #'company-mode)

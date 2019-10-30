@@ -34,6 +34,8 @@ java_repos_maven=" \
 https://github.com/jdee-emacs/jdee-server.git \
 "
 
+leiningen_download="https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
+
 function get_shampoo_gst {
   PACKAGE=shampoo-gst-0.0.1
   DIRECTORY=programs/shampoo
@@ -106,6 +108,15 @@ function curlprog {
   popd
 }
 
+function install_leiningen {
+  leinpath=programs/bin
+  if [[ ! -f ${leinpath}/lein ]];then
+    mkdir -p ${leinpath}
+    curlprog ${leinpath} ${leiningen_download}
+    chmod 0755 ${leinpath}/lein
+  fi
+}
+
 function directoryname {
   echo $(basename $1|sed -e 's/\.git$//')
 }
@@ -157,6 +168,8 @@ for x in $java_repos_maven;do
 done
 
 get_shampoo_gst
+
+install_leiningen
 
 echo "Repos retrieved and ready."
 exit 0
