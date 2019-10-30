@@ -13,7 +13,7 @@
 
 ;; Break-glass setting when you see 'bad-signature "archive-contents.sig"'
 ;;  on start up, after a package upgrade.
-;; (setq package-check-signature nil)
+(setq package-check-signature nil)
 
 ;; Libraries. Packages that get used more than one place. WARNING: No
 ;; consistent use, yet.
@@ -173,14 +173,18 @@
 ;; running emacs in server mode.
 ;; This solves the problem of the theme not getting loaded properly in
 ;; daemon mode. Found here: https://stackoverflow.com/questions/18904529/after-emacs-deamon-i-can-not-see-new-theme-in-emacsclient-frame-it-works-fr
-(setq zenburn-override-colors-alist
-      '(("zenburn-bg" . "#363b41")))
-(use-package zenburn-theme
+;;(setq zenburn-override-colors-alist
+;;      '(("zenburn-bg" . "#363b41")))
+;;(use-package zenburn-theme
+;;  :ensure t
+;;  :defer t)
+(use-package doom-themes
   :ensure t
   :defer t)
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-(defvar my:theme 'zenburn)
+(defvar my:theme 'doom-nord)
 (defvar my:terminal-theme)
 (defvar my:theme-window-loaded nil)
 (defvar my:theme-terminal-loaded nil)
