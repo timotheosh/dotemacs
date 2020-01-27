@@ -13,7 +13,7 @@
 
 ;; Break-glass setting when you see 'bad-signature "archive-contents.sig"'
 ;;  on start up, after a package upgrade.
-(setq package-check-signature nil)
+;;(setq package-check-signature nil)
 
 ;; Libraries. Packages that get used more than one place. WARNING: No
 ;; consistent use, yet.
@@ -102,7 +102,7 @@
 
 (setq user-full-name "Tim Hawes")
 
-(require 'mu4e-init)
+;;(require 'mu4e-init)
 ;; General Utilities
 (require 'flyspell-init)
 (require 'flycheck-init)

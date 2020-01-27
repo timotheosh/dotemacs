@@ -9,19 +9,13 @@
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-process-type (quote cabal-repl))
  '(haskell-tags-on-save t)
- '(lsp-ui-sideline-current-symbol
-   ((t
-     (:foreground "gray" :box
-                  (:line-width -1 :color "cyan")
-                  :weight ultra-bold :height 0.99))))
  '(package-selected-packages
    (quote
-    (doom-themes base16-theme cobol-mode lorem-ipsum editorconfig helm-lsp dap-mode lsp-treemacs company-lsp lsp-ui avy esh-help all-the-icons-ivy multi-eshell all-the-icons-dired-mode all-the-icons web-server eshell-prompt-extras restclient flycheck-pos-tip aws-snippets company-quickhelp xref-js2 which-key wgrep-ag web-mode virtualenvwrapper use-package tree-mode smex smartparens smart-dash slime-company rainbow-delimiters racket-mode quack python-pytest python-mode python-docstring powerline pipenv pip-requirements php-mode persp-projectile paradox ox-gfm origami org-projectile org-jira org-bullets neotree multi-term markdown-mode magit lisp-extra-font-lock keychain-environment json-mode js2-refactor jedi jdee javadoc-lookup java-imports irony-eldoc iedit hy-mode ht helm haskell-mode groovy-mode general geiser geben flymake-racket flycheck-rust flycheck-pycheckers flycheck-irony flycheck-cython flycheck-clojure flycheck-clangcheck flycheck-clang-tidy flycheck-clang-analyzer exec-path-from-shell elpy dr-racket-like-unicode dockerfile-mode docker-compose-mode darktooth-theme cython-mode counsel-projectile company-tern company-irony company-c-headers company-ansible column-enforce-mode cmake-ide clojure-mode-extra-font-locking clj-refactor chicken-scheme cargo bui blacken basic-mode auto-virtualenv ansible aggressive-indent ac-slime 4clojure)))
- '(paradox-github-token t)
- '(safe-local-variable-values (quote ((eval ansible 1)))))
+    (gnu-elpa-keyring-update zenburn-theme xref-js2 which-key wgrep-ag web-mode virtualenvwrapper use-package ssh smex smartparens smart-dash restclient rainbow-delimiters racket-mode quack python-pytest python-mode python-docstring powerline pipenv pip-requirements php-mode persp-projectile paradox ox-gfm origami org-projectile org-jira org-bullets neotree multi-term multi-eshell magit lsp-ui lsp-treemacs lorem-ipsum lisp-extra-font-lock keychain-environment json-mode js2-refactor jedi jdee javadoc-lookup java-imports irony-eldoc impatient-mode iedit hy-mode helm-lsp haskell-mode groovy-mode general geiser geben flymake-racket flycheck-rust flycheck-pycheckers flycheck-pos-tip flycheck-irony flycheck-cython flycheck-clojure flycheck-clangcheck flycheck-clang-tidy flycheck-clang-analyzer exec-path-from-shell eshell-prompt-extras esh-help elpy editorconfig dr-racket-like-unicode doom-themes dockerfile-mode docker-compose-mode darktooth-theme dap-mode cython-mode counsel-projectile company-tern company-quickhelp company-lsp company-irony company-c-headers company-ansible column-enforce-mode cmake-ide clojure-mode-extra-font-locking clj-refactor chicken-scheme cargo blacken basic-mode base16-theme aws-snippets auto-virtualenv ansible all-the-icons-ivy aggressive-indent ac-slime 4clojure)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(markdown-code-face ((t (:inherit consolas)))))
+ )
