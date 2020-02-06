@@ -1,6 +1,5 @@
 (use-package python-mode
   :ensure t
-  :requires lsp-init
   :mode ("\\.py\\'" . python-mode)
   :bind (("RET" . newline-and-indent)
          ("C-c !" . python-shell-send-buffer)
@@ -11,6 +10,7 @@
   (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
   (setenv "JUPYTER_CONSOLE_TEST" "1")
   (setenv "PYLINTRC" (concat (getenv "HOME") "/.pylintrc"))
+  (setq py-max-specpdl-size 5000)
   (require 'programming-init)
   (use-package virtualenvwrapper
     :ensure t
@@ -29,9 +29,7 @@
         python-shell-interpreter "ipython"
         python-shell-interpreter-args "-i")
 
-  (smartparens-mode)
-  (dolist (func '(lsp
-                  company-mode
+  (dolist (func '(company-mode
                   smartparens-strict-mode))
     (add-hook 'python-mode-hook func)))
 
