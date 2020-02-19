@@ -1,7 +1,8 @@
-alias vim find-file $1
-alias vi find-file $1
-alias update-token /home/thawes/.virtualenvs/devops_utils/bin/devops_utils -e $1
-alias e find-file $1
-alias git git --no-pager $*
-alias sudo /usr/bin/sudo $*
+alias clj clojure $*
 alias proc ps aux|grep $1|grep -v grep
+alias sudo /usr/bin/sudo $*
+alias git git --no-pager $*
+alias e find-file $1
+alias update-token /home/thawes/.virtualenvs/devops_utils/bin/devops_utils -e $1
+alias vi find-file $1
+alias vim find-file $1
