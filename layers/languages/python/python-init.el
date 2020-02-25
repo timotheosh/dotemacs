@@ -1,5 +1,6 @@
 (use-package python-mode
   :ensure t
+  :pin melpa
   :mode ("\\.py\\'" . python-mode)
   :bind (("RET" . newline-and-indent)
          ("C-c !" . python-shell-send-buffer)
@@ -7,11 +8,11 @@
          ("C->" . python-indent-shift-right)
          ("C-<" . python-indent-shift-left))
   :config
-  (setenv "IPY_TEST_SIMPLE_PROMPT" "1")
-  (setenv "JUPYTER_CONSOLE_TEST" "1")
-  (setenv "PYLINTRC" (concat (getenv "HOME") "/.pylintrc"))
+  ;;(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+  ;;(setenv "JUPYTER_CONSOLE_TEST" "1")
+  ;;(setenv "PYLINTRC" (concat (getenv "HOME") "/.pylintrc"))
   (setq py-max-specpdl-size 5000)
-  (require 'programming-init)
+                                        ;(require 'programming-init)
   (use-package virtualenvwrapper
     :ensure t
     :config

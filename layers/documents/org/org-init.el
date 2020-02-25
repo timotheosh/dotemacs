@@ -25,6 +25,10 @@
     :config
     (setq jiralib-url "https://inindca.atlassian.net"))
 
+  ;; Remove completed scheduled and deadlined tasks from agenda view
+  (setq org-agenda-skip-scheduled-if-done t)
+  (setq org-agenda-skip-deadline-if-done t)
+
   ;; Remove html validation link
   (setq org-html-validation-link nil)
 

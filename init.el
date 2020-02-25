@@ -139,7 +139,7 @@
 
 ;; Meh
 (require 'web-init)        ;; web-mode for html/css, templates, etc.
-(require 'c-init)          ;; C/C++ and ObjC
+;(require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
 (require 'geiser-init)     ;; repl for scheme/racket
 (require 'chicken-init)    ;; Chicken Scheme
