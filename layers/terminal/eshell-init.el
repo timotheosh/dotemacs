@@ -114,7 +114,7 @@ Display progress in the mode line instead."
 ;; Visual commands
 ;; defaults are ("vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")
 (setq eshell-visual-commands '("vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm"))
-(dolist (cmd '("tmux" "aptitude" "aws-shell"))
+(dolist (cmd '("tmux" "aptitude" "aws-shell" "neofetch"))
   (add-to-list 'eshell-visual-commands cmd))
 
 ;; Uses the default Emacs completion package for tab-complete in eshell.

@@ -20,7 +20,7 @@
   (sp-local-pair '(jdee-mode)
                  "{" nil :post-handlers
                  '((my/create-newline-format "RET")))
-  (javadoc-add-roots "/usr/lib/jvm/java-1.8.0-openjdk-amd64/docs/api/")
+  (javadoc-add-roots "/usr/lib/jvm/java-11-openjdk-amd64/docs/api/")
   (setq jde-complete-add-space-after-method t)
   (add-hook 'jdee-mode-hook 'auto-complete-mode)
   (add-hook 'jdee-mode-hook 'my-programming-mode)

@@ -142,7 +142,7 @@
 ;(require 'c-init)          ;; C/C++ and ObjC
 (require 'php-init)        ;; PHP
 (require 'geiser-init)     ;; repl for scheme/racket
-(require 'chicken-init)    ;; Chicken Scheme
+;;(require 'chicken-init)    ;; Chicken Scheme
 (require 'cython-init)     ;; Cython
 (require 'hy-init)         ;; Hy-mode (Lisp for Python)
 (require 'java-init)       ;; Java ; Broken package
