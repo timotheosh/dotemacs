@@ -36,7 +36,7 @@
 
 (use-package rust-mode
   :ensure t
-  :requires (programming-init lsp-init)
+  :requires (programming-init)
   :mode (("\\.rs\\'" . rust-mode)
          ("\\.toml\\'" . rust-mode))
   :bind (("RET"  . newline-and-indent)
@@ -56,8 +56,7 @@
   (autoload 'rust-mode "rust-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
-  (dolist (func '(lsp
-                  smartparens-strict-mode
+  (dolist (func '(smartparens-strict-mode
                   my-programming-hooks
                   cargo-minor-mode))
     (add-hook 'rust-mode-hook func)))

@@ -31,16 +31,10 @@
     :config
     (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
-  ;; lsp-clojure
-  (use-package lsp-clojure
-    :config
-    (add-to-list 'lsp-language-id-configuration '(clojure-mode . "clojure-mode"))
-    (add-to-list 'lsp-language-id-configuration '(clojurescript-mode . "clojure-mode"))
-    :init
-    (setq lsp-enable-indentation nil))
-  (add-hook 'clojure-mode-hook #'lsp)
-  (add-hook 'clojurec-mode-hook #'lsp)
-  (add-hook 'clojurescript-mode-hook #'lsp)
+  ;; language server clojure
+  (add-to-list 'eglot-server-programs
+               '((clojure-mode clojurescript-mode) .
+                 ("java" "-jar" "/home/thawes/programs/bin/clojure-lsp")))
 
   ;; This is useful for working with camel-case tokens, like names of
   ;; Java classes (e.g. JavaClassName)
@@ -57,8 +51,7 @@
                  ("(\\(background?\\)"
                   (1 font-lock-keyword-face))))
               (define-clojure-indent (fact 1))
-              (define-clojure-indent (facts 1))
-              (company-mode)))
+              (define-clojure-indent (facts 1))))
 
   (use-package cider
     :ensure t
@@ -70,8 +63,8 @@
         (setq cider-lein-command "~/bin/lein"))
     (add-hook 'cider-repl-mode-hook #'company-mode)
     (add-hook 'cider-mode-hook #'company-mode)
-    (add-hook 'cider-mode-hook #'flycheck-clojure-setup)
-    (add-hook 'clojure-mode-hook 'cider-mode)
+    ;;(add-hook 'cider-mode-hook #'flycheck-clojure-setup)
+    ;;(add-hook 'clojure-mode-hook 'cider-mode)
     ;; For figwheel clojurescript projects
     ;;   To set the clojurescript repo back to default, run:
     (setq cider-cljs-lein-repl
@@ -86,7 +79,8 @@
   ;; If you want to trigger auto-complete using TAB in CIDER buffers, add this to
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
-  (add-hook 'clojure-mode-hook 'smartparens-strict-mode))
+  (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
+  (add-hook 'clojure-mode-hook 'cider-mode))
 
 (use-package 4clojure
   :ensure t

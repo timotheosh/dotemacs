@@ -126,7 +126,7 @@
 (require 'restclient-init)
 
 ;; Language server mode
-(require 'lsp-init)
+(require 'eglot-init)
 ;; Language modes
 ;; Most impotant
 (require 'elisp-init)      ;; Emacs Lisp
