@@ -23,6 +23,14 @@
     ;; the environment variable `WORKON_HOME` points to the right place
     (setq venv-location "/home/thawes/.virtualenvs/"))
 
+  (use-package eglot
+    :ensure t
+    :config
+    (add-to-list 'eglot-server-programs
+                 `(python-mode . ("pyls" "-v" "--tcp" "--host"
+                                  "localhost" "--port" :autoport)))
+    (add-hook 'python-mode-hook 'eglot-ensure))
+
   :init
   (linum-mode 1)
   (setq indent-tabs-mode nil ;; Spaces, not tabs!

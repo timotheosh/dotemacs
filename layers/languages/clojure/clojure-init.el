@@ -76,6 +76,11 @@
     ;;         (figwheel-sidecar.repl-api/cljs-repl))"))
     )
 
+  (use-package eglot
+    :ensure t
+    :config
+    (add-hook 'clojure-mode-hook 'eglot-ensure))
+
   ;; If you want to trigger auto-complete using TAB in CIDER buffers, add this to
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
