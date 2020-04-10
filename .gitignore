@@ -47,3 +47,4 @@ jdee-server/*.jar
 smex-items
 .cache/
 .lsp-session-*
+image-dired/

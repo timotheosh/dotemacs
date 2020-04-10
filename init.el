@@ -112,6 +112,7 @@
 (require 'unbound)
 (require 'multi-term-init)
 (require 'erc-init)
+(require 'shell-pop-init)
 
 ;; Programming Utilities
 ;;(require 'minimap-init) ;; Minimap is too annoying. Can't get rid of once
