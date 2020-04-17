@@ -36,6 +36,8 @@ https://github.com/jdee-emacs/jdee-server.git \
 
 leiningen_download="https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
 
+CREATE_DIRS="jira image-dired"
+
 function get_shampoo_gst {
   PACKAGE=shampoo-gst-0.0.1
   DIRECTORY=programs/shampoo
@@ -97,6 +99,10 @@ function run-py-setup {
   python setup.py build
   python setup.py install --user
   popd
+}
+
+function create_dirs {
+  mkdir -p ${CREATE_DIRS}
 }
 
 function curlprog {
@@ -170,6 +176,8 @@ done
 get_shampoo_gst
 
 install_leiningen
+
+create_dirs
 
 echo "Repos retrieved and ready."
 exit 0

@@ -27,8 +27,9 @@
     :ensure t
     :config
     (add-to-list 'eglot-server-programs
-                 `(python-mode . ("pyls" "-v" "--tcp" "--host"
-                                  "localhost" "--port" :autoport)))
+                 `(python-mode . (("pyls" "-v" "--tcp" "--host"
+                                   "localhost" "--port" :autoport)
+                                  (:plugins (:jedi_completion (:include_params t))))))
     (add-hook 'python-mode-hook 'eglot-ensure))
 
   :init
