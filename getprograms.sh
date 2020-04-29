@@ -2,7 +2,7 @@
 
 # Repos to be checked out and then built with make.
 repobuilds=" \
-https://github.com/pinard/Pymacs.git \
+https://github.com/dgentry/Pymacs.git \
 "
 # Repos that just need to be retrieved.
 repos=" \
