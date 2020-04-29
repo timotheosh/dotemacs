@@ -23,6 +23,15 @@
     ;; the environment variable `WORKON_HOME` points to the right place
     (setq venv-location "/home/thawes/.virtualenvs/"))
 
+  (use-package jedi
+    :ensure t
+    :commands jedi:setup)
+  (use-package elpy
+    ;; NOTE: Elpy makes use of py-flake. You may have to change
+    ;; settings in ~/.config/flake8
+    :ensure t
+    :commands elpy-enable)
+
   (use-package eglot
     :ensure t
     :config
@@ -34,13 +43,17 @@
 
   :init
   (linum-mode 1)
+  (elpy-enable)
   (setq indent-tabs-mode nil ;; Spaces, not tabs!
         tab-width (default-value 'tab-width)
         python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i")
+        python-shell-interpreter-args "--simple-prompt -i"
+        elpy-dedicated-shells t
+        jedi:complete-on-dot t)
 
   (dolist (func '(company-mode
-                  smartparens-strict-mode))
+                  smartparens-strict-mode
+                  jedi:setup))
     (add-hook 'python-mode-hook func)))
 
 (provide 'python-init)
