@@ -102,6 +102,8 @@
 
 (setq user-full-name "Tim Hawes")
 
+(require 'web-browser-init)
+(require 'elfeed-init)
 ;;(require 'mu4e-init)
 ;; General Utilities
 (require 'flyspell-init)
