@@ -30,7 +30,8 @@
     ;; NOTE: Elpy makes use of py-flake. You may have to change
     ;; settings in ~/.config/flake8
     :ensure t
-    :commands elpy-enable)
+    :init
+    (elpy-enable))
 
   (use-package eglot
     :ensure t
@@ -43,7 +44,6 @@
 
   :init
   (linum-mode 1)
-  (elpy-enable)
   (setq indent-tabs-mode nil ;; Spaces, not tabs!
         tab-width (default-value 'tab-width)
         python-shell-interpreter "ipython"
