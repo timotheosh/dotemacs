@@ -185,9 +185,13 @@
   :ensure t
   :defer t)
 
+(use-package spacemacs-theme
+  :ensure t
+  :defer t)
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-(defvar my:theme 'doom-nord)
+(defvar my:theme 'spacemacs-dark)
 (defvar my:terminal-theme)
 (defvar my:theme-window-loaded nil)
 (defvar my:theme-terminal-loaded nil)
