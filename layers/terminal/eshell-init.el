@@ -71,9 +71,12 @@
   :config
   ;; for virtualenvwrapper stuff
   (with-eval-after-load "esh-opt"
+    (require 'virtualenvwrapper)
+    (venv-initialize-eshell)
     (autoload 'epe-theme-lambda "eshell-prompt-extras")
     (setq eshell-highlight-prompt nil
           eshell-prompt-function 'epe-theme-lambda
+          eshell-prompt-regexp "^[^#\nλ]*[#λ] "
           epe-show-python-info t
           epe-path-style 'single)))
 
@@ -82,7 +85,7 @@
 (setq eshell-prefer-lisp-variables t)
 
 (setq password-cache t) ; enable password caching
-(setq password-cache-expiry 180) ; for 3 minutes (time in secs)
+(setq password-cache-expiry 300) ; for 5 minutes (time in secs)
 
 ;; Progress bars, like apt in the status/echo area
 (advice-add

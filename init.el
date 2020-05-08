@@ -91,6 +91,7 @@
 (require 'eshell-init)
 (require 'neotree-init)
 (require 'yasnippet-init)
+(require 'web-search-init)
 
 ;; Customizations
 (require 'environment-init)
@@ -240,3 +241,4 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (require 'custom-keys)
 (require 'all-the-icons-fonts-init)
+(put 'downcase-region 'disabled nil)
