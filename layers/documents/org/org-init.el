@@ -113,5 +113,13 @@
               "~/org/GTD/home/code-projects.org"))
       (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
       (push (org-projectile-project-todo-entry) org-capture-templates))
-    :ensure t))
+    :ensure t)
+
+  (use-package org2blog
+    :ensure t
+    :config
+    (setq org2blog/wp-blog-alist
+          '(("timhawes"
+             :url "https://timhawes.wordpress.com/xmlrpc.php"
+             :username "timotheosh")))))
 (provide 'org-init)

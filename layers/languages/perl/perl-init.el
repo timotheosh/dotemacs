@@ -1,3 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/pde")
+(load "pde-load")
+
 ;; CPerl mode instead of Perl mode
 (setq auto-mode-alist (rassq-delete-all 'perl-mode auto-mode-alist))
 
@@ -8,6 +11,11 @@
                 ("perl5" . cperl-mode)
                 ("miniperl" . cperl-mode))
   :init
+  (use-package plsense
+    :ensure t
+    :config
+    (plsense-config-default))
+
   (defun my/perl-settings ()
     (setq cperl-electric-parens t)
     (setq cperl-electric-linefeed t)

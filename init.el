@@ -100,6 +100,7 @@
 ;; Org-mode
 (require 'org-init)
 (require 'cbible-init)
+(require 'calibre-init)
 
 (setq user-full-name "Tim Hawes")
 
@@ -241,4 +242,12 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (require 'custom-keys)
 (require 'all-the-icons-fonts-init)
+(set-face-attribute 'default nil
+                    :family "Source Code Pro for Powerline" 
+		    :foundry "ADBO" 
+		    :slant 'normal 
+		    :weight 'normal 
+		    :height 102 
+		    :width 'normal)
+
 (put 'downcase-region 'disabled nil)
