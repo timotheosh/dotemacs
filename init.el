@@ -70,13 +70,7 @@
  version-control t) ; use versioned backups
 
 ;; Default buffer to open
-(setq initial-buffer-choice
-      '(lambda ()
-         (interactive)
-         (setq buff (get-buffer-create "*text-scratch*"))
-         (switch-to-buffer buff)
-         (text-mode)
-         buff))
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
 ;; Open files remotely after sudo'ing as root
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
@@ -85,6 +79,8 @@
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
+(require 'dashboard-init)
+(require 'emacs-frame-manager-init)
 (require 'dired-init)
 (require 'ssh-init)
 (require 'tramp-init)
@@ -242,11 +238,11 @@
 (require 'custom-keys)
 (require 'all-the-icons-fonts-init)
 (set-face-attribute 'default nil
-                    :family "Source Code Pro for Powerline" 
-		    :foundry "ADBO" 
-		    :slant 'normal 
-		    :weight 'normal 
-		    :height 102 
+                    :family "Source Code Pro for Powerline"
+		    :foundry "ADBO"
+		    :slant 'normal
+		    :weight 'normal
+		    :height 102
 		    :width 'normal)
 
 (put 'downcase-region 'disabled nil)
