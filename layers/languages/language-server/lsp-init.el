@@ -1,21 +1,21 @@
 ;; Setup language server mode
 (use-package lsp-mode
   :ensure t
-  :pin melpa
-  :commands (lsp))
+  :hook (lsp-mode . lsp-enable-which-key-integration)
+  :commands (lsp lsp-deferred))
 ;; optionally
 (use-package lsp-ui
   :ensure t
-  :pin melpa)
-(use-package company-lsp
+  :commands lsp-ui-mode)
+(use-package lsp-ivy
   :ensure t
-  :commands company-lsp)
-(use-package helm-lsp
-  :ensure t
-  :commands helm-lsp-workspace-symbol)
+  :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs
   :ensure t
   :commands lsp-treemacs-errors-list)
+;;(use-package company-lsp
+;;  :ensure t
+;;  :commands company-lsp)
 ;; optionally if you want to use debugger
 (add-to-list 'company-backends 'company-lsp)
 (use-package dap-mode

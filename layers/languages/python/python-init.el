@@ -33,15 +33,6 @@
     :init
     (elpy-enable))
 
-  (use-package eglot
-    :ensure t
-    :config
-    (add-to-list 'eglot-server-programs
-                 `(python-mode . (("pyls" "-v" "--tcp" "--host"
-                                   "localhost" "--port" :autoport)
-                                  (:plugins (:jedi_completion (:include_params t))))))
-    (add-hook 'python-mode-hook 'eglot-ensure))
-
   :init
   (linum-mode 1)
   (setq indent-tabs-mode nil ;; Spaces, not tabs!
@@ -53,7 +44,8 @@
 
   (dolist (func '(company-mode
                   smartparens-strict-mode
-                  jedi:setup))
+                  jedi:setup
+                  lsp-deferred))
     (add-hook 'python-mode-hook func)))
 
 (provide 'python-init)

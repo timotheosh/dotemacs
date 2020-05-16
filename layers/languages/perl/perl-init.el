@@ -16,9 +16,17 @@
     :config
     (plsense-config-default))
 
+
+  ;; perl language server is installed with `cpan Perl::LanguageServer'
+  ;; and then run like `perl -MPerl::LanguageServer \
+  ;;                       -e Perl::LanguageServer::run \
+  ;;                       -- --port <some_port> --log-level <log_level> \
+  ;;                          --version <client_version>'
+
   (defun my/perl-settings ()
     (setq cperl-electric-parens t)
     (setq cperl-electric-linefeed t)
     (local-set-key (kbd "C-m") 'cperl-linefeed))
-  (add-hook 'cperl-mode-hook 'my/perl-settings))
+  (add-hook 'cperl-mode-hook 'my/perl-settings)
+  (add-hook 'cperl-mode-hook 'lsp-deferred))
 (provide 'perl-init)

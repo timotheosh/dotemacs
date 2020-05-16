@@ -31,11 +31,6 @@
     :config
     (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
 
-  ;; language server clojure
-  (add-to-list 'eglot-server-programs
-               '((clojure-mode clojurescript-mode) .
-                 ("java" "-jar" "/home/thawes/programs/bin/clojure-lsp")))
-
   ;; This is useful for working with camel-case tokens, like names of
   ;; Java classes (e.g. JavaClassName)
   (add-hook 'clojure-mode-hook 'subword-mode)
@@ -76,16 +71,12 @@
     ;;         (figwheel-sidecar.repl-api/cljs-repl))"))
     )
 
-  (use-package eglot
-    :ensure t
-    :config
-    (add-hook 'clojure-mode-hook 'eglot-ensure))
-
   ;; If you want to trigger auto-complete using TAB in CIDER buffers, add this to
   ;; your configuration file, but note that it is incompatible with (setq
   ;; tab-always-indent 'complete):
   (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
-  (add-hook 'clojure-mode-hook 'cider-mode))
+  (add-hook 'clojure-mode-hook 'cider-mode)
+  (add-hook 'clojure-mode-hook 'lsp-deferred))
 
 (use-package 4clojure
   :ensure t
