@@ -1,7 +1,7 @@
 (progn
   (setq browse-url-generic-program "/usr/local/bin/next")
   (setq browse-url-default-browser 'eww-browse-url)
-  (setq shr-external-browser 'browse-url-generic)
+  ;;(setq shr-external-browser 'browse-url-generic)
   (setq
    browse-url-browser-function
    '(
