@@ -48,7 +48,8 @@
   "Creates a maximized frame, raised and in focus."
   (make-frame-on-display (getenv "DISPLAY") `((name . ,frame-name)
                                               (title . ,frame-title)
-                                              (fullscreen . maximized)))
+                                              (fullscreen . maximized)
+                                              (window-system . x)))
   (let ((frame (car (efm/find-frame name))))
     (frame-focus frame)
     (x-focus-frame frame)))
