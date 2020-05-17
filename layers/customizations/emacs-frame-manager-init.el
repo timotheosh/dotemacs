@@ -18,6 +18,7 @@
 (defvar efm/frame-name "emacs-frame-manager997")
 (defvar efm/shell-name "emacs-frame-manager335")
 (defvar efm/org-name "emacs-frame-manager919")
+(defvar efm/legit-frames (list efm/frame-name efm/shell-name efm/org-name "F1"))
 
 (defvar efm/mapped-commands '((ibuffer . "*ibuffer*")))
 
@@ -27,6 +28,19 @@
    (lambda (x)
      (string= (frame-parameter x 'name) frame-name))
    (frame-list)))
+
+(defun efm/list-illegite-frames ()
+  "Lists visible illegitimate frames"
+  (remove-if
+   (lambda (x)
+     (seq-find (lambda (y)
+                 (string= y
+                          (frame-parameter x 'name))) efm/legit-frames))
+   (remove-if-not 'frame-visible-p (frame-list))))
+
+(defun efm/kill-illegite-frames ()
+  (dolist (buf (efm/list-illegite-frames))
+    (delete-frame buf)))
 
 (defun efm/frame-visible-p (frame-name)
   "Returns a list of visible frames with frame-name."
