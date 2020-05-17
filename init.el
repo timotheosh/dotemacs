@@ -81,6 +81,7 @@
 (require 'paradox-init)
 (require 'dashboard-init)
 (require 'emacs-frame-manager-init)
+(require 'email-init)
 (require 'dired-init)
 (require 'ssh-init)
 (require 'tramp-init)
