@@ -5,6 +5,8 @@
   (defun my/fortune()
     (fortune)))
 
+(require 'cbible-init)
+
 (use-package dashboard
   :ensure t
   :config
