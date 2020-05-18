@@ -1,5 +1,6 @@
 (use-package erc
   :init
+  (require 'erc-imenu)
   (setq erc-autojoin-channels-alist
         '(("freenode.net"
            ;; "##aws"

@@ -104,5 +104,8 @@
           (efm/frame-focus-maximize frame command))
       (efm/start-client-with-command name title command skip-taskbar))))
 
+(defun efm/get-dashboard ()
+  (switch-to-buffer "*dashboard*"))
+
 (provide 'emacs-frame-manager-init)
 ;;; emacs-frame-manager-init.el ends here
