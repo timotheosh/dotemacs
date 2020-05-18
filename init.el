@@ -79,7 +79,6 @@
 ;; Add packages here
 ;; Initial packages
 (require 'paradox-init)
-(require 'dashboard-init)
 (require 'emacs-frame-manager-init)
 (require 'email-init)
 (require 'dired-init)
@@ -92,6 +91,7 @@
 
 ;; Customizations
 (require 'environment-init)
+(require 'dashboard-init)
 (require 'powerline-init)
 
 ;; Org-mode
