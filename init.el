@@ -111,6 +111,7 @@
 (require 'ivy-init)
 (require 'my-funcs)
 (require 'unbound)
+(require 'vterm-init)
 (require 'multi-term-init)
 (require 'erc-init)
 (require 'shell-pop-init)

@@ -1,5 +1,6 @@
-(add-to-list 'load-path "~/.emacs.d/pde")
-(load "pde-load")
+;; Not compatible with vterm
+;;(add-to-list 'load-path "~/.emacs.d/pde")
+;;(load "pde-load")
 
 ;; CPerl mode instead of Perl mode
 (setq auto-mode-alist (rassq-delete-all 'perl-mode auto-mode-alist))

@@ -104,6 +104,11 @@
           (efm/frame-focus-maximize frame command))
       (efm/start-client-with-command name title command skip-taskbar))))
 
+(defun efm/buffer-focus-p (buffer-or-name)
+  "Returns true if buffer is already open."
+  (when (get-buffer-window-list buffer-or-name)
+    t))
+
 (defun efm/get-dashboard ()
   (switch-to-buffer "*dashboard*"))
 
