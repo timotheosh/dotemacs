@@ -40,11 +40,4 @@
 
 (global-set-key (kbd "C-s-<right>") 'next-buffer)
 (global-set-key (kbd "C-s-<left>") 'previous-buffer)
-
-(when (> emacs-major-version 26)
-  ;; Ctrl-Pageup
-  (global-set-key (kbd "C-<prior>") 'tab-previous)
-  ;; Ctrl-Pagedown
-  (global-set-key (kbd "C-<next>") 'tab-next))
-
 (provide 'custom-keys)

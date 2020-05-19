@@ -115,6 +115,7 @@
 (require 'multi-term-init)
 (require 'erc-init)
 (require 'shell-pop-init)
+(require 'centaur-tabs-init)
 
 ;; Programming Utilities
 ;;(require 'minimap-init) ;; Minimap is too annoying. Can't get rid of once
