@@ -51,5 +51,14 @@
   ;; open CL REPL and execute: (ql:quickload "clhs")
   ;; Then follow instructions.
   ;; C-c C-d h on common lisp directive, and it should open the definition in the default web browser.
-  (load "/home/thawes/.roswell/lisp/quicklisp/clhs-use-local.el" t))
+  (load "/home/thawes/.roswell/lisp/quicklisp/clhs-use-local.el" t)
+
+  ;; Run ros install cxxxr/cl-lsp
+  ;; also see repo https://github.com/cxxxr/cl-lsp.git
+  (add-to-list 'lsp-language-id-configuration '(lisp-mode "lisp"))
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "cl-lsp")
+                    :major-modes '(lisp-mode)
+                    :server-id 'cl-lsp))
+  (add-hook 'lisp-mode-hook 'lsp-deferred))
 (provide 'lisp-init)

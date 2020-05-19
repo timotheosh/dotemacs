@@ -7,10 +7,6 @@
   (hl-line-mode 1)
   (setq-default indent-tabs-mode nil) ;; Spaces, not tabs!
   (setq tab-width (default-value 'tab-width))
-  (use-package column-enforce-mode
-    :ensure t
-    :config
-    (column-enforce-mode 1))
   (use-package aggressive-indent
     :ensure t
     :init

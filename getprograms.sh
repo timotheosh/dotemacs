@@ -17,6 +17,7 @@ https://github.com/timotheosh/cbible.git \
 https://github.com/jtbm37/all-the-icons-dired.git \
 https://github.com/whacked/calibre-mode.git \
 git@github.com:timotheosh/dtk.git \
+https://github.com/mullikine/lsp-racket-el.git \
 "
 
 # Run python setup.py on these directories (after they have been
