@@ -33,10 +33,6 @@ https://github.com/AndreaCrotti/yasnippet-snippets.git \
 https://github.com/jonatkinson/yasnippet-licenses.git \
 "
 
-java_repos_maven=" \
-https://github.com/jdee-emacs/jdee-server.git \
-"
-
 leiningen_download="https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein"
 
 CREATE_DIRS="jira image-dired"
@@ -164,15 +160,6 @@ for x in $pythonsetup;do
   DIR=programs/$(directoryname $x)
   if [[ ! -d $DIR/build/lib.linux-x86_64-2.7 ]];then
     run-py-setup $DIR
-  fi
-done
-
-for x in $java_repos_maven;do
-  DIR=programs/$(directoryname $x)
-  if [[ ! -d $DIR ]];then
-    gitclone programs $x
-    cd ${DIR}
-    mvn clean package
   fi
 done
 
