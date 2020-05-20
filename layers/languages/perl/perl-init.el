@@ -29,5 +29,6 @@
     (setq cperl-electric-linefeed t)
     (local-set-key (kbd "C-m") 'cperl-linefeed))
   (add-hook 'cperl-mode-hook 'my/perl-settings)
-  (add-hook 'cperl-mode-hook 'lsp-deferred))
+  ;;(add-hook 'cperl-mode-hook 'lsp-deferred)
+  )
 (provide 'perl-init)

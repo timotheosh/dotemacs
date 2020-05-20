@@ -27,6 +27,7 @@
 	 (string-prefix-p "*Helm" name)
 	 (string-prefix-p "*Compile-Log*" name)
 	 (string-prefix-p "*lsp" name)
+         (string-prefix-p "*LSP" name)
          (string-equal "*eshell-1*" name)
 	 (and (string-prefix-p "magit" name)
 	      (not (file-name-extension name))))))
