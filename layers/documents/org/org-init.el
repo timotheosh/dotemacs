@@ -115,6 +115,8 @@
       (push (org-projectile-project-todo-entry) org-capture-templates))
     :ensure t)
 
+  (use-package org-protocol)
+
   (use-package org2blog
     :ensure t
     :config
