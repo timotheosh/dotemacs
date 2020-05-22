@@ -11,8 +11,8 @@
 
   (add-to-list
    'ac-dictionary-directories (expand-file-name
-                               "~/.emacs.d/ac-dict"))
+                               (concat user-emacs-directory "ac-dict")))
   (setq ac-comphist-file (expand-file-name
-                          "~/.emacs.d/ac-comphist.dat")))
+                          (concat user-emacs-directory "ac-comphist.dat"))))
 (global-auto-complete-mode t)
 (provide 'auto-complete-init)

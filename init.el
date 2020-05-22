@@ -17,21 +17,21 @@
 
 ;; Libraries. Packages that get used more than one place. WARNING: No
 ;; consistent use, yet.
-(let ((default-directory  "~/.emacs.d/libraries/"))
+(let ((default-directory  (concat user-emacs-directory "libraries/")))
   (normal-top-level-add-subdirs-to-load-path))
 ;; Configuration for specific modes
-(let ((default-directory  "~/.emacs.d/layers/"))
+(let ((default-directory  (concat user-emacs-directory "layers/")))
   (normal-top-level-add-subdirs-to-load-path))
 ;; Third-party packages, usually found in github and other sundry places.
-(push (expand-file-name "~/.emacs.d/programs") load-path)
+(push (expand-file-name (concat user-emacs-directory "programs")) load-path)
 
 ;; Some importtant emacs configuration(s)
 (setq max-lisp-eval-depth 500)  ;; default is 500
 (setq max-specpdl-size 1000)    ;; default is 1000
 ;; Custom file
 (if (string= system-type "cygwin")
-    (setq custom-file "~/.emacs.d/layers/customizations/cygwin-custom.el")
-  (setq custom-file "~/.emacs.d/layers/customizations/custom.el"))
+    (setq custom-file (concat user-emacs-directory "layers/customizations/cygwin-custom.el"))
+  (setq custom-file (concat user-emacs-directory "layers/customizations/custom.el")))
 
 ;; Allow for UTF-8 in place of utf-8
 (define-coding-system-alias 'UTF-8 'utf-8)
@@ -56,8 +56,8 @@
       coding-system-for-write 'utf-8 )
 
 ;; Set up for backup files
-(defconst my-auto-save-folder "~/.emacs.d/recover-files/")
-(defconst my-save-folder "~/.emacs.d/saved-files/")
+(defconst my-auto-save-folder (concat user-emacs-directory "recover-files/"))
+(defconst my-save-folder (concat user-emacs-directory "saved-files/"))
 (setq
  backup-by-copying t  ; don't clobber symlinks
  backup-directory-alist
@@ -190,7 +190,7 @@
   :ensure t
   :defer t)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
 
 (defvar my:theme 'spacemacs-dark)
 (defvar my:terminal-theme)

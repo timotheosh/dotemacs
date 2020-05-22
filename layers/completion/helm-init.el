@@ -4,7 +4,7 @@
   :init
   (require 'helm-config)
   (setq helm-ff-transformer-show-only-basename nil
-	helm-adaptive-history-file             "~/.emacs.d/helm-history"
+	helm-adaptive-history-file             (concat user-emacs-directory "helm-history")
 	helm-yank-symbol-first                 t
 	helm-move-to-line-cycle-in-source      t
 	helm-buffers-fuzzy-matching            t

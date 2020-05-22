@@ -17,7 +17,7 @@
         jiralib2-user-login-name  nil
         jiralib2-token            nil
 
-        ejira-org-directory       "~/.emacs.d/jira"
+        ejira-org-directory       (concat user-emacs-directory "jira")
         ejira-projects            '("CSA")
 
         ejira-priorities-alist    '(("Blocker"  . ?A)

@@ -48,15 +48,15 @@
 
   ;; Cling the C++ REPL
   (use-package cling
-    :load-path "~/.emacs.d/programs/inferior-cling")
+    :load-path (concat user-emacs-directory "programs/inferior-cling"))
 
   ;; Set up irony and company-mode for completion.
   (use-package irony
     :ensure t
     :init
     ;; Irony mode
-    (setq irony-server-install-prefix "~/.emacs.d/programs/irony/")
-    (setq irony-user-dir "~/.emacs.d/programs/irony/")
+    (setq irony-server-install-prefix (concat user-emacs-directory "programs/irony/"))
+    (setq irony-user-dir (concat user-emacs-directory "programs/irony/"))
 
     (defun my-irony-mode-hook ()
       (define-key irony-mode-map [remap completion-at-point]
