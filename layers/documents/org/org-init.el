@@ -7,6 +7,20 @@
          ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb))
   :init
+  ;; > Org 9.2 comes with a new template expansion mechanism, combining
+  ;; > ~org-insert-structure-template~ bound to ~C-c C-,~.
+  ;; >
+  ;; > If you customized the ~org-structure-template-alist~ option manually,
+  ;; > you probably need to update it, see the docstring for accepted values.
+  ;; >
+  ;; > If you prefer using previous patterns, e.g. =<s=, you can activate
+  ;; > them again by requiring Org Tempo library:
+  ;; >
+  ;; > : (require 'org-tempo)
+  ;; >
+  ;; > or add it to ~org-modules~.
+  ;; >
+  (use-package org-tempo)
   ;; Github Flavored Markdown
   (use-package ox-gfm
     :ensure t)
